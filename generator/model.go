@@ -1576,16 +1576,17 @@ func (sg *schemaGenContext) buildAdditionalItems() error {
 }
 
 func (sg *schemaGenContext) buildXMLName() error {
+	sg.GenSchema.XMLName = sg.Name
+
 	if sg.Schema.XML == nil {
 		return nil
 	}
-	sg.GenSchema.XMLName = sg.Name
 
 	if sg.Schema.XML.Name != "" {
 		sg.GenSchema.XMLName = sg.Schema.XML.Name
-		if sg.Schema.XML.Attribute {
-			sg.GenSchema.XMLName += ",attr"
-		}
+	}
+	if sg.Schema.XML.Attribute {
+		sg.GenSchema.XMLName += ",attr"
 	}
 	return nil
 }

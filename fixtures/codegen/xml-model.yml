@@ -1,0 +1,40 @@
+swagger: "2.0"
+
+info:
+  version: "1.0"
+  title: "XML model with xml attributes and custom xml tag name"
+  description: ""
+
+produces:
+  - "application/xml"
+
+consumes:
+  - "application/xml"
+
+paths: {}
+definitions:
+  XmlWithAttribute:
+    type: object
+    required:
+      - author
+    properties:
+      id:
+        type: integer
+        xml:
+          attribute: true
+      title:
+        type: string
+        xml:
+          name: 'xml-title'
+      author: 
+        type: string
+      children:
+        type: array
+        items:
+          $ref: "#/definitions/XmlChild"
+  XmlChild:
+    type: object
+    properties:
+      name:
+        type: string
+

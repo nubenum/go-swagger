@@ -39,19 +39,19 @@ func initFixture2116() {
 	flattenRun := f.AddRun(false).WithMinimalFlatten(true)
 
 	flattenRun.AddExpectations("case1_fail_omitempty_false_not_hoisted_by_ref.go", []string{
-		"Body *ObjectWithOmitemptyFalse `json:\"Body\"`",
+		"Body *ObjectWithOmitemptyFalse `json:\"Body\" xml:\"Body\"`",
 	}, todo, noLines, noLines)
 
 	flattenRun.AddExpectations("case2_fail_omitempty_false_not_overridden_by_ref_sibling.go", []string{
-		"Body *ObjectWithOmitemptyTrue `json:\"Body,omitempty\"`",
+		"Body *ObjectWithOmitemptyTrue `json:\"Body,omitempty\" xml:\"Body\"`",
 	}, todo, noLines, noLines)
 
 	flattenRun.AddExpectations("case3_pass_object_nullable_false_hoisted_by_ref.go", []string{
-		"Body ObjectWithNullableFalse `json:\"Body,omitempty\"`",
+		"Body ObjectWithNullableFalse `json:\"Body,omitempty\" xml:\"Body\"`",
 	}, todo, noLines, noLines)
 
 	flattenRun.AddExpectations("case4_pass_object_nullable_false_overriden_by_ref_sibling.go", []string{
-		"Body *ObjectWithNullableTrue `json:\"Body,omitempty\"`",
+		"Body *ObjectWithNullableTrue `json:\"Body,omitempty\" xml:\"Body\"`",
 	}, todo, noLines, noLines)
 
 	flattenRun.AddExpectations("array_with_default.go", []string{
@@ -75,28 +75,28 @@ func initFixture2116() {
 	}, append(todo, "omitempty"), noLines, noLines)
 
 	flattenRun.AddExpectations("object_with_arrays.go", []string{
-		"Array0 ArrayWithDefault `json:\"array0,omitempty\"`",
-		"Array1 []string `json:\"array1\"`",
-		"Array11 []string `json:\"array11,omitempty\"`",
-		"Array12 []string `json:\"array12\"`",
-		"Array2 ArrayWithOmitEmpty `json:\"array2,omitempty\"`",
-		"Array3 ArrayWithNoOmitEmpty `json:\"array3\"`",
+		"Array0 ArrayWithDefault `json:\"array0,omitempty\" xml:\"array0\"`",
+		"Array1 []string `json:\"array1\" xml:\"array1\"`",
+		"Array11 []string `json:\"array11,omitempty\" xml:\"array11\"`",
+		"Array12 []string `json:\"array12\" xml:\"array12\"`",
+		"Array2 ArrayWithOmitEmpty `json:\"array2,omitempty\" xml:\"array2\"`",
+		"Array3 ArrayWithNoOmitEmpty `json:\"array3\" xml:\"array3\"`",
 	}, todo, noLines, noLines)
 
 	flattenRun.AddExpectations("object_with_nullable_false.go", []string{
-		"Data interface{} `json:\"Data,omitempty\"`",
+		"Data interface{} `json:\"Data,omitempty\" xml:\"Data\"`",
 	}, todo, noLines, noLines)
 
 	flattenRun.AddExpectations("object_with_nullable_true.go", []string{
-		"Data interface{} `json:\"Data,omitempty\"`",
+		"Data interface{} `json:\"Data,omitempty\" xml:\"Data\"`",
 	}, todo, noLines, noLines)
 
 	flattenRun.AddExpectations("object_with_omitempty_false.go", []string{
-		"Data interface{} `json:\"Data,omitempty\"`",
+		"Data interface{} `json:\"Data,omitempty\" xml:\"Data\"`",
 	}, todo, noLines, noLines)
 
 	flattenRun.AddExpectations("object_with_omitempty_true.go", []string{
-		"Data interface{} `json:\"Data,omitempty\"`",
+		"Data interface{} `json:\"Data,omitempty\" xml:\"Data\"`",
 	}, todo, noLines, noLines)
 
 	flattenRun.AddExpectations("array_with_omit_empty_items.go", []string{
@@ -132,8 +132,8 @@ func initFixture1479Part() {
 	// load expectations for model: container_create_config_all_of1.go
 	flattenRun.AddExpectations("container_create_config_all_of1.go", []string{
 		`type ContainerCreateConfigAllOf1 struct {`,
-		"	HostConfig *HostConfig `json:\"HostConfig,omitempty\"`",
-		"	NetworkingConfig *NetworkingConfig `json:\"NetworkingConfig,omitempty\"`",
+		"	HostConfig *HostConfig `json:\"HostConfig,omitempty\" xml:\"HostConfig\"`",
+		"	NetworkingConfig *NetworkingConfig `json:\"NetworkingConfig,omitempty\" xml:\"NetworkingConfig\"`",
 		`func (m *ContainerCreateConfigAllOf1) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateHostConfig(formats); err != nil {`,
 		`	if err := m.validateNetworkingConfig(formats); err != nil {`,
@@ -160,36 +160,36 @@ func initFixture1479Part() {
 	// load expectations for model: container_config.go
 	flattenRun.AddExpectations("container_config.go", []string{
 		`type ContainerConfig struct {`,
-		"	ArgsEscaped bool `json:\"ArgsEscaped,omitempty\"`",
-		"	AttachStderr bool `json:\"AttachStderr,omitempty\"`",
-		"	AttachStdin bool `json:\"AttachStdin,omitempty\"`",
-		"	AttachStdout bool `json:\"AttachStdout,omitempty\"`",
-		"	Cmd []string `json:\"Cmd\"`",
-		"	DiskQuota map[string]string `json:\"DiskQuota,omitempty\"`",
-		"	Domainname string `json:\"Domainname,omitempty\"`",
-		"	Entrypoint []string `json:\"Entrypoint\"`",
-		"	Env []string `json:\"Env\"`",
-		"	ExposedPorts map[string]interface{} `json:\"ExposedPorts,omitempty\"`",
-		"	Hostname strfmt.Hostname `json:\"Hostname,omitempty\"`",
-		"	Image string `json:\"Image\"`",
-		"	InitScript string `json:\"InitScript,omitempty\"`",
-		"	Labels map[string]string `json:\"Labels,omitempty\"`",
-		"	MacAddress string `json:\"MacAddress,omitempty\"`",
-		"	NetworkDisabled bool `json:\"NetworkDisabled,omitempty\"`",
-		"	OnBuild []string `json:\"OnBuild\"`",
-		"	OpenStdin bool `json:\"OpenStdin,omitempty\"`",
-		"	QuotaID string `json:\"QuotaID,omitempty\"`",
-		"	Rich bool `json:\"Rich,omitempty\"`",
-		"	RichMode string `json:\"RichMode,omitempty\"`",
-		"	Shell []string `json:\"Shell\"`",
-		"	SpecAnnotation map[string]string `json:\"SpecAnnotation,omitempty\"`",
-		"	StdinOnce bool `json:\"StdinOnce,omitempty\"`",
-		"	StopSignal string `json:\"StopSignal,omitempty\"`",
-		"	StopTimeout *int64 `json:\"StopTimeout,omitempty\"`",
-		"	Tty bool `json:\"Tty,omitempty\"`",
-		"	User string `json:\"User,omitempty\"`",
-		"	Volumes map[string]interface{} `json:\"Volumes,omitempty\"`",
-		"	WorkingDir string `json:\"WorkingDir,omitempty\"`",
+		"	ArgsEscaped bool `json:\"ArgsEscaped,omitempty\" xml:\"ArgsEscaped\"`",
+		"	AttachStderr bool `json:\"AttachStderr,omitempty\" xml:\"AttachStderr\"`",
+		"	AttachStdin bool `json:\"AttachStdin,omitempty\" xml:\"AttachStdin\"`",
+		"	AttachStdout bool `json:\"AttachStdout,omitempty\" xml:\"AttachStdout\"`",
+		"	Cmd []string `json:\"Cmd\" xml:\"Cmd\"`",
+		"	DiskQuota map[string]string `json:\"DiskQuota,omitempty\" xml:\"DiskQuota\"`",
+		"	Domainname string `json:\"Domainname,omitempty\" xml:\"Domainname\"`",
+		"	Entrypoint []string `json:\"Entrypoint\" xml:\"Entrypoint\"`",
+		"	Env []string `json:\"Env\" xml:\"Env\"`",
+		"	ExposedPorts map[string]interface{} `json:\"ExposedPorts,omitempty\" xml:\"ExposedPorts\"`",
+		"	Hostname strfmt.Hostname `json:\"Hostname,omitempty\" xml:\"Hostname\"`",
+		"	Image string `json:\"Image\" xml:\"Image\"`",
+		"	InitScript string `json:\"InitScript,omitempty\" xml:\"InitScript\"`",
+		"	Labels map[string]string `json:\"Labels,omitempty\" xml:\"Labels\"`",
+		"	MacAddress string `json:\"MacAddress,omitempty\" xml:\"MacAddress\"`",
+		"	NetworkDisabled bool `json:\"NetworkDisabled,omitempty\" xml:\"NetworkDisabled\"`",
+		"	OnBuild []string `json:\"OnBuild\" xml:\"OnBuild\"`",
+		"	OpenStdin bool `json:\"OpenStdin,omitempty\" xml:\"OpenStdin\"`",
+		"	QuotaID string `json:\"QuotaID,omitempty\" xml:\"QuotaID\"`",
+		"	Rich bool `json:\"Rich,omitempty\" xml:\"Rich\"`",
+		"	RichMode string `json:\"RichMode,omitempty\" xml:\"RichMode\"`",
+		"	Shell []string `json:\"Shell\" xml:\"Shell\"`",
+		"	SpecAnnotation map[string]string `json:\"SpecAnnotation,omitempty\" xml:\"SpecAnnotation\"`",
+		"	StdinOnce bool `json:\"StdinOnce,omitempty\" xml:\"StdinOnce\"`",
+		"	StopSignal string `json:\"StopSignal,omitempty\" xml:\"StopSignal\"`",
+		"	StopTimeout *int64 `json:\"StopTimeout,omitempty\" xml:\"StopTimeout\"`",
+		"	Tty bool `json:\"Tty,omitempty\" xml:\"Tty\"`",
+		"	User string `json:\"User,omitempty\" xml:\"User\"`",
+		"	Volumes map[string]interface{} `json:\"Volumes,omitempty\" xml:\"Volumes\"`",
+		"	WorkingDir string `json:\"WorkingDir,omitempty\" xml:\"WorkingDir\"`",
 		`func (m *ContainerConfig) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateExposedPorts(formats); err != nil {`,
 		`	if err := m.validateHostname(formats); err != nil {`,
@@ -252,8 +252,8 @@ func initFixture1479Part() {
 	// load expectations for model: host_config_all_of0_log_config.go
 	flattenRun.AddExpectations("host_config_all_of0_log_config.go", []string{
 		`type HostConfigAllOf0LogConfig struct {`,
-		"	Config map[string]string `json:\"Config,omitempty\"`",
-		"	Type string `json:\"Type,omitempty\"`",
+		"	Config map[string]string `json:\"Config,omitempty\" xml:\"Config\"`",
+		"	Type string `json:\"Type,omitempty\" xml:\"Type\"`",
 		`func (m *HostConfigAllOf0LogConfig) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateType(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -286,8 +286,8 @@ func initFixture1479Part() {
 	// load expectations for model: restart_policy.go
 	flattenRun.AddExpectations("restart_policy.go", []string{
 		`type RestartPolicy struct {`,
-		"	MaximumRetryCount int64 `json:\"MaximumRetryCount,omitempty\"`",
-		"	Name string `json:\"Name,omitempty\"`",
+		"	MaximumRetryCount int64 `json:\"MaximumRetryCount,omitempty\" xml:\"MaximumRetryCount\"`",
+		"	Name string `json:\"Name,omitempty\" xml:\"Name\"`",
 		// empty validation
 		"func (m *RestartPolicy) Validate(formats strfmt.Registry) error {\n	return nil\n}",
 	},
@@ -302,9 +302,9 @@ func initFixture1479Part() {
 	// load expectations for model: endpoint_ip_a_m_config.go
 	flattenRun.AddExpectations("endpoint_ip_a_m_config.go", []string{
 		`type EndpointIPAMConfig struct {`,
-		"	IPV4Address string `json:\"IPv4Address,omitempty\"`",
-		"	IPV6Address string `json:\"IPv6Address,omitempty\"`",
-		"	LinkLocalIPs []string `json:\"LinkLocalIPs\"`",
+		"	IPV4Address string `json:\"IPv4Address,omitempty\" xml:\"IPv4Address\"`",
+		"	IPV6Address string `json:\"IPv6Address,omitempty\" xml:\"IPv6Address\"`",
+		"	LinkLocalIPs []string `json:\"LinkLocalIPs\" xml:\"LinkLocalIPs\"`",
 		// empty validation
 		"func (m *EndpointIPAMConfig) Validate(formats strfmt.Registry) error {\n	return nil\n}",
 	},
@@ -319,43 +319,43 @@ func initFixture1479Part() {
 	// load expectations for model: host_config_all_of0.go
 	flattenRun.AddExpectations("host_config_all_of0.go", []string{
 		`type HostConfigAllOf0 struct {`,
-		"	AutoRemove bool `json:\"AutoRemove,omitempty\"`",
-		"	Binds []string `json:\"Binds\"`",
-		"	CapAdd []string `json:\"CapAdd\"`",
-		"	CapDrop []string `json:\"CapDrop\"`",
-		"	Cgroup string `json:\"Cgroup,omitempty\"`",
-		"	ConsoleSize []*int64 `json:\"ConsoleSize\"`",
-		"	ContainerIDFile string `json:\"ContainerIDFile,omitempty\"`",
-		"	DNS []string `json:\"Dns\"`",
-		"	DNSOptions []string `json:\"DnsOptions\"`",
-		"	DNSSearch []string `json:\"DnsSearch\"`",
-		"	EnableLxcfs bool `json:\"EnableLxcfs,omitempty\"`",
-		"	ExtraHosts []string `json:\"ExtraHosts\"`",
-		"	GroupAdd []string `json:\"GroupAdd\"`",
-		"	InitScript string `json:\"InitScript,omitempty\"`",
-		"	IpcMode string `json:\"IpcMode,omitempty\"`",
-		"	Isolation string `json:\"Isolation,omitempty\"`",
-		"	Links []string `json:\"Links\"`",
-		"	LogConfig *HostConfigAllOf0LogConfig `json:\"LogConfig,omitempty\"`",
-		"	NetworkMode string `json:\"NetworkMode,omitempty\"`",
-		"	OomScoreAdj int64 `json:\"OomScoreAdj,omitempty\"`",
-		"	PidMode string `json:\"PidMode,omitempty\"`",
-		"	Privileged bool `json:\"Privileged,omitempty\"`",
-		"	PublishAllPorts bool `json:\"PublishAllPorts,omitempty\"`",
-		"	ReadonlyRootfs bool `json:\"ReadonlyRootfs,omitempty\"`",
-		"	RestartPolicy *RestartPolicy `json:\"RestartPolicy,omitempty\"`",
-		"	Rich bool `json:\"Rich,omitempty\"`",
-		"	RichMode string `json:\"RichMode,omitempty\"`",
-		"	Runtime string `json:\"Runtime,omitempty\"`",
-		"	SecurityOpt []string `json:\"SecurityOpt\"`",
-		"	ShmSize *int64 `json:\"ShmSize,omitempty\"`",
-		"	StorageOpt map[string]string `json:\"StorageOpt,omitempty\"`",
-		"	Sysctls map[string]string `json:\"Sysctls,omitempty\"`",
-		"	Tmpfs map[string]string `json:\"Tmpfs,omitempty\"`",
-		"	UTSMode string `json:\"UTSMode,omitempty\"`",
-		"	UsernsMode string `json:\"UsernsMode,omitempty\"`",
-		"	VolumeDriver string `json:\"VolumeDriver,omitempty\"`",
-		"	VolumesFrom []string `json:\"VolumesFrom\"`",
+		"	AutoRemove bool `json:\"AutoRemove,omitempty\" xml:\"AutoRemove\"`",
+		"	Binds []string `json:\"Binds\" xml:\"Binds\"`",
+		"	CapAdd []string `json:\"CapAdd\" xml:\"CapAdd\"`",
+		"	CapDrop []string `json:\"CapDrop\" xml:\"CapDrop\"`",
+		"	Cgroup string `json:\"Cgroup,omitempty\" xml:\"Cgroup\"`",
+		"	ConsoleSize []*int64 `json:\"ConsoleSize\" xml:\"ConsoleSize\"`",
+		"	ContainerIDFile string `json:\"ContainerIDFile,omitempty\" xml:\"ContainerIDFile\"`",
+		"	DNS []string `json:\"Dns\" xml:\"Dns\"`",
+		"	DNSOptions []string `json:\"DnsOptions\" xml:\"DnsOptions\"`",
+		"	DNSSearch []string `json:\"DnsSearch\" xml:\"DnsSearch\"`",
+		"	EnableLxcfs bool `json:\"EnableLxcfs,omitempty\" xml:\"EnableLxcfs\"`",
+		"	ExtraHosts []string `json:\"ExtraHosts\" xml:\"ExtraHosts\"`",
+		"	GroupAdd []string `json:\"GroupAdd\" xml:\"GroupAdd\"`",
+		"	InitScript string `json:\"InitScript,omitempty\" xml:\"InitScript\"`",
+		"	IpcMode string `json:\"IpcMode,omitempty\" xml:\"IpcMode\"`",
+		"	Isolation string `json:\"Isolation,omitempty\" xml:\"Isolation\"`",
+		"	Links []string `json:\"Links\" xml:\"Links\"`",
+		"	LogConfig *HostConfigAllOf0LogConfig `json:\"LogConfig,omitempty\" xml:\"LogConfig\"`",
+		"	NetworkMode string `json:\"NetworkMode,omitempty\" xml:\"NetworkMode\"`",
+		"	OomScoreAdj int64 `json:\"OomScoreAdj,omitempty\" xml:\"OomScoreAdj\"`",
+		"	PidMode string `json:\"PidMode,omitempty\" xml:\"PidMode\"`",
+		"	Privileged bool `json:\"Privileged,omitempty\" xml:\"Privileged\"`",
+		"	PublishAllPorts bool `json:\"PublishAllPorts,omitempty\" xml:\"PublishAllPorts\"`",
+		"	ReadonlyRootfs bool `json:\"ReadonlyRootfs,omitempty\" xml:\"ReadonlyRootfs\"`",
+		"	RestartPolicy *RestartPolicy `json:\"RestartPolicy,omitempty\" xml:\"RestartPolicy\"`",
+		"	Rich bool `json:\"Rich,omitempty\" xml:\"Rich\"`",
+		"	RichMode string `json:\"RichMode,omitempty\" xml:\"RichMode\"`",
+		"	Runtime string `json:\"Runtime,omitempty\" xml:\"Runtime\"`",
+		"	SecurityOpt []string `json:\"SecurityOpt\" xml:\"SecurityOpt\"`",
+		"	ShmSize *int64 `json:\"ShmSize,omitempty\" xml:\"ShmSize\"`",
+		"	StorageOpt map[string]string `json:\"StorageOpt,omitempty\" xml:\"StorageOpt\"`",
+		"	Sysctls map[string]string `json:\"Sysctls,omitempty\" xml:\"Sysctls\"`",
+		"	Tmpfs map[string]string `json:\"Tmpfs,omitempty\" xml:\"Tmpfs\"`",
+		"	UTSMode string `json:\"UTSMode,omitempty\" xml:\"UTSMode\"`",
+		"	UsernsMode string `json:\"UsernsMode,omitempty\" xml:\"UsernsMode\"`",
+		"	VolumeDriver string `json:\"VolumeDriver,omitempty\" xml:\"VolumeDriver\"`",
+		"	VolumesFrom []string `json:\"VolumesFrom\" xml:\"VolumesFrom\"`",
 		`func (m *HostConfigAllOf0) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateConsoleSize(formats); err != nil {`,
 		`	if err := m.validateIsolation(formats); err != nil {`,
@@ -445,47 +445,47 @@ func initFixture1479Part() {
 
 	expandRun.AddExpectations("host_config.go", []string{
 		`type HostConfig struct {`,
-		"	AutoRemove bool `json:\"AutoRemove,omitempty\"`",
-		"	Binds []string `json:\"Binds\"`",
-		"	CapAdd []string `json:\"CapAdd\"`",
-		"	CapDrop []string `json:\"CapDrop\"`",
-		"	Cgroup string `json:\"Cgroup,omitempty\"`",
-		"	ConsoleSize []*int64 `json:\"ConsoleSize\"`",
-		"	ContainerIDFile string `json:\"ContainerIDFile,omitempty\"`",
-		"	DNS []string `json:\"Dns\"`",
-		"	DNSOptions []string `json:\"DnsOptions\"`",
-		"	DNSSearch []string `json:\"DnsSearch\"`",
-		"	EnableLxcfs bool `json:\"EnableLxcfs,omitempty\"`",
-		"	ExtraHosts []string `json:\"ExtraHosts\"`",
-		"	GroupAdd []string `json:\"GroupAdd\"`",
-		"	InitScript string `json:\"InitScript,omitempty\"`",
-		"	IpcMode string `json:\"IpcMode,omitempty\"`",
-		"	Isolation string `json:\"Isolation,omitempty\"`",
-		"	Links []string `json:\"Links\"`",
-		"	LogConfig *HostConfigAO0LogConfig `json:\"LogConfig,omitempty\"`",
-		"	NetworkMode string `json:\"NetworkMode,omitempty\"`",
-		"	OomScoreAdj int64 `json:\"OomScoreAdj,omitempty\"`",
-		"	PidMode string `json:\"PidMode,omitempty\"`",
-		"	Privileged bool `json:\"Privileged,omitempty\"`",
-		"	PublishAllPorts bool `json:\"PublishAllPorts,omitempty\"`",
-		"	ReadonlyRootfs bool `json:\"ReadonlyRootfs,omitempty\"`",
-		"	RestartPolicy *HostConfigAO0RestartPolicy `json:\"RestartPolicy,omitempty\"`",
-		"	Rich bool `json:\"Rich,omitempty\"`",
-		"	RichMode string `json:\"RichMode,omitempty\"`",
-		"	Runtime string `json:\"Runtime,omitempty\"`",
-		"	SecurityOpt []string `json:\"SecurityOpt\"`",
-		"	ShmSize *int64 `json:\"ShmSize,omitempty\"`",
-		"	StorageOpt map[string]string `json:\"StorageOpt,omitempty\"`",
-		"	Sysctls map[string]string `json:\"Sysctls,omitempty\"`",
-		"	Tmpfs map[string]string `json:\"Tmpfs,omitempty\"`",
-		"	UTSMode string `json:\"UTSMode,omitempty\"`",
-		"	UsernsMode string `json:\"UsernsMode,omitempty\"`",
-		"	VolumeDriver string `json:\"VolumeDriver,omitempty\"`",
-		"	VolumesFrom []string `json:\"VolumesFrom\"`",
-		"	BlkioWeight uint16 `json:\"BlkioWeight,omitempty\"`",
-		"	CgroupParent string `json:\"CgroupParent,omitempty\"`",
-		"	CPUShares int64 `json:\"CpuShares,omitempty\"`",
-		"	Memory int64 `json:\"Memory,omitempty\"`",
+		"	AutoRemove bool `json:\"AutoRemove,omitempty\" xml:\"AutoRemove\"`",
+		"	Binds []string `json:\"Binds\" xml:\"Binds\"`",
+		"	CapAdd []string `json:\"CapAdd\" xml:\"CapAdd\"`",
+		"	CapDrop []string `json:\"CapDrop\" xml:\"CapDrop\"`",
+		"	Cgroup string `json:\"Cgroup,omitempty\" xml:\"Cgroup\"`",
+		"	ConsoleSize []*int64 `json:\"ConsoleSize\" xml:\"ConsoleSize\"`",
+		"	ContainerIDFile string `json:\"ContainerIDFile,omitempty\" xml:\"ContainerIDFile\"`",
+		"	DNS []string `json:\"Dns\" xml:\"Dns\"`",
+		"	DNSOptions []string `json:\"DnsOptions\" xml:\"DnsOptions\"`",
+		"	DNSSearch []string `json:\"DnsSearch\" xml:\"DnsSearch\"`",
+		"	EnableLxcfs bool `json:\"EnableLxcfs,omitempty\" xml:\"EnableLxcfs\"`",
+		"	ExtraHosts []string `json:\"ExtraHosts\" xml:\"ExtraHosts\"`",
+		"	GroupAdd []string `json:\"GroupAdd\" xml:\"GroupAdd\"`",
+		"	InitScript string `json:\"InitScript,omitempty\" xml:\"InitScript\"`",
+		"	IpcMode string `json:\"IpcMode,omitempty\" xml:\"IpcMode\"`",
+		"	Isolation string `json:\"Isolation,omitempty\" xml:\"Isolation\"`",
+		"	Links []string `json:\"Links\" xml:\"Links\"`",
+		"	LogConfig *HostConfigAO0LogConfig `json:\"LogConfig,omitempty\" xml:\"LogConfig\"`",
+		"	NetworkMode string `json:\"NetworkMode,omitempty\" xml:\"NetworkMode\"`",
+		"	OomScoreAdj int64 `json:\"OomScoreAdj,omitempty\" xml:\"OomScoreAdj\"`",
+		"	PidMode string `json:\"PidMode,omitempty\" xml:\"PidMode\"`",
+		"	Privileged bool `json:\"Privileged,omitempty\" xml:\"Privileged\"`",
+		"	PublishAllPorts bool `json:\"PublishAllPorts,omitempty\" xml:\"PublishAllPorts\"`",
+		"	ReadonlyRootfs bool `json:\"ReadonlyRootfs,omitempty\" xml:\"ReadonlyRootfs\"`",
+		"	RestartPolicy *HostConfigAO0RestartPolicy `json:\"RestartPolicy,omitempty\" xml:\"RestartPolicy\"`",
+		"	Rich bool `json:\"Rich,omitempty\" xml:\"Rich\"`",
+		"	RichMode string `json:\"RichMode,omitempty\" xml:\"RichMode\"`",
+		"	Runtime string `json:\"Runtime,omitempty\" xml:\"Runtime\"`",
+		"	SecurityOpt []string `json:\"SecurityOpt\" xml:\"SecurityOpt\"`",
+		"	ShmSize *int64 `json:\"ShmSize,omitempty\" xml:\"ShmSize\"`",
+		"	StorageOpt map[string]string `json:\"StorageOpt,omitempty\" xml:\"StorageOpt\"`",
+		"	Sysctls map[string]string `json:\"Sysctls,omitempty\" xml:\"Sysctls\"`",
+		"	Tmpfs map[string]string `json:\"Tmpfs,omitempty\" xml:\"Tmpfs\"`",
+		"	UTSMode string `json:\"UTSMode,omitempty\" xml:\"UTSMode\"`",
+		"	UsernsMode string `json:\"UsernsMode,omitempty\" xml:\"UsernsMode\"`",
+		"	VolumeDriver string `json:\"VolumeDriver,omitempty\" xml:\"VolumeDriver\"`",
+		"	VolumesFrom []string `json:\"VolumesFrom\" xml:\"VolumesFrom\"`",
+		"	BlkioWeight uint16 `json:\"BlkioWeight,omitempty\" xml:\"BlkioWeight\"`",
+		"	CgroupParent string `json:\"CgroupParent,omitempty\" xml:\"CgroupParent\"`",
+		"	CPUShares int64 `json:\"CpuShares,omitempty\" xml:\"CpuShares\"`",
+		"	Memory int64 `json:\"Memory,omitempty\" xml:\"Memory\"`",
 		`func (m *HostConfig) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateConsoleSize(formats); err != nil {`,
 		`	if err := m.validateIsolation(formats); err != nil {`,
@@ -550,8 +550,8 @@ func initFixture1479Part() {
 		`	if err := validate.MinimumInt("BlkioWeight", "body", int64(m.BlkioWeight), 0, false); err != nil {`,
 		`	if err := validate.MaximumInt("BlkioWeight", "body", int64(m.BlkioWeight), 1000, false); err != nil {`,
 		`type HostConfigAO0LogConfig struct {`,
-		"	Config map[string]string `json:\"Config,omitempty\"`",
-		"	Type string `json:\"Type,omitempty\"`",
+		"	Config map[string]string `json:\"Config,omitempty\" xml:\"Config\"`",
+		"	Type string `json:\"Type,omitempty\" xml:\"Type\"`",
 		`func (m *HostConfigAO0LogConfig) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateType(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -575,8 +575,8 @@ func initFixture1479Part() {
 		`	if swag.IsZero(m.Type) {`,
 		`	if err := m.validateTypeEnum("LogConfig"+"."+"Type", "body", m.Type); err != nil {`,
 		`type HostConfigAO0RestartPolicy struct {`,
-		"	MaximumRetryCount int64 `json:\"MaximumRetryCount,omitempty\"`",
-		"	Name string `json:\"Name,omitempty\"`",
+		"	MaximumRetryCount int64 `json:\"MaximumRetryCount,omitempty\" xml:\"MaximumRetryCount\"`",
+		"	Name string `json:\"Name,omitempty\" xml:\"Name\"`",
 		`func (m *HostConfigAO0RestartPolicy) Validate(formats strfmt.Registry) error {`,
 		`		return errors.CompositeValidationError(res...`,
 	},
@@ -604,80 +604,80 @@ func initFixture1479Part() {
 
 	expandRun.AddExpectations("container_create_config.go", []string{
 		`type ContainerCreateConfig struct {`,
-		"	ArgsEscaped bool `json:\"ArgsEscaped,omitempty\"`",
-		"	AttachStderr bool `json:\"AttachStderr,omitempty\"`",
-		"	AttachStdin bool `json:\"AttachStdin,omitempty\"`",
-		"	AttachStdout bool `json:\"AttachStdout,omitempty\"`",
-		"	Cmd []string `json:\"Cmd\"`",
-		"	DiskQuota map[string]string `json:\"DiskQuota,omitempty\"`",
-		"	Domainname string `json:\"Domainname,omitempty\"`",
-		"	Entrypoint []string `json:\"Entrypoint\"`",
-		"	Env []string `json:\"Env\"`",
-		"	ExposedPorts map[string]interface{} `json:\"ExposedPorts,omitempty\"`",
-		"	Hostname strfmt.Hostname `json:\"Hostname,omitempty\"`",
-		"	Image string `json:\"Image\"`",
-		"	InitScript string `json:\"InitScript,omitempty\"`",
-		"	Labels map[string]string `json:\"Labels,omitempty\"`",
-		"	MacAddress string `json:\"MacAddress,omitempty\"`",
-		"	NetworkDisabled bool `json:\"NetworkDisabled,omitempty\"`",
-		"	OnBuild []string `json:\"OnBuild\"`",
-		"	OpenStdin bool `json:\"OpenStdin,omitempty\"`",
-		"	QuotaID string `json:\"QuotaID,omitempty\"`",
-		"	Rich bool `json:\"Rich,omitempty\"`",
-		"	RichMode string `json:\"RichMode,omitempty\"`",
-		"	Shell []string `json:\"Shell\"`",
-		"	SpecAnnotation map[string]string `json:\"SpecAnnotation,omitempty\"`",
-		"	StdinOnce bool `json:\"StdinOnce,omitempty\"`",
-		"	StopSignal string `json:\"StopSignal,omitempty\"`",
-		"	StopTimeout *int64 `json:\"StopTimeout,omitempty\"`",
-		"	Tty bool `json:\"Tty,omitempty\"`",
-		"	User string `json:\"User,omitempty\"`",
-		"	Volumes map[string]interface{} `json:\"Volumes,omitempty\"`",
-		"	WorkingDir string `json:\"WorkingDir,omitempty\"`",
+		"	ArgsEscaped bool `json:\"ArgsEscaped,omitempty\" xml:\"ArgsEscaped\"`",
+		"	AttachStderr bool `json:\"AttachStderr,omitempty\" xml:\"AttachStderr\"`",
+		"	AttachStdin bool `json:\"AttachStdin,omitempty\" xml:\"AttachStdin\"`",
+		"	AttachStdout bool `json:\"AttachStdout,omitempty\" xml:\"AttachStdout\"`",
+		"	Cmd []string `json:\"Cmd\" xml:\"Cmd\"`",
+		"	DiskQuota map[string]string `json:\"DiskQuota,omitempty\" xml:\"DiskQuota\"`",
+		"	Domainname string `json:\"Domainname,omitempty\" xml:\"Domainname\"`",
+		"	Entrypoint []string `json:\"Entrypoint\" xml:\"Entrypoint\"`",
+		"	Env []string `json:\"Env\" xml:\"Env\"`",
+		"	ExposedPorts map[string]interface{} `json:\"ExposedPorts,omitempty\" xml:\"ExposedPorts\"`",
+		"	Hostname strfmt.Hostname `json:\"Hostname,omitempty\" xml:\"Hostname\"`",
+		"	Image string `json:\"Image\" xml:\"Image\"`",
+		"	InitScript string `json:\"InitScript,omitempty\" xml:\"InitScript\"`",
+		"	Labels map[string]string `json:\"Labels,omitempty\" xml:\"Labels\"`",
+		"	MacAddress string `json:\"MacAddress,omitempty\" xml:\"MacAddress\"`",
+		"	NetworkDisabled bool `json:\"NetworkDisabled,omitempty\" xml:\"NetworkDisabled\"`",
+		"	OnBuild []string `json:\"OnBuild\" xml:\"OnBuild\"`",
+		"	OpenStdin bool `json:\"OpenStdin,omitempty\" xml:\"OpenStdin\"`",
+		"	QuotaID string `json:\"QuotaID,omitempty\" xml:\"QuotaID\"`",
+		"	Rich bool `json:\"Rich,omitempty\" xml:\"Rich\"`",
+		"	RichMode string `json:\"RichMode,omitempty\" xml:\"RichMode\"`",
+		"	Shell []string `json:\"Shell\" xml:\"Shell\"`",
+		"	SpecAnnotation map[string]string `json:\"SpecAnnotation,omitempty\" xml:\"SpecAnnotation\"`",
+		"	StdinOnce bool `json:\"StdinOnce,omitempty\" xml:\"StdinOnce\"`",
+		"	StopSignal string `json:\"StopSignal,omitempty\" xml:\"StopSignal\"`",
+		"	StopTimeout *int64 `json:\"StopTimeout,omitempty\" xml:\"StopTimeout\"`",
+		"	Tty bool `json:\"Tty,omitempty\" xml:\"Tty\"`",
+		"	User string `json:\"User,omitempty\" xml:\"User\"`",
+		"	Volumes map[string]interface{} `json:\"Volumes,omitempty\" xml:\"Volumes\"`",
+		"	WorkingDir string `json:\"WorkingDir,omitempty\" xml:\"WorkingDir\"`",
 		`	HostConfig struct {`,
-		"		AutoRemove bool `json:\"AutoRemove,omitempty\"`",
-		"		Binds []string `json:\"Binds\"`",
-		"		CapAdd []string `json:\"CapAdd\"`",
-		"		CapDrop []string `json:\"CapDrop\"`",
-		"		Cgroup string `json:\"Cgroup,omitempty\"`",
-		"		ConsoleSize []*int64 `json:\"ConsoleSize\"`",
-		"		ContainerIDFile string `json:\"ContainerIDFile,omitempty\"`",
-		"		DNS []string `json:\"Dns\"`",
-		"		DNSOptions []string `json:\"DnsOptions\"`",
-		"		DNSSearch []string `json:\"DnsSearch\"`",
-		"		EnableLxcfs bool `json:\"EnableLxcfs,omitempty\"`",
-		"		ExtraHosts []string `json:\"ExtraHosts\"`",
-		"		GroupAdd []string `json:\"GroupAdd\"`",
-		"		InitScript string `json:\"InitScript,omitempty\"`",
-		"		IpcMode string `json:\"IpcMode,omitempty\"`",
-		"		Isolation string `json:\"Isolation,omitempty\"`",
-		"		Links []string `json:\"Links\"`",
-		"		LogConfig *ContainerCreateConfigHostConfigAO0LogConfig `json:\"LogConfig,omitempty\"`",
-		"		NetworkMode string `json:\"NetworkMode,omitempty\"`",
-		"		OomScoreAdj int64 `json:\"OomScoreAdj,omitempty\"`",
-		"		PidMode string `json:\"PidMode,omitempty\"`",
-		"		Privileged bool `json:\"Privileged,omitempty\"`",
-		"		PublishAllPorts bool `json:\"PublishAllPorts,omitempty\"`",
-		"		ReadonlyRootfs bool `json:\"ReadonlyRootfs,omitempty\"`",
-		"		RestartPolicy *ContainerCreateConfigHostConfigAO0RestartPolicy `json:\"RestartPolicy,omitempty\"`",
-		"		Rich bool `json:\"Rich,omitempty\"`",
-		"		RichMode string `json:\"RichMode,omitempty\"`",
-		"		Runtime string `json:\"Runtime,omitempty\"`",
-		"		SecurityOpt []string `json:\"SecurityOpt\"`",
-		"		ShmSize *int64 `json:\"ShmSize,omitempty\"`",
-		"		StorageOpt map[string]string `json:\"StorageOpt,omitempty\"`",
-		"		Sysctls map[string]string `json:\"Sysctls,omitempty\"`",
-		"		Tmpfs map[string]string `json:\"Tmpfs,omitempty\"`",
-		"		UTSMode string `json:\"UTSMode,omitempty\"`",
-		"		UsernsMode string `json:\"UsernsMode,omitempty\"`",
-		"		VolumeDriver string `json:\"VolumeDriver,omitempty\"`",
-		"		VolumesFrom []string `json:\"VolumesFrom\"`",
-		"		BlkioWeight uint16 `json:\"BlkioWeight,omitempty\"`",
-		"		CgroupParent string `json:\"CgroupParent,omitempty\"`",
-		"		CPUShares int64 `json:\"CpuShares,omitempty\"`",
-		"		Memory int64 `json:\"Memory,omitempty\"`",
-		"	} `json:\"HostConfig,omitempty\"`",
-		"	NetworkingConfig *ContainerCreateConfigAO1NetworkingConfig `json:\"NetworkingConfig,omitempty\"`",
+		"		AutoRemove bool `json:\"AutoRemove,omitempty\" xml:\"AutoRemove\"`",
+		"		Binds []string `json:\"Binds\" xml:\"Binds\"`",
+		"		CapAdd []string `json:\"CapAdd\" xml:\"CapAdd\"`",
+		"		CapDrop []string `json:\"CapDrop\" xml:\"CapDrop\"`",
+		"		Cgroup string `json:\"Cgroup,omitempty\" xml:\"Cgroup\"`",
+		"		ConsoleSize []*int64 `json:\"ConsoleSize\" xml:\"ConsoleSize\"`",
+		"		ContainerIDFile string `json:\"ContainerIDFile,omitempty\" xml:\"ContainerIDFile\"`",
+		"		DNS []string `json:\"Dns\" xml:\"Dns\"`",
+		"		DNSOptions []string `json:\"DnsOptions\" xml:\"DnsOptions\"`",
+		"		DNSSearch []string `json:\"DnsSearch\" xml:\"DnsSearch\"`",
+		"		EnableLxcfs bool `json:\"EnableLxcfs,omitempty\" xml:\"EnableLxcfs\"`",
+		"		ExtraHosts []string `json:\"ExtraHosts\" xml:\"ExtraHosts\"`",
+		"		GroupAdd []string `json:\"GroupAdd\" xml:\"GroupAdd\"`",
+		"		InitScript string `json:\"InitScript,omitempty\" xml:\"InitScript\"`",
+		"		IpcMode string `json:\"IpcMode,omitempty\" xml:\"IpcMode\"`",
+		"		Isolation string `json:\"Isolation,omitempty\" xml:\"Isolation\"`",
+		"		Links []string `json:\"Links\" xml:\"Links\"`",
+		"		LogConfig *ContainerCreateConfigHostConfigAO0LogConfig `json:\"LogConfig,omitempty\" xml:\"LogConfig\"`",
+		"		NetworkMode string `json:\"NetworkMode,omitempty\" xml:\"NetworkMode\"`",
+		"		OomScoreAdj int64 `json:\"OomScoreAdj,omitempty\" xml:\"OomScoreAdj\"`",
+		"		PidMode string `json:\"PidMode,omitempty\" xml:\"PidMode\"`",
+		"		Privileged bool `json:\"Privileged,omitempty\" xml:\"Privileged\"`",
+		"		PublishAllPorts bool `json:\"PublishAllPorts,omitempty\" xml:\"PublishAllPorts\"`",
+		"		ReadonlyRootfs bool `json:\"ReadonlyRootfs,omitempty\" xml:\"ReadonlyRootfs\"`",
+		"		RestartPolicy *ContainerCreateConfigHostConfigAO0RestartPolicy `json:\"RestartPolicy,omitempty\" xml:\"RestartPolicy\"`",
+		"		Rich bool `json:\"Rich,omitempty\" xml:\"Rich\"`",
+		"		RichMode string `json:\"RichMode,omitempty\" xml:\"RichMode\"`",
+		"		Runtime string `json:\"Runtime,omitempty\" xml:\"Runtime\"`",
+		"		SecurityOpt []string `json:\"SecurityOpt\" xml:\"SecurityOpt\"`",
+		"		ShmSize *int64 `json:\"ShmSize,omitempty\" xml:\"ShmSize\"`",
+		"		StorageOpt map[string]string `json:\"StorageOpt,omitempty\" xml:\"StorageOpt\"`",
+		"		Sysctls map[string]string `json:\"Sysctls,omitempty\" xml:\"Sysctls\"`",
+		"		Tmpfs map[string]string `json:\"Tmpfs,omitempty\" xml:\"Tmpfs\"`",
+		"		UTSMode string `json:\"UTSMode,omitempty\" xml:\"UTSMode\"`",
+		"		UsernsMode string `json:\"UsernsMode,omitempty\" xml:\"UsernsMode\"`",
+		"		VolumeDriver string `json:\"VolumeDriver,omitempty\" xml:\"VolumeDriver\"`",
+		"		VolumesFrom []string `json:\"VolumesFrom\" xml:\"VolumesFrom\"`",
+		"		BlkioWeight uint16 `json:\"BlkioWeight,omitempty\" xml:\"BlkioWeight\"`",
+		"		CgroupParent string `json:\"CgroupParent,omitempty\" xml:\"CgroupParent\"`",
+		"		CPUShares int64 `json:\"CpuShares,omitempty\" xml:\"CpuShares\"`",
+		"		Memory int64 `json:\"Memory,omitempty\" xml:\"Memory\"`",
+		"	} `json:\"HostConfig,omitempty\" xml:\"HostConfig\"`",
+		"	NetworkingConfig *ContainerCreateConfigAO1NetworkingConfig `json:\"NetworkingConfig,omitempty\" xml:\"NetworkingConfig\"`",
 		`func (m *ContainerCreateConfig) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateExposedPorts(formats); err != nil {`,
 		`	if err := m.validateHostname(formats); err != nil {`,
@@ -761,7 +761,7 @@ func initFixture1479Part() {
 		`			if ve, ok := err.(*errors.Validation); ok {`,
 		`				return ve.ValidateName("NetworkingConfig"`,
 		`type ContainerCreateConfigAO1NetworkingConfig struct {`,
-		"	EndpointsConfig map[string]ContainerCreateConfigAO1NetworkingConfigEndpointsConfigAnon `json:\"EndpointsConfig,omitempty\"`",
+		"	EndpointsConfig map[string]ContainerCreateConfigAO1NetworkingConfigEndpointsConfigAnon `json:\"EndpointsConfig,omitempty\" xml:\"EndpointsConfig\"`",
 		`func (m *ContainerCreateConfigAO1NetworkingConfig) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateEndpointsConfig(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -774,19 +774,19 @@ func initFixture1479Part() {
 		//`			if val != nil {`,
 		`				if err := val.Validate(formats); err != nil {`,
 		`type ContainerCreateConfigAO1NetworkingConfigEndpointsConfigAnon struct {`,
-		"	Aliases []string `json:\"Aliases\"`",
-		"	DriverOpts map[string]string `json:\"DriverOpts,omitempty\"`",
-		"	EndpointID string `json:\"EndpointID,omitempty\"`",
-		"	Gateway string `json:\"Gateway,omitempty\"`",
-		"	GlobalIPV6Address string `json:\"GlobalIPv6Address,omitempty\"`",
-		"	GlobalIPV6PrefixLen int64 `json:\"GlobalIPv6PrefixLen,omitempty\"`",
-		"	IPAMConfig *ContainerCreateConfigAO1NetworkingConfigEndpointsConfigAnonIPAMConfig `json:\"IPAMConfig,omitempty\"`",
-		"	IPAddress string `json:\"IPAddress,omitempty\"`",
-		"	IPPrefixLen int64 `json:\"IPPrefixLen,omitempty\"`",
-		"	IPV6Gateway string `json:\"IPv6Gateway,omitempty\"`",
-		"	Links []string `json:\"Links\"`",
-		"	MacAddress string `json:\"MacAddress,omitempty\"`",
-		"	NetworkID string `json:\"NetworkID,omitempty\"`",
+		"	Aliases []string `json:\"Aliases\" xml:\"Aliases\"`",
+		"	DriverOpts map[string]string `json:\"DriverOpts,omitempty\" xml:\"DriverOpts\"`",
+		"	EndpointID string `json:\"EndpointID,omitempty\" xml:\"EndpointID\"`",
+		"	Gateway string `json:\"Gateway,omitempty\" xml:\"Gateway\"`",
+		"	GlobalIPV6Address string `json:\"GlobalIPv6Address,omitempty\" xml:\"GlobalIPv6Address\"`",
+		"	GlobalIPV6PrefixLen int64 `json:\"GlobalIPv6PrefixLen,omitempty\" xml:\"GlobalIPv6PrefixLen\"`",
+		"	IPAMConfig *ContainerCreateConfigAO1NetworkingConfigEndpointsConfigAnonIPAMConfig `json:\"IPAMConfig,omitempty\" xml:\"IPAMConfig\"`",
+		"	IPAddress string `json:\"IPAddress,omitempty\" xml:\"IPAddress\"`",
+		"	IPPrefixLen int64 `json:\"IPPrefixLen,omitempty\" xml:\"IPPrefixLen\"`",
+		"	IPV6Gateway string `json:\"IPv6Gateway,omitempty\" xml:\"IPv6Gateway\"`",
+		"	Links []string `json:\"Links\" xml:\"Links\"`",
+		"	MacAddress string `json:\"MacAddress,omitempty\" xml:\"MacAddress\"`",
+		"	NetworkID string `json:\"NetworkID,omitempty\" xml:\"NetworkID\"`",
 		`func (m *ContainerCreateConfigAO1NetworkingConfigEndpointsConfigAnon) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateIPAMConfig(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -797,14 +797,14 @@ func initFixture1479Part() {
 		`			if ve, ok := err.(*errors.Validation); ok {`,
 		`				return ve.ValidateName("IPAMConfig"`,
 		`type ContainerCreateConfigAO1NetworkingConfigEndpointsConfigAnonIPAMConfig struct {`,
-		"	IPV4Address string `json:\"IPv4Address,omitempty\"`",
-		"	IPV6Address string `json:\"IPv6Address,omitempty\"`",
-		"	LinkLocalIPs []string `json:\"LinkLocalIPs\"`",
+		"	IPV4Address string `json:\"IPv4Address,omitempty\" xml:\"IPv4Address\"`",
+		"	IPV6Address string `json:\"IPv6Address,omitempty\" xml:\"IPv6Address\"`",
+		"	LinkLocalIPs []string `json:\"LinkLocalIPs\" xml:\"LinkLocalIPs\"`",
 		`func (m *ContainerCreateConfigAO1NetworkingConfigEndpointsConfigAnonIPAMConfig) Validate(formats strfmt.Registry) error {`,
 		`		return errors.CompositeValidationError(res...`,
 		`type ContainerCreateConfigHostConfigAO0LogConfig struct {`,
-		"	Config map[string]string `json:\"Config,omitempty\"`",
-		"	Type string `json:\"Type,omitempty\"`",
+		"	Config map[string]string `json:\"Config,omitempty\" xml:\"Config\"`",
+		"	Type string `json:\"Type,omitempty\" xml:\"Type\"`",
 		`func (m *ContainerCreateConfigHostConfigAO0LogConfig) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateType(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -828,8 +828,8 @@ func initFixture1479Part() {
 		`	if swag.IsZero(m.Type) {`,
 		`	if err := m.validateTypeEnum("HostConfig"+"."+"LogConfig"+"."+"Type", "body", m.Type); err != nil {`,
 		`type ContainerCreateConfigHostConfigAO0RestartPolicy struct {`,
-		"	MaximumRetryCount int64 `json:\"MaximumRetryCount,omitempty\"`",
-		"	Name string `json:\"Name,omitempty\"`",
+		"	MaximumRetryCount int64 `json:\"MaximumRetryCount,omitempty\" xml:\"MaximumRetryCount\"`",
+		"	Name string `json:\"Name,omitempty\" xml:\"Name\"`",
 		`func (m *ContainerCreateConfigHostConfigAO0RestartPolicy) Validate(formats strfmt.Registry) error {`,
 		`		return errors.CompositeValidationError(res...`,
 	}, []string{
@@ -843,10 +843,10 @@ func initFixture1479Part() {
 	// load expectations for model: resources.go
 	flattenRun.AddExpectations("resources.go", []string{
 		`type Resources struct {`,
-		"	BlkioWeight uint16 `json:\"BlkioWeight,omitempty\"`",
-		"	CgroupParent string `json:\"CgroupParent,omitempty\"`",
-		"	CPUShares int64 `json:\"CpuShares,omitempty\"`",
-		"	Memory int64 `json:\"Memory,omitempty\"`",
+		"	BlkioWeight uint16 `json:\"BlkioWeight,omitempty\" xml:\"BlkioWeight\"`",
+		"	CgroupParent string `json:\"CgroupParent,omitempty\" xml:\"CgroupParent\"`",
+		"	CPUShares int64 `json:\"CpuShares,omitempty\" xml:\"CpuShares\"`",
+		"	Memory int64 `json:\"Memory,omitempty\" xml:\"Memory\"`",
 		`func (m *Resources) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateBlkioWeight(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -867,8 +867,8 @@ func initFixture1479Part() {
 	flattenRun.AddExpectations("networking_config.go", []string{
 		`type NetworkingConfig struct {`,
 		// maps are now simple types
-		//"	EndpointsConfig NetworkingConfigEndpointsConfig `json:\"EndpointsConfig,omitempty\"`",
-		"	EndpointsConfig map[string]*EndpointSettings `json:\"EndpointsConfig,omitempty\"`",
+		//"	EndpointsConfig NetworkingConfigEndpointsConfig `json:\"EndpointsConfig,omitempty\" xml:\"EndpointsConfig\"`",
+		"	EndpointsConfig map[string]*EndpointSettings `json:\"EndpointsConfig,omitempty\" xml:\"EndpointsConfig\"`",
 		`func (m *NetworkingConfig) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateEndpointsConfig(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -891,19 +891,19 @@ func initFixture1479Part() {
 	// load expectations for model: endpoint_settings.go
 	flattenRun.AddExpectations("endpoint_settings.go", []string{
 		`type EndpointSettings struct {`,
-		"	Aliases []string `json:\"Aliases\"`",
-		"	DriverOpts map[string]string `json:\"DriverOpts,omitempty\"`",
-		"	EndpointID string `json:\"EndpointID,omitempty\"`",
-		"	Gateway string `json:\"Gateway,omitempty\"`",
-		"	GlobalIPV6Address string `json:\"GlobalIPv6Address,omitempty\"`",
-		"	GlobalIPV6PrefixLen int64 `json:\"GlobalIPv6PrefixLen,omitempty\"`",
-		"	IPAMConfig *EndpointIPAMConfig `json:\"IPAMConfig,omitempty\"`",
-		"	IPAddress string `json:\"IPAddress,omitempty\"`",
-		"	IPPrefixLen int64 `json:\"IPPrefixLen,omitempty\"`",
-		"	IPV6Gateway string `json:\"IPv6Gateway,omitempty\"`",
-		"	Links []string `json:\"Links\"`",
-		"	MacAddress string `json:\"MacAddress,omitempty\"`",
-		"	NetworkID string `json:\"NetworkID,omitempty\"`",
+		"	Aliases []string `json:\"Aliases\" xml:\"Aliases\"`",
+		"	DriverOpts map[string]string `json:\"DriverOpts,omitempty\" xml:\"DriverOpts\"`",
+		"	EndpointID string `json:\"EndpointID,omitempty\" xml:\"EndpointID\"`",
+		"	Gateway string `json:\"Gateway,omitempty\" xml:\"Gateway\"`",
+		"	GlobalIPV6Address string `json:\"GlobalIPv6Address,omitempty\" xml:\"GlobalIPv6Address\"`",
+		"	GlobalIPV6PrefixLen int64 `json:\"GlobalIPv6PrefixLen,omitempty\" xml:\"GlobalIPv6PrefixLen\"`",
+		"	IPAMConfig *EndpointIPAMConfig `json:\"IPAMConfig,omitempty\" xml:\"IPAMConfig\"`",
+		"	IPAddress string `json:\"IPAddress,omitempty\" xml:\"IPAddress\"`",
+		"	IPPrefixLen int64 `json:\"IPPrefixLen,omitempty\" xml:\"IPPrefixLen\"`",
+		"	IPV6Gateway string `json:\"IPv6Gateway,omitempty\" xml:\"IPv6Gateway\"`",
+		"	Links []string `json:\"Links\" xml:\"Links\"`",
+		"	MacAddress string `json:\"MacAddress,omitempty\" xml:\"MacAddress\"`",
+		"	NetworkID string `json:\"NetworkID,omitempty\" xml:\"NetworkID\"`",
 		`func (m *EndpointSettings) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateIPAMConfig(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -922,19 +922,19 @@ func initFixture1479Part() {
 
 	expandRun.AddExpectations("endpoint_settings.go", []string{
 		`type EndpointSettings struct {`,
-		"	Aliases []string `json:\"Aliases\"`",
-		"	DriverOpts map[string]string `json:\"DriverOpts,omitempty\"`",
-		"	EndpointID string `json:\"EndpointID,omitempty\"`",
-		"	Gateway string `json:\"Gateway,omitempty\"`",
-		"	GlobalIPV6Address string `json:\"GlobalIPv6Address,omitempty\"`",
-		"	GlobalIPV6PrefixLen int64 `json:\"GlobalIPv6PrefixLen,omitempty\"`",
-		"	IPAMConfig *EndpointSettingsIPAMConfig `json:\"IPAMConfig,omitempty\"`",
-		"	IPAddress string `json:\"IPAddress,omitempty\"`",
-		"	IPPrefixLen int64 `json:\"IPPrefixLen,omitempty\"`",
-		"	IPV6Gateway string `json:\"IPv6Gateway,omitempty\"`",
-		"	Links []string `json:\"Links\"`",
-		"	MacAddress string `json:\"MacAddress,omitempty\"`",
-		"	NetworkID string `json:\"NetworkID,omitempty\"`",
+		"	Aliases []string `json:\"Aliases\" xml:\"Aliases\"`",
+		"	DriverOpts map[string]string `json:\"DriverOpts,omitempty\" xml:\"DriverOpts\"`",
+		"	EndpointID string `json:\"EndpointID,omitempty\" xml:\"EndpointID\"`",
+		"	Gateway string `json:\"Gateway,omitempty\" xml:\"Gateway\"`",
+		"	GlobalIPV6Address string `json:\"GlobalIPv6Address,omitempty\" xml:\"GlobalIPv6Address\"`",
+		"	GlobalIPV6PrefixLen int64 `json:\"GlobalIPv6PrefixLen,omitempty\" xml:\"GlobalIPv6PrefixLen\"`",
+		"	IPAMConfig *EndpointSettingsIPAMConfig `json:\"IPAMConfig,omitempty\" xml:\"IPAMConfig\"`",
+		"	IPAddress string `json:\"IPAddress,omitempty\" xml:\"IPAddress\"`",
+		"	IPPrefixLen int64 `json:\"IPPrefixLen,omitempty\" xml:\"IPPrefixLen\"`",
+		"	IPV6Gateway string `json:\"IPv6Gateway,omitempty\" xml:\"IPv6Gateway\"`",
+		"	Links []string `json:\"Links\" xml:\"Links\"`",
+		"	MacAddress string `json:\"MacAddress,omitempty\" xml:\"MacAddress\"`",
+		"	NetworkID string `json:\"NetworkID,omitempty\" xml:\"NetworkID\"`",
 		`func (m *EndpointSettings) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateIPAMConfig(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -945,9 +945,9 @@ func initFixture1479Part() {
 		`			if ve, ok := err.(*errors.Validation); ok {`,
 		`				return ve.ValidateName("IPAMConfig"`,
 		`type EndpointSettingsIPAMConfig struct {`,
-		"	IPV4Address string `json:\"IPv4Address,omitempty\"`",
-		"	IPV6Address string `json:\"IPv6Address,omitempty\"`",
-		"	LinkLocalIPs []string `json:\"LinkLocalIPs\"`",
+		"	IPV4Address string `json:\"IPv4Address,omitempty\" xml:\"IPv4Address\"`",
+		"	IPV6Address string `json:\"IPv6Address,omitempty\" xml:\"IPv6Address\"`",
+		"	LinkLocalIPs []string `json:\"LinkLocalIPs\" xml:\"LinkLocalIPs\"`",
 		`func (m *EndpointSettingsIPAMConfig) Validate(formats strfmt.Registry) error {`,
 		`		return errors.CompositeValidationError(res...`,
 	},
@@ -972,7 +972,7 @@ func initFixtureSimpleAllOf() {
 	// load expectations for model: not_really_composed_thing_all_of0.go
 	flattenRun.AddExpectations("not_really_composed_thing_all_of0.go", []string{
 		`type NotReallyComposedThingAllOf0 struct {`,
-		"	Prop0 strfmt.UUID `json:\"prop0,omitempty\"`",
+		"	Prop0 strfmt.UUID `json:\"prop0,omitempty\" xml:\"prop0\"`",
 		`func (m *NotReallyComposedThingAllOf0) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp0(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -989,16 +989,16 @@ func initFixtureSimpleAllOf() {
 	// load expectations for model: not_really_composed_thing.go
 	expandRun.AddExpectations("not_really_composed_thing.go", []string{
 		`type NotReallyComposedThing struct {`,
-		"	Prop0 strfmt.UUID `json:\"prop0,omitempty\"`",
+		"	Prop0 strfmt.UUID `json:\"prop0,omitempty\" xml:\"prop0\"`",
 		`func (m *NotReallyComposedThing) UnmarshalJSON(raw []byte) error {`,
 		`	var dataAO0 struct {`,
-		"		Prop0 strfmt.UUID `json:\"prop0,omitempty\"`",
+		"		Prop0 strfmt.UUID `json:\"prop0,omitempty\" xml:\"prop0\"`",
 		`	if err := swag.ReadJSON(raw, &dataAO0); err != nil {`,
 		`	m.Prop0 = dataAO0.Prop0`,
 		`func (m NotReallyComposedThing) MarshalJSON() ([]byte, error) {`,
 		`	_parts := make([][]byte, 0, 1`,
 		`	var dataAO0 struct {`,
-		"		Prop0 strfmt.UUID `json:\"prop0,omitempty\"`",
+		"		Prop0 strfmt.UUID `json:\"prop0,omitempty\" xml:\"prop0\"`",
 		`	dataAO0.Prop0 = m.Prop0`,
 		`	jsonDataAO0, errAO0 := swag.WriteJSON(dataAO0`,
 		`	if errAO0 != nil {`,
@@ -1029,7 +1029,7 @@ func initFixtureSimpleAllOf() {
 	// load expectations for model: simple_nested_object_all_of1.go
 	flattenRun.AddExpectations("simple_nested_object_all_of1.go", []string{
 		`type SimpleNestedObjectAllOf1 struct {`,
-		"	Prop3 strfmt.UUID `json:\"prop3,omitempty\"`",
+		"	Prop3 strfmt.UUID `json:\"prop3,omitempty\" xml:\"prop3\"`",
 		`func (m *SimpleNestedObjectAllOf1) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp3(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -1078,28 +1078,28 @@ func initFixtureSimpleAllOf() {
 	// load expectations for model: composed_thing.go
 	expandRun.AddExpectations("composed_thing.go", []string{
 		`type ComposedThing struct {`,
-		"	Prop1 strfmt.UUID `json:\"prop1,omitempty\"`",
-		"	Prop2 strfmt.UUID `json:\"prop2,omitempty\"`",
+		"	Prop1 strfmt.UUID `json:\"prop1,omitempty\" xml:\"prop1\"`",
+		"	Prop2 strfmt.UUID `json:\"prop2,omitempty\" xml:\"prop2\"`",
 		`func (m *ComposedThing) UnmarshalJSON(raw []byte) error {`,
 		`	var dataAO0 struct {`,
-		"		Prop1 strfmt.UUID `json:\"prop1,omitempty\"`",
+		"		Prop1 strfmt.UUID `json:\"prop1,omitempty\" xml:\"prop1\"`",
 		`	if err := swag.ReadJSON(raw, &dataAO0); err != nil {`,
 		`	m.Prop1 = dataAO0.Prop1`,
 		`	var dataAO1 struct {`,
-		"		Prop2 strfmt.UUID `json:\"prop2,omitempty\"`",
+		"		Prop2 strfmt.UUID `json:\"prop2,omitempty\" xml:\"prop2\"`",
 		`	if err := swag.ReadJSON(raw, &dataAO1); err != nil {`,
 		`	m.Prop2 = dataAO1.Prop2`,
 		`func (m ComposedThing) MarshalJSON() ([]byte, error) {`,
 		`	_parts := make([][]byte, 0, 2`,
 		`	var dataAO0 struct {`,
-		"		Prop1 strfmt.UUID `json:\"prop1,omitempty\"`",
+		"		Prop1 strfmt.UUID `json:\"prop1,omitempty\" xml:\"prop1\"`",
 		`	dataAO0.Prop1 = m.Prop1`,
 		`	jsonDataAO0, errAO0 := swag.WriteJSON(dataAO0`,
 		`	if errAO0 != nil {`,
 		`		return nil, errAO0`,
 		`	_parts = append(_parts, jsonDataAO0`,
 		`	var dataAO1 struct {`,
-		"		Prop2 strfmt.UUID `json:\"prop2,omitempty\"`",
+		"		Prop2 strfmt.UUID `json:\"prop2,omitempty\" xml:\"prop2\"`",
 		`	dataAO1.Prop2 = m.Prop2`,
 		`	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1`,
 		`	if errAO1 != nil {`,
@@ -1151,21 +1151,21 @@ func initFixtureSimpleAllOf() {
 	expandRun.AddExpectations("break_nested_object.go", []string{
 		`type BreakNestedObject struct {`,
 		`	BreakNestedObjectAllOf0`,
-		"	Prop6 strfmt.UUID `json:\"prop6,omitempty\"`",
+		"	Prop6 strfmt.UUID `json:\"prop6,omitempty\" xml:\"prop6\"`",
 		`	Prop7 struct {`,
-		"		Prop8 int64 `json:\"prop8,omitempty\"`",
-		"		Prop9 int64 `json:\"prop9,omitempty\"`",
-		"	} `json:\"prop7,omitempty\"`",
+		"		Prop8 int64 `json:\"prop8,omitempty\" xml:\"prop8\"`",
+		"		Prop9 int64 `json:\"prop9,omitempty\" xml:\"prop9\"`",
+		"	} `json:\"prop7,omitempty\" xml:\"prop7\"`",
 		`func (m *BreakNestedObject) UnmarshalJSON(raw []byte) error {`,
 		`	var aO0 BreakNestedObjectAllOf0`,
 		`	if err := swag.ReadJSON(raw, &aO0); err != nil {`,
 		`	m.BreakNestedObjectAllOf0 = aO0`,
 		`	var dataAO1 struct {`,
-		"		Prop6 strfmt.UUID `json:\"prop6,omitempty\"`",
+		"		Prop6 strfmt.UUID `json:\"prop6,omitempty\" xml:\"prop6\"`",
 		`		Prop7 struct {`,
-		"			Prop8 int64 `json:\"prop8,omitempty\"`",
-		"			Prop9 int64 `json:\"prop9,omitempty\"`",
-		"		} `json:\"prop7,omitempty\"`",
+		"			Prop8 int64 `json:\"prop8,omitempty\" xml:\"prop8\"`",
+		"			Prop9 int64 `json:\"prop9,omitempty\" xml:\"prop9\"`",
+		"		} `json:\"prop7,omitempty\" xml:\"prop7\"`",
 		`	if err := swag.ReadJSON(raw, &dataAO1); err != nil {`,
 		`	m.Prop6 = dataAO1.Prop6`,
 		`	m.Prop7 = dataAO1.Prop7`,
@@ -1176,11 +1176,11 @@ func initFixtureSimpleAllOf() {
 		`		return nil, err`,
 		`	_parts = append(_parts, aO0`,
 		`	var dataAO1 struct {`,
-		"		Prop6 strfmt.UUID `json:\"prop6,omitempty\"`",
+		"		Prop6 strfmt.UUID `json:\"prop6,omitempty\" xml:\"prop6\"`",
 		`		Prop7 struct {`,
-		"			Prop8 int64 `json:\"prop8,omitempty\"`",
-		"			Prop9 int64 `json:\"prop9,omitempty\"`",
-		"		} `json:\"prop7,omitempty\"`",
+		"			Prop8 int64 `json:\"prop8,omitempty\" xml:\"prop8\"`",
+		"			Prop9 int64 `json:\"prop9,omitempty\" xml:\"prop9\"`",
+		"		} `json:\"prop7,omitempty\" xml:\"prop7\"`",
 		`	dataAO1.Prop6 = m.Prop6`,
 		`	dataAO1.Prop7 = m.Prop7`,
 		`	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1`,
@@ -1210,13 +1210,13 @@ func initFixtureSimpleAllOf() {
 		`	*m = res`,
 		`type BreakNestedObjectAllOf0 struct {`,
 		`	BreakNestedObjectAllOf0AllOf0`,
-		"	Prop3 strfmt.UUID `json:\"prop3,omitempty\"`",
+		"	Prop3 strfmt.UUID `json:\"prop3,omitempty\" xml:\"prop3\"`",
 		`func (m *BreakNestedObjectAllOf0) UnmarshalJSON(raw []byte) error {`,
 		`	var aO0 BreakNestedObjectAllOf0AllOf0`,
 		`	if err := swag.ReadJSON(raw, &aO0); err != nil {`,
 		`	m.BreakNestedObjectAllOf0AllOf0 = aO0`,
 		`	var dataAO1 struct {`,
-		"		Prop3 strfmt.UUID `json:\"prop3,omitempty\"`",
+		"		Prop3 strfmt.UUID `json:\"prop3,omitempty\" xml:\"prop3\"`",
 		`	if err := swag.ReadJSON(raw, &dataAO1); err != nil {`,
 		`	m.Prop3 = dataAO1.Prop3`,
 		`func (m BreakNestedObjectAllOf0) MarshalJSON() ([]byte, error) {`,
@@ -1226,7 +1226,7 @@ func initFixtureSimpleAllOf() {
 		`		return nil, err`,
 		`	_parts = append(_parts, aO0`,
 		`	var dataAO1 struct {`,
-		"		Prop3 strfmt.UUID `json:\"prop3,omitempty\"`",
+		"		Prop3 strfmt.UUID `json:\"prop3,omitempty\" xml:\"prop3\"`",
 		`	dataAO1.Prop3 = m.Prop3`,
 		`	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1`,
 		`	if errAO1 != nil {`,
@@ -1249,28 +1249,28 @@ func initFixtureSimpleAllOf() {
 		`	if err := swag.ReadJSON(b, &res); err != nil {`,
 		`	*m = res`,
 		`type BreakNestedObjectAllOf0AllOf0 struct {`,
-		"	Prop1 strfmt.UUID `json:\"prop1,omitempty\"`",
-		"	Prop2 strfmt.UUID `json:\"prop2,omitempty\"`",
+		"	Prop1 strfmt.UUID `json:\"prop1,omitempty\" xml:\"prop1\"`",
+		"	Prop2 strfmt.UUID `json:\"prop2,omitempty\" xml:\"prop2\"`",
 		`func (m *BreakNestedObjectAllOf0AllOf0) UnmarshalJSON(raw []byte) error {`,
 		`	var dataAO0 struct {`,
-		"		Prop1 strfmt.UUID `json:\"prop1,omitempty\"`",
+		"		Prop1 strfmt.UUID `json:\"prop1,omitempty\" xml:\"prop1\"`",
 		`	if err := swag.ReadJSON(raw, &dataAO0); err != nil {`,
 		`	m.Prop1 = dataAO0.Prop1`,
 		`	var dataAO1 struct {`,
-		"		Prop2 strfmt.UUID `json:\"prop2,omitempty\"`",
+		"		Prop2 strfmt.UUID `json:\"prop2,omitempty\" xml:\"prop2\"`",
 		`	if err := swag.ReadJSON(raw, &dataAO1); err != nil {`,
 		`	m.Prop2 = dataAO1.Prop2`,
 		`func (m BreakNestedObjectAllOf0AllOf0) MarshalJSON() ([]byte, error) {`,
 		`	_parts := make([][]byte, 0, 2`,
 		`	var dataAO0 struct {`,
-		"		Prop1 strfmt.UUID `json:\"prop1,omitempty\"`",
+		"		Prop1 strfmt.UUID `json:\"prop1,omitempty\" xml:\"prop1\"`",
 		`	dataAO0.Prop1 = m.Prop1`,
 		`	jsonDataAO0, errAO0 := swag.WriteJSON(dataAO0`,
 		`	if errAO0 != nil {`,
 		`		return nil, errAO0`,
 		`	_parts = append(_parts, jsonDataAO0`,
 		`	var dataAO1 struct {`,
-		"		Prop2 strfmt.UUID `json:\"prop2,omitempty\"`",
+		"		Prop2 strfmt.UUID `json:\"prop2,omitempty\" xml:\"prop2\"`",
 		`	dataAO1.Prop2 = m.Prop2`,
 		`	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1`,
 		`	if errAO1 != nil {`,
@@ -1305,7 +1305,7 @@ func initFixtureSimpleAllOf() {
 	// load expectations for model: deep_nested_object_all_of1_all_of1.go
 	flattenRun.AddExpectations("deep_nested_object_all_of1_all_of1.go", []string{
 		`type DeepNestedObjectAllOf1AllOf1 struct {`,
-		"	Prop5 strfmt.Date `json:\"prop5,omitempty\"`",
+		"	Prop5 strfmt.Date `json:\"prop5,omitempty\" xml:\"prop5\"`",
 		`func (m *DeepNestedObjectAllOf1AllOf1) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp5(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -1372,13 +1372,13 @@ func initFixtureSimpleAllOf() {
 		`	*m = res`,
 		`type DeepNestedObjectAllOf0 struct {`,
 		`	DeepNestedObjectAllOf0AllOf0`,
-		"	Prop3 strfmt.UUID `json:\"prop3,omitempty\"`",
+		"	Prop3 strfmt.UUID `json:\"prop3,omitempty\" xml:\"prop3\"`",
 		`func (m *DeepNestedObjectAllOf0) UnmarshalJSON(raw []byte) error {`,
 		`	var aO0 DeepNestedObjectAllOf0AllOf0`,
 		`	if err := swag.ReadJSON(raw, &aO0); err != nil {`,
 		`	m.DeepNestedObjectAllOf0AllOf0 = aO0`,
 		`	var dataAO1 struct {`,
-		"		Prop3 strfmt.UUID `json:\"prop3,omitempty\"`",
+		"		Prop3 strfmt.UUID `json:\"prop3,omitempty\" xml:\"prop3\"`",
 		`	if err := swag.ReadJSON(raw, &dataAO1); err != nil {`,
 		`	m.Prop3 = dataAO1.Prop3`,
 		`func (m DeepNestedObjectAllOf0) MarshalJSON() ([]byte, error) {`,
@@ -1388,7 +1388,7 @@ func initFixtureSimpleAllOf() {
 		`		return nil, err`,
 		`	_parts = append(_parts, aO0`,
 		`	var dataAO1 struct {`,
-		"		Prop3 strfmt.UUID `json:\"prop3,omitempty\"`",
+		"		Prop3 strfmt.UUID `json:\"prop3,omitempty\" xml:\"prop3\"`",
 		`	dataAO1.Prop3 = m.Prop3`,
 		`	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1`,
 		`	if errAO1 != nil {`,
@@ -1411,28 +1411,28 @@ func initFixtureSimpleAllOf() {
 		`	if err := swag.ReadJSON(b, &res); err != nil {`,
 		`	*m = res`,
 		`type DeepNestedObjectAllOf0AllOf0 struct {`,
-		"	Prop1 strfmt.UUID `json:\"prop1,omitempty\"`",
-		"	Prop2 strfmt.UUID `json:\"prop2,omitempty\"`",
+		"	Prop1 strfmt.UUID `json:\"prop1,omitempty\" xml:\"prop1\"`",
+		"	Prop2 strfmt.UUID `json:\"prop2,omitempty\" xml:\"prop2\"`",
 		`func (m *DeepNestedObjectAllOf0AllOf0) UnmarshalJSON(raw []byte) error {`,
 		`	var dataAO0 struct {`,
-		"		Prop1 strfmt.UUID `json:\"prop1,omitempty\"`",
+		"		Prop1 strfmt.UUID `json:\"prop1,omitempty\" xml:\"prop1\"`",
 		`	if err := swag.ReadJSON(raw, &dataAO0); err != nil {`,
 		`	m.Prop1 = dataAO0.Prop1`,
 		`	var dataAO1 struct {`,
-		"		Prop2 strfmt.UUID `json:\"prop2,omitempty\"`",
+		"		Prop2 strfmt.UUID `json:\"prop2,omitempty\" xml:\"prop2\"`",
 		`	if err := swag.ReadJSON(raw, &dataAO1); err != nil {`,
 		`	m.Prop2 = dataAO1.Prop2`,
 		`func (m DeepNestedObjectAllOf0AllOf0) MarshalJSON() ([]byte, error) {`,
 		`	_parts := make([][]byte, 0, 2`,
 		`	var dataAO0 struct {`,
-		"		Prop1 strfmt.UUID `json:\"prop1,omitempty\"`",
+		"		Prop1 strfmt.UUID `json:\"prop1,omitempty\" xml:\"prop1\"`",
 		`	dataAO0.Prop1 = m.Prop1`,
 		`	jsonDataAO0, errAO0 := swag.WriteJSON(dataAO0`,
 		`	if errAO0 != nil {`,
 		`		return nil, errAO0`,
 		`	_parts = append(_parts, jsonDataAO0`,
 		`	var dataAO1 struct {`,
-		"		Prop2 strfmt.UUID `json:\"prop2,omitempty\"`",
+		"		Prop2 strfmt.UUID `json:\"prop2,omitempty\" xml:\"prop2\"`",
 		`	dataAO1.Prop2 = m.Prop2`,
 		`	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1`,
 		`	if errAO1 != nil {`,
@@ -1458,28 +1458,28 @@ func initFixtureSimpleAllOf() {
 		`	if err := swag.ReadJSON(b, &res); err != nil {`,
 		`	*m = res`,
 		`type DeepNestedObjectAllOf1 struct {`,
-		"	Prop4 strfmt.UUID `json:\"prop4,omitempty\"`",
-		"	Prop5 strfmt.Date `json:\"prop5,omitempty\"`",
+		"	Prop4 strfmt.UUID `json:\"prop4,omitempty\" xml:\"prop4\"`",
+		"	Prop5 strfmt.Date `json:\"prop5,omitempty\" xml:\"prop5\"`",
 		`func (m *DeepNestedObjectAllOf1) UnmarshalJSON(raw []byte) error {`,
 		`	var dataAO0 struct {`,
-		"		Prop4 strfmt.UUID `json:\"prop4,omitempty\"`",
+		"		Prop4 strfmt.UUID `json:\"prop4,omitempty\" xml:\"prop4\"`",
 		`	if err := swag.ReadJSON(raw, &dataAO0); err != nil {`,
 		`	m.Prop4 = dataAO0.Prop4`,
 		`	var dataAO1 struct {`,
-		"		Prop5 strfmt.Date `json:\"prop5,omitempty\"`",
+		"		Prop5 strfmt.Date `json:\"prop5,omitempty\" xml:\"prop5\"`",
 		`	if err := swag.ReadJSON(raw, &dataAO1); err != nil {`,
 		`	m.Prop5 = dataAO1.Prop5`,
 		`func (m DeepNestedObjectAllOf1) MarshalJSON() ([]byte, error) {`,
 		`	_parts := make([][]byte, 0, 2`,
 		`	var dataAO0 struct {`,
-		"		Prop4 strfmt.UUID `json:\"prop4,omitempty\"`",
+		"		Prop4 strfmt.UUID `json:\"prop4,omitempty\" xml:\"prop4\"`",
 		`	dataAO0.Prop4 = m.Prop4`,
 		`	jsonDataAO0, errAO0 := swag.WriteJSON(dataAO0`,
 		`	if errAO0 != nil {`,
 		`		return nil, errAO0`,
 		`	_parts = append(_parts, jsonDataAO0`,
 		`	var dataAO1 struct {`,
-		"		Prop5 strfmt.Date `json:\"prop5,omitempty\"`",
+		"		Prop5 strfmt.Date `json:\"prop5,omitempty\" xml:\"prop5\"`",
 		`	dataAO1.Prop5 = m.Prop5`,
 		`	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1`,
 		`	if errAO1 != nil {`,
@@ -1514,8 +1514,8 @@ func initFixtureSimpleAllOf() {
 	// load expectations for model: break_nested_object_all_of1.go
 	flattenRun.AddExpectations("break_nested_object_all_of1.go", []string{
 		`type BreakNestedObjectAllOf1 struct {`,
-		"	Prop6 strfmt.UUID `json:\"prop6,omitempty\"`",
-		"	Prop7 *BreakNestedObjectAllOf1Prop7 `json:\"prop7,omitempty\"`",
+		"	Prop6 strfmt.UUID `json:\"prop6,omitempty\" xml:\"prop6\"`",
+		"	Prop7 *BreakNestedObjectAllOf1Prop7 `json:\"prop7,omitempty\" xml:\"prop7\"`",
 		`func (m *BreakNestedObjectAllOf1) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp6(formats); err != nil {`,
 		`	if err := m.validateProp7(formats); err != nil {`,
@@ -1552,7 +1552,7 @@ func initFixtureSimpleAllOf() {
 
 	expandRun.AddExpectations("not_really_composed_thing.go", []string{
 		`type NotReallyComposedThing struct {`,
-		"	Prop0 strfmt.UUID `json:\"prop0,omitempty\"`",
+		"	Prop0 strfmt.UUID `json:\"prop0,omitempty\" xml:\"prop0\"`",
 		`func (m *NotReallyComposedThing) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp0(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -1586,13 +1586,13 @@ func initFixtureSimpleAllOf() {
 	expandRun.AddExpectations("simple_nested_object.go", []string{
 		`type SimpleNestedObject struct {`,
 		`	SimpleNestedObjectAllOf0`,
-		"	Prop3 strfmt.UUID `json:\"prop3,omitempty\"`",
+		"	Prop3 strfmt.UUID `json:\"prop3,omitempty\" xml:\"prop3\"`",
 		`func (m *SimpleNestedObject) UnmarshalJSON(raw []byte) error {`,
 		`	var aO0 SimpleNestedObjectAllOf0`,
 		`	if err := swag.ReadJSON(raw, &aO0); err != nil {`,
 		`	m.SimpleNestedObjectAllOf0 = aO0`,
 		`	var dataAO1 struct {`,
-		"		Prop3 strfmt.UUID `json:\"prop3,omitempty\"`",
+		"		Prop3 strfmt.UUID `json:\"prop3,omitempty\" xml:\"prop3\"`",
 		`	if err := swag.ReadJSON(raw, &dataAO1); err != nil {`,
 		`	m.Prop3 = dataAO1.Prop3`,
 		`func (m SimpleNestedObject) MarshalJSON() ([]byte, error) {`,
@@ -1602,7 +1602,7 @@ func initFixtureSimpleAllOf() {
 		`		return nil, err`,
 		`	_parts = append(_parts, aO0`,
 		`	var dataAO1 struct {`,
-		"		Prop3 strfmt.UUID `json:\"prop3,omitempty\"`",
+		"		Prop3 strfmt.UUID `json:\"prop3,omitempty\" xml:\"prop3\"`",
 		`	dataAO1.Prop3 = m.Prop3`,
 		`	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1`,
 		`	if errAO1 != nil {`,
@@ -1625,28 +1625,28 @@ func initFixtureSimpleAllOf() {
 		`	if err := swag.ReadJSON(b, &res); err != nil {`,
 		`	*m = res`,
 		`type SimpleNestedObjectAllOf0 struct {`,
-		"	Prop1 strfmt.UUID `json:\"prop1,omitempty\"`",
-		"	Prop2 strfmt.UUID `json:\"prop2,omitempty\"`",
+		"	Prop1 strfmt.UUID `json:\"prop1,omitempty\" xml:\"prop1\"`",
+		"	Prop2 strfmt.UUID `json:\"prop2,omitempty\" xml:\"prop2\"`",
 		`func (m *SimpleNestedObjectAllOf0) UnmarshalJSON(raw []byte) error {`,
 		`	var dataAO0 struct {`,
-		"		Prop1 strfmt.UUID `json:\"prop1,omitempty\"`",
+		"		Prop1 strfmt.UUID `json:\"prop1,omitempty\" xml:\"prop1\"`",
 		`	if err := swag.ReadJSON(raw, &dataAO0); err != nil {`,
 		`	m.Prop1 = dataAO0.Prop1`,
 		`	var dataAO1 struct {`,
-		"		Prop2 strfmt.UUID `json:\"prop2,omitempty\"`",
+		"		Prop2 strfmt.UUID `json:\"prop2,omitempty\" xml:\"prop2\"`",
 		`	if err := swag.ReadJSON(raw, &dataAO1); err != nil {`,
 		`	m.Prop2 = dataAO1.Prop2`,
 		`func (m SimpleNestedObjectAllOf0) MarshalJSON() ([]byte, error) {`,
 		`	_parts := make([][]byte, 0, 2`,
 		`	var dataAO0 struct {`,
-		"		Prop1 strfmt.UUID `json:\"prop1,omitempty\"`",
+		"		Prop1 strfmt.UUID `json:\"prop1,omitempty\" xml:\"prop1\"`",
 		`	dataAO0.Prop1 = m.Prop1`,
 		`	jsonDataAO0, errAO0 := swag.WriteJSON(dataAO0`,
 		`	if errAO0 != nil {`,
 		`		return nil, errAO0`,
 		`	_parts = append(_parts, jsonDataAO0`,
 		`	var dataAO1 struct {`,
-		"		Prop2 strfmt.UUID `json:\"prop2,omitempty\"`",
+		"		Prop2 strfmt.UUID `json:\"prop2,omitempty\" xml:\"prop2\"`",
 		`	dataAO1.Prop2 = m.Prop2`,
 		`	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1`,
 		`	if errAO1 != nil {`,
@@ -1681,7 +1681,7 @@ func initFixtureSimpleAllOf() {
 	// load expectations for model: break_nested_object_all_of1_prop7_all_of0.go
 	flattenRun.AddExpectations("break_nested_object_all_of1_prop7_all_of0.go", []string{
 		`type BreakNestedObjectAllOf1Prop7AllOf0 struct {`,
-		"	Prop8 int64 `json:\"prop8,omitempty\"`",
+		"	Prop8 int64 `json:\"prop8,omitempty\" xml:\"prop8\"`",
 		`func (m *BreakNestedObjectAllOf1Prop7AllOf0) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp8(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -1698,7 +1698,7 @@ func initFixtureSimpleAllOf() {
 	// load expectations for model: deep_nested_object_all_of1_all_of0.go
 	flattenRun.AddExpectations("deep_nested_object_all_of1_all_of0.go", []string{
 		`type DeepNestedObjectAllOf1AllOf0 struct {`,
-		"	Prop4 strfmt.UUID `json:\"prop4,omitempty\"`",
+		"	Prop4 strfmt.UUID `json:\"prop4,omitempty\" xml:\"prop4\"`",
 		`func (m *DeepNestedObjectAllOf1AllOf0) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp4(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -1715,7 +1715,7 @@ func initFixtureSimpleAllOf() {
 	// load expectations for model: break_nested_object_all_of1_prop7_all_of1.go
 	flattenRun.AddExpectations("break_nested_object_all_of1_prop7_all_of1.go", []string{
 		`type BreakNestedObjectAllOf1Prop7AllOf1 struct {`,
-		"	Prop9 int64 `json:\"prop9,omitempty\"`",
+		"	Prop9 int64 `json:\"prop9,omitempty\" xml:\"prop9\"`",
 		`func (m *BreakNestedObjectAllOf1Prop7AllOf1) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp9(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -1732,7 +1732,7 @@ func initFixtureSimpleAllOf() {
 	// load expectations for model: composed_thing_all_of0.go
 	flattenRun.AddExpectations("composed_thing_all_of0.go", []string{
 		`type ComposedThingAllOf0 struct {`,
-		"	Prop1 strfmt.UUID `json:\"prop1,omitempty\"`",
+		"	Prop1 strfmt.UUID `json:\"prop1,omitempty\" xml:\"prop1\"`",
 		`func (m *ComposedThingAllOf0) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp1(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -1749,7 +1749,7 @@ func initFixtureSimpleAllOf() {
 	// load expectations for model: composed_thing_all_of1.go
 	flattenRun.AddExpectations("composed_thing_all_of1.go", []string{
 		`type ComposedThingAllOf1 struct {`,
-		"	Prop2 strfmt.UUID `json:\"prop2,omitempty\"`",
+		"	Prop2 strfmt.UUID `json:\"prop2,omitempty\" xml:\"prop2\"`",
 		`func (m *ComposedThingAllOf1) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp2(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -1808,7 +1808,7 @@ func initFixtureComplexAllOf() {
 	// load expectations for model: object_mix_all_of2.go
 	flattenRun.AddExpectations("object_mix_all_of2.go", []string{
 		`type ObjectMixAllOf2 struct {`,
-		"	Prop2 *ObjectMixAllOf2Prop2 `json:\"prop2,omitempty\"`",
+		"	Prop2 *ObjectMixAllOf2Prop2 `json:\"prop2,omitempty\" xml:\"prop2\"`",
 		`func (m *ObjectMixAllOf2) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp2(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -1846,11 +1846,11 @@ func initFixtureComplexAllOf() {
 		`	Prop1 struct {`,
 		`		ObjectMixProp1AllOf0`,
 		`		ObjectMixProp1AllOf1`,
-		"	} `json:\"prop1,omitempty\"`",
+		"	} `json:\"prop1,omitempty\" xml:\"prop1\"`",
 		`	Prop2 struct {`,
 		`		ObjectMixProp2AllOf0`,
 		`		ObjectMixProp2AllOf1`,
-		"	} `json:\"prop2,omitempty\"`",
+		"	} `json:\"prop2,omitempty\" xml:\"prop2\"`",
 		`func (m *ObjectMix) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp1(formats); err != nil {`,
 		`	if err := m.validateProp2(formats); err != nil {`,
@@ -1900,8 +1900,8 @@ func initFixtureComplexAllOf() {
 
 	expandRun.AddExpectations("all_of_slices_of_aliases.go", []string{
 		`type AllOfSlicesOfAliases struct {`,
-		"	Prop1 []strfmt.Date `json:\"prop1\"`",
-		"	Prop2 []*strfmt.Date `json:\"prop2\"`",
+		"	Prop1 []strfmt.Date `json:\"prop1\" xml:\"prop1\"`",
+		"	Prop2 []*strfmt.Date `json:\"prop2\" xml:\"prop2\"`",
 		`func (m *AllOfSlicesOfAliases) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp1(formats); err != nil {`,
 		`	if err := m.validateProp2(formats); err != nil {`,
@@ -1976,7 +1976,7 @@ func initFixtureComplexAllOf() {
 	// load expectations for model: object_mix_all_of1.go
 	flattenRun.AddExpectations("object_mix_all_of1.go", []string{
 		`type ObjectMixAllOf1 struct {`,
-		"	Prop1 *ObjectMixAllOf1Prop1 `json:\"prop1,omitempty\"`",
+		"	Prop1 *ObjectMixAllOf1Prop1 `json:\"prop1,omitempty\" xml:\"prop1\"`",
 		`func (m *ObjectMixAllOf1) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp1(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -1996,7 +1996,7 @@ func initFixtureComplexAllOf() {
 	// load expectations for model: all_of_slices_of_aliases_all_of0.go
 	flattenRun.AddExpectations("all_of_slices_of_aliases_all_of0.go", []string{
 		`type AllOfSlicesOfAliasesAllOf0 struct {`,
-		"	Prop1 []AliasedDate `json:\"prop1\"`",
+		"	Prop1 []AliasedDate `json:\"prop1\" xml:\"prop1\"`",
 		`func (m *AllOfSlicesOfAliasesAllOf0) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp1(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -2054,7 +2054,7 @@ func initFixtureComplexAllOf() {
 		`					return ve.ValidateName(strconv.Itoa(i)`,
 		`		return errors.CompositeValidationError(res...`,
 		`type SliceOfAllOfItems0 struct {`,
-		"	Prop0 strfmt.UUID `json:\"prop0,omitempty\"`",
+		"	Prop0 strfmt.UUID `json:\"prop0,omitempty\" xml:\"prop0\"`",
 		`	SliceOfAllOfItems0AllOf1`,
 		`func (m *SliceOfAllOfItems0) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp0(formats); err != nil {`,
@@ -2091,7 +2091,7 @@ func initFixtureComplexAllOf() {
 	// load expectations for model: slice_of_all_of_items_all_of0.go
 	flattenRun.AddExpectations("slice_of_all_of_items_all_of0.go", []string{
 		`type SliceOfAllOfItemsAllOf0 struct {`,
-		"	Prop0 strfmt.UUID `json:\"prop0,omitempty\"`",
+		"	Prop0 strfmt.UUID `json:\"prop0,omitempty\" xml:\"prop0\"`",
 		`func (m *SliceOfAllOfItemsAllOf0) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp0(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -2188,7 +2188,7 @@ func initFixtureComplexAllOf() {
 		`					return ve.ValidateName(strconv.Itoa(i)`,
 		`		return errors.CompositeValidationError(res...`,
 		`type SliceMixAllOf0Items0 struct {`,
-		"	Prop0 strfmt.UUID `json:\"prop0,omitempty\"`",
+		"	Prop0 strfmt.UUID `json:\"prop0,omitempty\" xml:\"prop0\"`",
 		`	SliceMixAllOf0Items0AllOf1`,
 		`func (m *SliceMixAllOf0Items0) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp0(formats); err != nil {`,
@@ -2242,7 +2242,7 @@ func initFixtureComplexAllOf() {
 	// load expectations for model: all_of_slices_of_aliases_all_of1.go
 	flattenRun.AddExpectations("all_of_slices_of_aliases_all_of1.go", []string{
 		`type AllOfSlicesOfAliasesAllOf1 struct {`,
-		"	Prop2 []*AliasedNullableDate `json:\"prop2\"`",
+		"	Prop2 []*AliasedNullableDate `json:\"prop2\" xml:\"prop2\"`",
 		`func (m *AllOfSlicesOfAliasesAllOf1) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp2(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -2281,8 +2281,8 @@ func initFixtureIsNullable() {
 	// load expectations for model: thing_with_nullable_dates.go
 	flattenRun.AddExpectations("thing_with_nullable_dates.go", []string{
 		`type ThingWithNullableDates struct {`,
-		"	Prop1 strfmt.Date `json:\"prop1,omitempty\"`",
-		"	Prop2 *strfmt.Date `json:\"prop2,omitempty\"`",
+		"	Prop1 strfmt.Date `json:\"prop1,omitempty\" xml:\"prop1\"`",
+		"	Prop2 *strfmt.Date `json:\"prop2,omitempty\" xml:\"prop2\"`",
 		`func (m *ThingWithNullableDates) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp1(formats); err != nil {`,
 		`	if err := m.validateProp2(formats); err != nil {`,
@@ -2331,7 +2331,7 @@ func initFixtureItching() {
 	// load expectations for model: not_validated_additional_props.go
 	flattenRun.AddExpectations("not_validated_additional_props.go", []string{
 		`type NotValidatedAdditionalProps struct {`,
-		"	Prop2 strfmt.UUID `json:\"prop2,omitempty\"`",
+		"	Prop2 strfmt.UUID `json:\"prop2,omitempty\" xml:\"prop2\"`",
 		"	NotValidatedAdditionalProps map[string]map[string]map[string]string `json:\"-\"`",
 		`func (m *NotValidatedAdditionalProps) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp2(formats); err != nil {`,
@@ -2403,7 +2403,7 @@ func initFixtureItching() {
 		`			if err := val.Validate(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
 		`type EmptyObjectWithAdditionalAliasAnon struct {`,
-		"	Prop1 strfmt.Date `json:\"prop1,omitempty\"`",
+		"	Prop1 strfmt.Date `json:\"prop1,omitempty\" xml:\"prop1\"`",
 		`func (m *EmptyObjectWithAdditionalAliasAnon) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp1(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -2480,14 +2480,14 @@ func initFixtureItching() {
 	// load expectations for model: good_old_format_issue.go
 	flattenRun.AddExpectations("good_old_format_issue.go", []string{
 		`type GoodOldFormatIssue struct {`,
-		"	AlternateFile GoodOldFormatIssueAlternateFile `json:\"alternateFile,omitempty\"`",
-		"	AnotherFile io.ReadCloser `json:\"anotherFile,omitempty\"`",
-		"	MyBytes strfmt.Base64 `json:\"myBytes,omitempty\"`",
-		"	MyFile io.ReadCloser `json:\"myFile\"`",
-		"	ThisAliasedFile AliasedFile `json:\"thisAliasedFile,omitempty\"`",
-		"	ThisAlternateAliasedFile AliasedTypeFile `json:\"thisAlternateAliasedFile,omitempty\"`",
-		"	ThisNullableAliasedFile *AliasedNullableFile `json:\"thisNullableAliasedFile,omitempty\"`",
-		"	ThisNullableAlternateAliasedFile *AliasedTypeNullableFile `json:\"thisNullableAlternateAliasedFile,omitempty\"`",
+		"	AlternateFile GoodOldFormatIssueAlternateFile `json:\"alternateFile,omitempty\" xml:\"alternateFile\"`",
+		"	AnotherFile io.ReadCloser `json:\"anotherFile,omitempty\" xml:\"anotherFile\"`",
+		"	MyBytes strfmt.Base64 `json:\"myBytes,omitempty\" xml:\"myBytes\"`",
+		"	MyFile io.ReadCloser `json:\"myFile\" xml:\"myFile\"`",
+		"	ThisAliasedFile AliasedFile `json:\"thisAliasedFile,omitempty\" xml:\"thisAliasedFile\"`",
+		"	ThisAlternateAliasedFile AliasedTypeFile `json:\"thisAlternateAliasedFile,omitempty\" xml:\"thisAlternateAliasedFile\"`",
+		"	ThisNullableAliasedFile *AliasedNullableFile `json:\"thisNullableAliasedFile,omitempty\" xml:\"thisNullableAliasedFile\"`",
+		"	ThisNullableAlternateAliasedFile *AliasedTypeNullableFile `json:\"thisNullableAlternateAliasedFile,omitempty\" xml:\"thisNullableAlternateAliasedFile\"`",
 		`func (m *GoodOldFormatIssue) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateMyFile(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -2506,14 +2506,14 @@ func initFixtureItching() {
 
 	expandRun.AddExpectations("good_old_format_issue.go", []string{
 		`type GoodOldFormatIssue struct {`,
-		"	AlternateFile io.ReadCloser `json:\"alternateFile,omitempty\"`",
-		"	AnotherFile io.ReadCloser `json:\"anotherFile,omitempty\"`",
-		"	MyBytes strfmt.Base64 `json:\"myBytes,omitempty\"`",
-		"	MyFile io.ReadCloser `json:\"myFile\"`",
-		"	ThisAliasedFile io.ReadCloser `json:\"thisAliasedFile,omitempty\"`",
-		"	ThisAlternateAliasedFile io.ReadCloser `json:\"thisAlternateAliasedFile,omitempty\"`",
-		"	ThisNullableAliasedFile io.ReadCloser `json:\"thisNullableAliasedFile,omitempty\"`",
-		"	ThisNullableAlternateAliasedFile io.ReadCloser `json:\"thisNullableAlternateAliasedFile,omitempty\"`",
+		"	AlternateFile io.ReadCloser `json:\"alternateFile,omitempty\" xml:\"alternateFile\"`",
+		"	AnotherFile io.ReadCloser `json:\"anotherFile,omitempty\" xml:\"anotherFile\"`",
+		"	MyBytes strfmt.Base64 `json:\"myBytes,omitempty\" xml:\"myBytes\"`",
+		"	MyFile io.ReadCloser `json:\"myFile\" xml:\"myFile\"`",
+		"	ThisAliasedFile io.ReadCloser `json:\"thisAliasedFile,omitempty\" xml:\"thisAliasedFile\"`",
+		"	ThisAlternateAliasedFile io.ReadCloser `json:\"thisAlternateAliasedFile,omitempty\" xml:\"thisAlternateAliasedFile\"`",
+		"	ThisNullableAliasedFile io.ReadCloser `json:\"thisNullableAliasedFile,omitempty\" xml:\"thisNullableAliasedFile\"`",
+		"	ThisNullableAlternateAliasedFile io.ReadCloser `json:\"thisNullableAlternateAliasedFile,omitempty\" xml:\"thisNullableAlternateAliasedFile\"`",
 		`func (m *GoodOldFormatIssue) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateMyFile(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -2533,7 +2533,7 @@ func initFixtureItching() {
 	// load expectations for model: empty_object_with_additional_slice_additional_properties_items.go
 	flattenRun.AddExpectations("empty_object_with_additional_slice_additional_properties_items.go", []string{
 		`type EmptyObjectWithAdditionalSliceAdditionalPropertiesItems struct {`,
-		"	DummyProp1 strfmt.Date `json:\"dummyProp1,omitempty\"`",
+		"	DummyProp1 strfmt.Date `json:\"dummyProp1,omitempty\" xml:\"dummyProp1\"`",
 		`func (m *EmptyObjectWithAdditionalSliceAdditionalPropertiesItems) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateDummyProp1(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -2550,7 +2550,7 @@ func initFixtureItching() {
 	// load expectations for model: not_validated_additional_props_slice.go
 	flattenRun.AddExpectations("not_validated_additional_props_slice.go", []string{
 		`type NotValidatedAdditionalPropsSlice struct {`,
-		"	Prop2 strfmt.UUID `json:\"prop2,omitempty\"`",
+		"	Prop2 strfmt.UUID `json:\"prop2,omitempty\" xml:\"prop2\"`",
 		"	NotValidatedAdditionalPropsSlice map[string][]map[string]map[string]string `json:\"-\"`",
 		`func (m *NotValidatedAdditionalPropsSlice) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp2(formats); err != nil {`,
@@ -2581,8 +2581,8 @@ func initFixtureItching() {
 	// load expectations for model: object_with_empty_object.go
 	flattenRun.AddExpectations("object_with_empty_object.go", []string{
 		`type ObjectWithEmptyObject struct {`,
-		"	EmptyObj EmptyObjectWithAdditionalAlias `json:\"emptyObj,omitempty\"`",
-		"	NonEmptyObj *NullableThing `json:\"nonEmptyObj,omitempty\"`",
+		"	EmptyObj EmptyObjectWithAdditionalAlias `json:\"emptyObj,omitempty\" xml:\"emptyObj\"`",
+		"	NonEmptyObj *NullableThing `json:\"nonEmptyObj,omitempty\" xml:\"nonEmptyObj\"`",
 		`func (m *ObjectWithEmptyObject) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateEmptyObj(formats); err != nil {`,
 		`	if err := m.validateNonEmptyObj(formats); err != nil {`,
@@ -2607,8 +2607,8 @@ func initFixtureItching() {
 
 	expandRun.AddExpectations("object_with_empty_object.go", []string{
 		`type ObjectWithEmptyObject struct {`,
-		"	EmptyObj map[string]ObjectWithEmptyObjectEmptyObjAnon `json:\"emptyObj,omitempty\"`",
-		"	NonEmptyObj *strfmt.Date `json:\"nonEmptyObj,omitempty\"`",
+		"	EmptyObj map[string]ObjectWithEmptyObjectEmptyObjAnon `json:\"emptyObj,omitempty\" xml:\"emptyObj\"`",
+		"	NonEmptyObj *strfmt.Date `json:\"nonEmptyObj,omitempty\" xml:\"nonEmptyObj\"`",
 		`func (m *ObjectWithEmptyObject) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateEmptyObj(formats); err != nil {`,
 		`	if err := m.validateNonEmptyObj(formats); err != nil {`,
@@ -2623,7 +2623,7 @@ func initFixtureItching() {
 		`	if swag.IsZero(m.NonEmptyObj) {`,
 		`	if err := validate.FormatOf("nonEmptyObj", "body", "date", m.NonEmptyObj.String(), formats); err != nil {`,
 		`type ObjectWithEmptyObjectEmptyObjAnon struct {`,
-		"	Prop1 strfmt.Date `json:\"prop1,omitempty\"`",
+		"	Prop1 strfmt.Date `json:\"prop1,omitempty\" xml:\"prop1\"`",
 		`func (m *ObjectWithEmptyObjectEmptyObjAnon) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp1(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -2683,7 +2683,7 @@ func initFixtureItching() {
 		`					return ve.ValidateName(k + "." + strconv.Itoa(i)`,
 		`		return errors.CompositeValidationError(res...`,
 		`type EmptyObjectWithAdditionalSliceItems0 struct {`,
-		"	DummyProp1 strfmt.Date `json:\"dummyProp1,omitempty\"`",
+		"	DummyProp1 strfmt.Date `json:\"dummyProp1,omitempty\" xml:\"dummyProp1\"`",
 		`func (m *EmptyObjectWithAdditionalSliceItems0) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateDummyProp1(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -2723,7 +2723,7 @@ func initFixtureItching() {
 	// load expectations for model: empty_object_with_additional_nested_slice_additional_properties_items_items_items.go
 	flattenRun.AddExpectations("empty_object_with_additional_nested_slice_additional_properties_items_items_items.go", []string{
 		`type EmptyObjectWithAdditionalNestedSliceAdditionalPropertiesItemsItemsItems struct {`,
-		"	DummyProp1 strfmt.Date `json:\"dummyProp1,omitempty\"`",
+		"	DummyProp1 strfmt.Date `json:\"dummyProp1,omitempty\" xml:\"dummyProp1\"`",
 		`func (m *EmptyObjectWithAdditionalNestedSliceAdditionalPropertiesItemsItemsItems) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateDummyProp1(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -2740,7 +2740,7 @@ func initFixtureItching() {
 	// load expectations for model: aliased_thing.go
 	flattenRun.AddExpectations("aliased_thing.go", []string{
 		`type AliasedThing struct {`,
-		"	Prop1 strfmt.Date `json:\"prop1,omitempty\"`",
+		"	Prop1 strfmt.Date `json:\"prop1,omitempty\" xml:\"prop1\"`",
 		`func (m *AliasedThing) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp1(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -2759,7 +2759,7 @@ func initFixtureItching() {
 	// load expectations for model: additional_file.go
 	flattenRun.AddExpectations("additional_file.go", []string{
 		`type AdditionalFile struct {`,
-		"	DirName string `json:\"dirName,omitempty\"`",
+		"	DirName string `json:\"dirName,omitempty\" xml:\"dirName\"`",
 		"	AdditionalFile map[string]io.ReadCloser `json:\"-\"`",
 		// empty validation
 		"func (m *AdditionalFile) Validate(formats strfmt.Registry) error {\n	return nil\n}",
@@ -2788,8 +2788,8 @@ func initFixtureItching() {
 	// load expectations for model: top_level_format_issue.go
 	flattenRun.AddExpectations("top_level_format_issue.go", []string{
 		`type TopLevelFormatIssue struct {`,
-		"	MyAlternateFile TopLevelFormatIssueMyAlternateFile `json:\"myAlternateFile,omitempty\"`",
-		"	MyFile io.ReadCloser `json:\"myFile,omitempty\"`",
+		"	MyAlternateFile TopLevelFormatIssueMyAlternateFile `json:\"myAlternateFile,omitempty\" xml:\"myAlternateFile\"`",
+		"	MyFile io.ReadCloser `json:\"myFile,omitempty\" xml:\"myFile\"`",
 		// empty validation
 		"func (m *TopLevelFormatIssue) Validate(formats strfmt.Registry) error {\n	return nil\n}",
 	},
@@ -2801,8 +2801,8 @@ func initFixtureItching() {
 
 	expandRun.AddExpectations("top_level_format_issue.go", []string{
 		`type TopLevelFormatIssue struct {`,
-		"	MyAlternateFile io.ReadCloser `json:\"myAlternateFile,omitempty\"`",
-		"	MyFile io.ReadCloser `json:\"myFile,omitempty\"`",
+		"	MyAlternateFile io.ReadCloser `json:\"myAlternateFile,omitempty\" xml:\"myAlternateFile\"`",
+		"	MyFile io.ReadCloser `json:\"myFile,omitempty\" xml:\"myFile\"`",
 		// empty validation
 		"func (m *TopLevelFormatIssue) Validate(formats strfmt.Registry) error {\n	return nil\n}",
 	},
@@ -2876,7 +2876,7 @@ func initFixtureItching() {
 		`							return ve.ValidateName(k + "." + strconv.Itoa(i) + "." + strconv.Itoa(ii) + "." + strconv.Itoa(iii)`,
 		`		return errors.CompositeValidationError(res...`,
 		`type EmptyObjectWithAdditionalNestedSliceItems0 struct {`,
-		"	DummyProp1 strfmt.Date `json:\"dummyProp1,omitempty\"`",
+		"	DummyProp1 strfmt.Date `json:\"dummyProp1,omitempty\" xml:\"dummyProp1\"`",
 		`func (m *EmptyObjectWithAdditionalNestedSliceItems0) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateDummyProp1(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -2924,7 +2924,7 @@ func initFixtureItching() {
 	// load expectations for model: not_validated_at_all.go
 	flattenRun.AddExpectations("not_validated_at_all.go", []string{
 		`type NotValidatedAtAll struct {`,
-		"	Prop2 string `json:\"prop2,omitempty\"`",
+		"	Prop2 string `json:\"prop2,omitempty\" xml:\"prop2\"`",
 		"	NotValidatedAtAll map[string][]map[string]map[string]string `json:\"-\"`",
 		// empty validation
 		"func (m *NotValidatedAtAll) Validate(formats strfmt.Registry) error {\n	return nil\n}",
@@ -2951,7 +2951,7 @@ func initFixtureAdditionalProps() {
 	// load expectations for model: additional_object_with_formated_thing.go
 	flattenRun.AddExpectations("additional_object_with_formated_thing.go", []string{
 		`type AdditionalObjectWithFormatedThing struct {`,
-		"	Blob *int64 `json:\"blob\"`",
+		"	Blob *int64 `json:\"blob\" xml:\"blob\"`",
 		"	AdditionalObjectWithFormatedThing map[string]strfmt.Date `json:\"-\"`",
 		`func (m *AdditionalObjectWithFormatedThing) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateBlob(formats); err != nil {`,
@@ -2990,7 +2990,7 @@ func initFixtureAdditionalProps() {
 	// load expectations for model: additional_array_of_refed_thing.go
 	flattenRun.AddExpectations("additional_array_of_refed_thing.go", []string{
 		`type AdditionalArrayOfRefedThing struct {`,
-		"	ThisOneNotRequired int64 `json:\"thisOneNotRequired,omitempty\"`",
+		"	ThisOneNotRequired int64 `json:\"thisOneNotRequired,omitempty\" xml:\"thisOneNotRequired\"`",
 		"	AdditionalArrayOfRefedThing map[string][]AliasedDate `json:\"-\"`",
 		`func (m *AdditionalArrayOfRefedThing) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateThisOneNotRequired(formats); err != nil {`,
@@ -3015,7 +3015,7 @@ func initFixtureAdditionalProps() {
 
 	expandRun.AddExpectations("additional_array_of_refed_thing.go", []string{
 		`type AdditionalArrayOfRefedThing struct {`,
-		"	ThisOneNotRequired int64 `json:\"thisOneNotRequired,omitempty\"`",
+		"	ThisOneNotRequired int64 `json:\"thisOneNotRequired,omitempty\" xml:\"thisOneNotRequired\"`",
 		"	AdditionalArrayOfRefedThing map[string][]strfmt.Date `json:\"-\"`",
 		`func (m *AdditionalArrayOfRefedThing) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateThisOneNotRequired(formats); err != nil {`,
@@ -3039,7 +3039,7 @@ func initFixtureAdditionalProps() {
 	// load expectations for model: additional_object_with_nullable_thing.go
 	flattenRun.AddExpectations("additional_object_with_nullable_thing.go", []string{
 		`type AdditionalObjectWithNullableThing struct {`,
-		"	Blob int64 `json:\"blob,omitempty\"`",
+		"	Blob int64 `json:\"blob,omitempty\" xml:\"blob\"`",
 		"	AdditionalObjectWithNullableThing map[string]*AliasedNullableDate `json:\"-\"`",
 		`func (m *AdditionalObjectWithNullableThing) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateBlob(formats); err != nil {`,
@@ -3061,7 +3061,7 @@ func initFixtureAdditionalProps() {
 
 	expandRun.AddExpectations("additional_object_with_nullable_thing.go", []string{
 		`type AdditionalObjectWithNullableThing struct {`,
-		"	Blob int64 `json:\"blob,omitempty\"`",
+		"	Blob int64 `json:\"blob,omitempty\" xml:\"blob\"`",
 		"	AdditionalObjectWithNullableThing map[string]*strfmt.Date `json:\"-\"`",
 		`func (m *AdditionalObjectWithNullableThing) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateBlob(formats); err != nil {`,
@@ -3082,8 +3082,8 @@ func initFixtureAdditionalProps() {
 	// load expectations for model: additional_things.go
 	flattenRun.AddExpectations("additional_things.go", []string{
 		`type AdditionalThings struct {`,
-		"	Origin *string `json:\"origin\"`",
-		"	Status string `json:\"status,omitempty\"`",
+		"	Origin *string `json:\"origin\" xml:\"origin\"`",
+		"	Status string `json:\"status,omitempty\" xml:\"status\"`",
 		"	AdditionalThings map[string]string `json:\"-\"`",
 		`var additionalThingsValueEnum []interface{`,
 		`	var res []string`,
@@ -3138,7 +3138,7 @@ func initFixtureAdditionalProps() {
 	// load expectations for model: transitive_refed_thing_additional_properties.go
 	flattenRun.AddExpectations("transitive_refed_thing_additional_properties.go", []string{
 		`type TransitiveRefedThingAdditionalProperties struct {`,
-		"	A1 strfmt.DateTime `json:\"a1,omitempty\"`",
+		"	A1 strfmt.DateTime `json:\"a1,omitempty\" xml:\"a1\"`",
 		"	TransitiveRefedThingAdditionalProperties map[string]*NoValidationThing `json:\"-\"`",
 		`func (m *TransitiveRefedThingAdditionalProperties) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateA1(formats); err != nil {`,
@@ -3160,7 +3160,7 @@ func initFixtureAdditionalProps() {
 	// load expectations for model: additional_object.go
 	flattenRun.AddExpectations("additional_object.go", []string{
 		`type AdditionalObject struct {`,
-		"	MockID float64 `json:\"mockId,omitempty\"`",
+		"	MockID float64 `json:\"mockId,omitempty\" xml:\"mockId\"`",
 		"	AdditionalObject map[string]*AdditionalObjectAdditionalProperties `json:\"-\"`",
 		`func (m *AdditionalObject) Validate(formats strfmt.Registry) error {`,
 		`	for k := range m.AdditionalObject {`,
@@ -3177,7 +3177,7 @@ func initFixtureAdditionalProps() {
 
 	expandRun.AddExpectations("additional_object.go", []string{
 		`type AdditionalObject struct {`,
-		"	MockID float64 `json:\"mockId,omitempty\"`",
+		"	MockID float64 `json:\"mockId,omitempty\" xml:\"mockId\"`",
 		"	AdditionalObject map[string]*AdditionalObjectAnon `json:\"-\"`",
 		`func (m *AdditionalObject) Validate(formats strfmt.Registry) error {`,
 		`	for k := range m.AdditionalObject {`,
@@ -3186,9 +3186,9 @@ func initFixtureAdditionalProps() {
 		`				if err := val.Validate(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
 		`type AdditionalObjectAnon struct {`,
-		"	MockA string `json:\"mockA,omitempty\"`",
-		"	MockB *string `json:\"mockB\"`",
-		"	MockC float64 `json:\"mockC,omitempty\"`",
+		"	MockA string `json:\"mockA,omitempty\" xml:\"mockA\"`",
+		"	MockB *string `json:\"mockB\" xml:\"mockB\"`",
+		"	MockC float64 `json:\"mockC,omitempty\" xml:\"mockC\"`",
 		`func (m *AdditionalObjectAnon) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateMockA(formats); err != nil {`,
 		`	if err := m.validateMockB(formats); err != nil {`,
@@ -3209,7 +3209,7 @@ func initFixtureAdditionalProps() {
 	// load expectations for model: additional_slice_of_objects_additional_properties_items.go
 	flattenRun.AddExpectations("additional_slice_of_objects_additional_properties_items.go", []string{
 		`type AdditionalSliceOfObjectsAdditionalPropertiesItems struct {`,
-		"	Prop2 int64 `json:\"prop2,omitempty\"`",
+		"	Prop2 int64 `json:\"prop2,omitempty\" xml:\"prop2\"`",
 		// empty validation
 		"func (m *AdditionalSliceOfObjectsAdditionalPropertiesItems) Validate(formats strfmt.Registry) error {\n	return nil\n}",
 	},
@@ -3222,7 +3222,7 @@ func initFixtureAdditionalProps() {
 	// load expectations for model: additional_slice_of_aliased_nullable_primitives.go
 	flattenRun.AddExpectations("additional_slice_of_aliased_nullable_primitives.go", []string{
 		`type AdditionalSliceOfAliasedNullablePrimitives struct {`,
-		"	Prop3 strfmt.UUID `json:\"prop3,omitempty\"`",
+		"	Prop3 strfmt.UUID `json:\"prop3,omitempty\" xml:\"prop3\"`",
 		"	AdditionalSliceOfAliasedNullablePrimitives map[string][]*AliasedNullableDate `json:\"-\"`",
 		`func (m *AdditionalSliceOfAliasedNullablePrimitives) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp3(formats); err != nil {`,
@@ -3254,7 +3254,7 @@ func initFixtureAdditionalProps() {
 
 	expandRun.AddExpectations("additional_slice_of_aliased_nullable_primitives.go", []string{
 		`type AdditionalSliceOfAliasedNullablePrimitives struct {`,
-		"	Prop3 strfmt.UUID `json:\"prop3,omitempty\"`",
+		"	Prop3 strfmt.UUID `json:\"prop3,omitempty\" xml:\"prop3\"`",
 		"	AdditionalSliceOfAliasedNullablePrimitives map[string][]*strfmt.Date `json:\"-\"`",
 		`func (m *AdditionalSliceOfAliasedNullablePrimitives) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp3(formats); err != nil {`,
@@ -3283,7 +3283,7 @@ func initFixtureAdditionalProps() {
 	// load expectations for model: additional_slice_of_slice.go
 	flattenRun.AddExpectations("additional_slice_of_slice.go", []string{
 		`type AdditionalSliceOfSlice struct {`,
-		"	Prop4 strfmt.UUID `json:\"prop4,omitempty\"`",
+		"	Prop4 strfmt.UUID `json:\"prop4,omitempty\" xml:\"prop4\"`",
 		"	AdditionalSliceOfSlice map[string][][]*AdditionalSliceOfSliceAdditionalPropertiesItemsItems `json:\"-\"`",
 		`func (m *AdditionalSliceOfSlice) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp4(formats); err != nil {`,
@@ -3315,7 +3315,7 @@ func initFixtureAdditionalProps() {
 
 	expandRun.AddExpectations("additional_slice_of_slice.go", []string{
 		`type AdditionalSliceOfSlice struct {`,
-		"	Prop4 strfmt.UUID `json:\"prop4,omitempty\"`",
+		"	Prop4 strfmt.UUID `json:\"prop4,omitempty\" xml:\"prop4\"`",
 		"	AdditionalSliceOfSlice map[string][][]*AdditionalSliceOfSliceItems0 `json:\"-\"`",
 		`func (m *AdditionalSliceOfSlice) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp4(formats); err != nil {`,
@@ -3339,7 +3339,7 @@ func initFixtureAdditionalProps() {
 		`	if swag.IsZero(m.Prop4) {`,
 		`	if err := validate.FormatOf("prop4", "body", "uuid", m.Prop4.String(), formats); err != nil {`,
 		`type AdditionalSliceOfSliceItems0 struct {`,
-		"	Prop5 int64 `json:\"prop5,omitempty\"`",
+		"	Prop5 int64 `json:\"prop5,omitempty\" xml:\"prop5\"`",
 		`func (m *AdditionalSliceOfSliceItems0) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp5(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -3356,7 +3356,7 @@ func initFixtureAdditionalProps() {
 	// load expectations for model: additional_object_with_aliased_thing.go
 	flattenRun.AddExpectations("additional_object_with_aliased_thing.go", []string{
 		`type AdditionalObjectWithAliasedThing struct {`,
-		"	Blob int64 `json:\"blob,omitempty\"`",
+		"	Blob int64 `json:\"blob,omitempty\" xml:\"blob\"`",
 		"	AdditionalObjectWithAliasedThing map[string]AliasedDate `json:\"-\"`",
 		`func (m *AdditionalObjectWithAliasedThing) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateBlob(formats); err != nil {`,
@@ -3378,7 +3378,7 @@ func initFixtureAdditionalProps() {
 
 	expandRun.AddExpectations("additional_object_with_aliased_thing.go", []string{
 		`type AdditionalObjectWithAliasedThing struct {`,
-		"	Blob int64 `json:\"blob,omitempty\"`",
+		"	Blob int64 `json:\"blob,omitempty\" xml:\"blob\"`",
 		"	AdditionalObjectWithAliasedThing map[string]strfmt.Date `json:\"-\"`",
 		`func (m *AdditionalObjectWithAliasedThing) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateBlob(formats); err != nil {`,
@@ -3399,9 +3399,9 @@ func initFixtureAdditionalProps() {
 	// load expectations for model: additional_things_nested_additional_properties.go
 	flattenRun.AddExpectations("additional_things_nested_additional_properties.go", []string{
 		`type AdditionalThingsNestedAdditionalProperties struct {`,
-		"	PrinterAddress string `json:\"printerAddress,omitempty\"`",
-		"	PrinterCountry string `json:\"printerCountry,omitempty\"`",
-		"	PrinterDate strfmt.Date `json:\"printerDate,omitempty\"`",
+		"	PrinterAddress string `json:\"printerAddress,omitempty\" xml:\"printerAddress\"`",
+		"	PrinterCountry string `json:\"printerCountry,omitempty\" xml:\"printerCountry\"`",
+		"	PrinterDate strfmt.Date `json:\"printerDate,omitempty\" xml:\"printerDate\"`",
 		"	AdditionalThingsNestedAdditionalProperties map[string]*AdditionalThingsNestedAdditionalPropertiesAdditionalProperties `json:\"-\"`",
 		`func (m *AdditionalThingsNestedAdditionalProperties) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validatePrinterCountry(formats); err != nil {`,
@@ -3440,7 +3440,7 @@ func initFixtureAdditionalProps() {
 	// load expectations for model: empty_object_with_additional_slice_additional_properties_items.go
 	flattenRun.AddExpectations("empty_object_with_additional_slice_additional_properties_items.go", []string{
 		`type EmptyObjectWithAdditionalSliceAdditionalPropertiesItems struct {`,
-		"	DummyProp1 strfmt.Date `json:\"dummyProp1,omitempty\"`",
+		"	DummyProp1 strfmt.Date `json:\"dummyProp1,omitempty\" xml:\"dummyProp1\"`",
 		`func (m *EmptyObjectWithAdditionalSliceAdditionalPropertiesItems) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateDummyProp1(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -3457,7 +3457,7 @@ func initFixtureAdditionalProps() {
 	// load expectations for model: additional_things_nested_additional_properties_additional_properties.go
 	flattenRun.AddExpectations("additional_things_nested_additional_properties_additional_properties.go", []string{
 		`type AdditionalThingsNestedAdditionalPropertiesAdditionalProperties struct {`,
-		"	AverageDelay strfmt.Duration `json:\"averageDelay,omitempty\"`",
+		"	AverageDelay strfmt.Duration `json:\"averageDelay,omitempty\" xml:\"averageDelay\"`",
 		`func (m *AdditionalThingsNestedAdditionalPropertiesAdditionalProperties) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateAverageDelay(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -3474,7 +3474,7 @@ func initFixtureAdditionalProps() {
 	// load expectations for model: additional_slice_of_slice_additional_properties_items_items.go
 	flattenRun.AddExpectations("additional_slice_of_slice_additional_properties_items_items.go", []string{
 		`type AdditionalSliceOfSliceAdditionalPropertiesItemsItems struct {`,
-		"	Prop5 int64 `json:\"prop5,omitempty\"`",
+		"	Prop5 int64 `json:\"prop5,omitempty\" xml:\"prop5\"`",
 		`func (m *AdditionalSliceOfSliceAdditionalPropertiesItemsItems) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp5(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -3491,9 +3491,9 @@ func initFixtureAdditionalProps() {
 	// load expectations for model: additional_object_additional_properties.go
 	flattenRun.AddExpectations("additional_object_additional_properties.go", []string{
 		`type AdditionalObjectAdditionalProperties struct {`,
-		"	MockA string `json:\"mockA,omitempty\"`",
-		"	MockB *string `json:\"mockB\"`",
-		"	MockC float64 `json:\"mockC,omitempty\"`",
+		"	MockA string `json:\"mockA,omitempty\" xml:\"mockA\"`",
+		"	MockB *string `json:\"mockB\" xml:\"mockB\"`",
+		"	MockC float64 `json:\"mockC,omitempty\" xml:\"mockC\"`",
 		`func (m *AdditionalObjectAdditionalProperties) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateMockA(formats); err != nil {`,
 		`	if err := m.validateMockB(formats); err != nil {`,
@@ -3514,7 +3514,7 @@ func initFixtureAdditionalProps() {
 	// load expectations for model: additional_transitive_refed_thing.go
 	flattenRun.AddExpectations("additional_transitive_refed_thing.go", []string{
 		`type AdditionalTransitiveRefedThing struct {`,
-		"	ThisOneNotRequired int64 `json:\"thisOneNotRequired,omitempty\"`",
+		"	ThisOneNotRequired int64 `json:\"thisOneNotRequired,omitempty\" xml:\"thisOneNotRequired\"`",
 		"	AdditionalTransitiveRefedThing map[string][]*TransitiveRefedThing `json:\"-\"`",
 		`func (m *AdditionalTransitiveRefedThing) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateThisOneNotRequired(formats); err != nil {`,
@@ -3544,7 +3544,7 @@ func initFixtureAdditionalProps() {
 
 	expandRun.AddExpectations("additional_transitive_refed_thing.go", []string{
 		`type AdditionalTransitiveRefedThing struct {`,
-		"	ThisOneNotRequired int64 `json:\"thisOneNotRequired,omitempty\"`",
+		"	ThisOneNotRequired int64 `json:\"thisOneNotRequired,omitempty\" xml:\"thisOneNotRequired\"`",
 		"	AdditionalTransitiveRefedThing map[string][]*AdditionalTransitiveRefedThingItems0 `json:\"-\"`",
 		`func (m *AdditionalTransitiveRefedThing) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateThisOneNotRequired(formats); err != nil {`,
@@ -3566,7 +3566,7 @@ func initFixtureAdditionalProps() {
 		`	if swag.IsZero(m.ThisOneNotRequired) {`,
 		`	if err := validate.MaximumInt("thisOneNotRequired", "body", int64(m.ThisOneNotRequired), 10, false); err != nil {`,
 		`type AdditionalTransitiveRefedThingItems0 struct {`,
-		"	ThisOneNotRequiredEither int64 `json:\"thisOneNotRequiredEither,omitempty\"`",
+		"	ThisOneNotRequiredEither int64 `json:\"thisOneNotRequiredEither,omitempty\" xml:\"thisOneNotRequiredEither\"`",
 		"	AdditionalTransitiveRefedThingItems0 map[string]*AdditionalTransitiveRefedThingItems0Anon `json:\"-\"`",
 		`func (m *AdditionalTransitiveRefedThingItems0) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateThisOneNotRequiredEither(formats); err != nil {`,
@@ -3579,7 +3579,7 @@ func initFixtureAdditionalProps() {
 		`	if swag.IsZero(m.ThisOneNotRequiredEither) {`,
 		`	if err := validate.MaximumInt("thisOneNotRequiredEither", "body", int64(m.ThisOneNotRequiredEither), 20, false); err != nil {`,
 		`type AdditionalTransitiveRefedThingItems0Anon struct {`,
-		"	A1 strfmt.DateTime `json:\"a1,omitempty\"`",
+		"	A1 strfmt.DateTime `json:\"a1,omitempty\" xml:\"a1\"`",
 		"	AdditionalTransitiveRefedThingItems0Anon map[string]*AdditionalTransitiveRefedThingItems0AnonAnon `json:\"-\"`",
 		`func (m *AdditionalTransitiveRefedThingItems0Anon) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateA1(formats); err != nil {`,
@@ -3592,8 +3592,8 @@ func initFixtureAdditionalProps() {
 		`	if swag.IsZero(m.A1) {`,
 		`	if err := validate.FormatOf("a1", "body", "date-time", m.A1.String(), formats); err != nil {`,
 		`type AdditionalTransitiveRefedThingItems0AnonAnon struct {`,
-		"	Discourse string `json:\"discourse,omitempty\"`",
-		"	HoursSpent float64 `json:\"hoursSpent,omitempty\"`",
+		"	Discourse string `json:\"discourse,omitempty\" xml:\"discourse\"`",
+		"	HoursSpent float64 `json:\"hoursSpent,omitempty\" xml:\"hoursSpent\"`",
 		"	AdditionalTransitiveRefedThingItems0AnonAnonAdditionalProperties map[string]interface{} `json:\"-\"`",
 		// empty validation
 		"func (m *AdditionalTransitiveRefedThingItems0AnonAnon) Validate(formats strfmt.Registry) error {\n	return nil\n}",
@@ -3607,7 +3607,7 @@ func initFixtureAdditionalProps() {
 	// load expectations for model: additional_nullable_array_thing.go
 	flattenRun.AddExpectations("additional_nullable_array_thing.go", []string{
 		`type AdditionalNullableArrayThing struct {`,
-		"	ThisOneNotRequired int64 `json:\"thisOneNotRequired,omitempty\"`",
+		"	ThisOneNotRequired int64 `json:\"thisOneNotRequired,omitempty\" xml:\"thisOneNotRequired\"`",
 		"	AdditionalNullableArrayThing map[string][]strfmt.ISBN `json:\"-\"`",
 		`func (m *AdditionalNullableArrayThing) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateThisOneNotRequired(formats); err != nil {`,
@@ -3632,7 +3632,7 @@ func initFixtureAdditionalProps() {
 	// load expectations for model: additional_slice_of_primitives.go
 	flattenRun.AddExpectations("additional_slice_of_primitives.go", []string{
 		`type AdditionalSliceOfPrimitives struct {`,
-		"	Prop1 string `json:\"prop1,omitempty\"`",
+		"	Prop1 string `json:\"prop1,omitempty\" xml:\"prop1\"`",
 		"	AdditionalSliceOfPrimitives map[string][]strfmt.Date `json:\"-\"`",
 		`func (m *AdditionalSliceOfPrimitives) Validate(formats strfmt.Registry) error {`,
 		`	for k := range m.AdditionalSliceOfPrimitives {`,
@@ -3653,7 +3653,7 @@ func initFixtureAdditionalProps() {
 	// load expectations for model: additional_array_thing.go
 	flattenRun.AddExpectations("additional_array_thing.go", []string{
 		`type AdditionalArrayThing struct {`,
-		"	ThisOneNotRequired int64 `json:\"thisOneNotRequired,omitempty\"`",
+		"	ThisOneNotRequired int64 `json:\"thisOneNotRequired,omitempty\" xml:\"thisOneNotRequired\"`",
 		"	AdditionalArrayThing map[string][]strfmt.UUID `json:\"-\"`",
 		`func (m *AdditionalArrayThing) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateThisOneNotRequired(formats); err != nil {`,
@@ -3718,7 +3718,7 @@ func initFixtureAdditionalProps() {
 		`					return ve.ValidateName(k + "." + strconv.Itoa(i)`,
 		`		return errors.CompositeValidationError(res...`,
 		`type EmptyObjectWithAdditionalSliceItems0 struct {`,
-		"	DummyProp1 strfmt.Date `json:\"dummyProp1,omitempty\"`",
+		"	DummyProp1 strfmt.Date `json:\"dummyProp1,omitempty\" xml:\"dummyProp1\"`",
 		`func (m *EmptyObjectWithAdditionalSliceItems0) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateDummyProp1(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -3735,7 +3735,7 @@ func initFixtureAdditionalProps() {
 	// load expectations for model: additional_slice_of_objects.go
 	flattenRun.AddExpectations("additional_slice_of_objects.go", []string{
 		`type AdditionalSliceOfObjects struct {`,
-		"	Prop1 string `json:\"prop1,omitempty\"`",
+		"	Prop1 string `json:\"prop1,omitempty\" xml:\"prop1\"`",
 		"	AdditionalSliceOfObjects map[string][]*AdditionalSliceOfObjectsAdditionalPropertiesItems `json:\"-\"`",
 		`func (m *AdditionalSliceOfObjects) Validate(formats strfmt.Registry) error {`,
 		`	for k := range m.AdditionalSliceOfObjects {`,
@@ -3761,7 +3761,7 @@ func initFixtureAdditionalProps() {
 
 	expandRun.AddExpectations("additional_slice_of_objects.go", []string{
 		`type AdditionalSliceOfObjects struct {`,
-		"	Prop1 string `json:\"prop1,omitempty\"`",
+		"	Prop1 string `json:\"prop1,omitempty\" xml:\"prop1\"`",
 		"	AdditionalSliceOfObjects map[string][]*AdditionalSliceOfObjectsItems0 `json:\"-\"`",
 		`func (m *AdditionalSliceOfObjects) Validate(formats strfmt.Registry) error {`,
 		`	for k := range m.AdditionalSliceOfObjects {`,
@@ -3779,7 +3779,7 @@ func initFixtureAdditionalProps() {
 		`						return ve.ValidateName(k + "." + strconv.Itoa(i)`,
 		`		return errors.CompositeValidationError(res...`,
 		`type AdditionalSliceOfObjectsItems0 struct {`,
-		"	Prop2 int64 `json:\"prop2,omitempty\"`",
+		"	Prop2 int64 `json:\"prop2,omitempty\" xml:\"prop2\"`",
 		// empty validation
 		"func (m *AdditionalSliceOfObjectsItems0) Validate(formats strfmt.Registry) error {\n	return nil\n}",
 	},
@@ -3792,7 +3792,7 @@ func initFixtureAdditionalProps() {
 	// load expectations for model: additional_things_nested.go
 	flattenRun.AddExpectations("additional_things_nested.go", []string{
 		`type AdditionalThingsNested struct {`,
-		"	Origin string `json:\"origin,omitempty\"`",
+		"	Origin string `json:\"origin,omitempty\" xml:\"origin\"`",
 		"	AdditionalThingsNested map[string]*AdditionalThingsNestedAdditionalProperties `json:\"-\"`",
 		`func (m *AdditionalThingsNested) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateOrigin(formats); err != nil {`,
@@ -3824,7 +3824,7 @@ func initFixtureAdditionalProps() {
 
 	expandRun.AddExpectations("additional_things_nested.go", []string{
 		`type AdditionalThingsNested struct {`,
-		"	Origin string `json:\"origin,omitempty\"`",
+		"	Origin string `json:\"origin,omitempty\" xml:\"origin\"`",
 		"	AdditionalThingsNested map[string]*AdditionalThingsNestedAnon `json:\"-\"`",
 		`func (m *AdditionalThingsNested) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateOrigin(formats); err != nil {`,
@@ -3848,9 +3848,9 @@ func initFixtureAdditionalProps() {
 		`	if swag.IsZero(m.Origin) {`,
 		`	if err := m.validateOriginEnum("origin", "body", m.Origin); err != nil {`,
 		`type AdditionalThingsNestedAnon struct {`,
-		"	PrinterAddress string `json:\"printerAddress,omitempty\"`",
-		"	PrinterCountry string `json:\"printerCountry,omitempty\"`",
-		"	PrinterDate strfmt.Date `json:\"printerDate,omitempty\"`",
+		"	PrinterAddress string `json:\"printerAddress,omitempty\" xml:\"printerAddress\"`",
+		"	PrinterCountry string `json:\"printerCountry,omitempty\" xml:\"printerCountry\"`",
+		"	PrinterDate strfmt.Date `json:\"printerDate,omitempty\" xml:\"printerDate\"`",
 		"	AdditionalThingsNestedAnon map[string]*AdditionalThingsNestedAnonAnon `json:\"-\"`",
 		`func (m *AdditionalThingsNestedAnon) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validatePrinterCountry(formats); err != nil {`,
@@ -3880,7 +3880,7 @@ func initFixtureAdditionalProps() {
 		`	if swag.IsZero(m.PrinterDate) {`,
 		`	if err := validate.FormatOf("printerDate", "body", "date", m.PrinterDate.String(), formats); err != nil {`,
 		`type AdditionalThingsNestedAnonAnon struct {`,
-		"	AverageDelay strfmt.Duration `json:\"averageDelay,omitempty\"`",
+		"	AverageDelay strfmt.Duration `json:\"averageDelay,omitempty\" xml:\"averageDelay\"`",
 		`func (m *AdditionalThingsNestedAnonAnon) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateAverageDelay(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -3897,8 +3897,8 @@ func initFixtureAdditionalProps() {
 	// load expectations for model: no_validation_thing.go
 	flattenRun.AddExpectations("no_validation_thing.go", []string{
 		`type NoValidationThing struct {`,
-		"	Discourse string `json:\"discourse,omitempty\"`",
-		"	HoursSpent float64 `json:\"hoursSpent,omitempty\"`",
+		"	Discourse string `json:\"discourse,omitempty\" xml:\"discourse\"`",
+		"	HoursSpent float64 `json:\"hoursSpent,omitempty\" xml:\"hoursSpent\"`",
 		"	NoValidationThingAdditionalProperties map[string]interface{} `json:\"-\"`",
 		// empty validation
 		"func (m *NoValidationThing) Validate(formats strfmt.Registry) error {\n	return nil\n}",
@@ -3914,7 +3914,7 @@ func initFixtureAdditionalProps() {
 	// load expectations for model: additional_array_of_interface.go
 	flattenRun.AddExpectations("additional_array_of_interface.go", []string{
 		`type AdditionalArrayOfInterface struct {`,
-		"	ThisOneNotRequired int64 `json:\"thisOneNotRequired,omitempty\"`",
+		"	ThisOneNotRequired int64 `json:\"thisOneNotRequired,omitempty\" xml:\"thisOneNotRequired\"`",
 		"	AdditionalArrayOfInterface map[string][]interface{} `json:\"-\"`",
 		`func (m *AdditionalArrayOfInterface) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateThisOneNotRequired(formats); err != nil {`,
@@ -3970,7 +3970,7 @@ func initFixtureAdditionalProps() {
 	// load expectations for model: additional_array_of_refed_object.go
 	flattenRun.AddExpectations("additional_array_of_refed_object.go", []string{
 		`type AdditionalArrayOfRefedObject struct {`,
-		"	ThisOneNotRequired int64 `json:\"thisOneNotRequired,omitempty\"`",
+		"	ThisOneNotRequired int64 `json:\"thisOneNotRequired,omitempty\" xml:\"thisOneNotRequired\"`",
 		"	AdditionalArrayOfRefedObject map[string][]*NoValidationThing `json:\"-\"`",
 		`func (m *AdditionalArrayOfRefedObject) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateThisOneNotRequired(formats); err != nil {`,
@@ -4000,7 +4000,7 @@ func initFixtureAdditionalProps() {
 
 	expandRun.AddExpectations("additional_array_of_refed_object.go", []string{
 		`type AdditionalArrayOfRefedObject struct {`,
-		"	ThisOneNotRequired int64 `json:\"thisOneNotRequired,omitempty\"`",
+		"	ThisOneNotRequired int64 `json:\"thisOneNotRequired,omitempty\" xml:\"thisOneNotRequired\"`",
 		"	AdditionalArrayOfRefedObject map[string][]*AdditionalArrayOfRefedObjectItems0 `json:\"-\"`",
 		`func (m *AdditionalArrayOfRefedObject) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateThisOneNotRequired(formats); err != nil {`,
@@ -4022,8 +4022,8 @@ func initFixtureAdditionalProps() {
 		`	if swag.IsZero(m.ThisOneNotRequired) {`,
 		`	if err := validate.MaximumInt("thisOneNotRequired", "body", int64(m.ThisOneNotRequired), 10, false); err != nil {`,
 		`type AdditionalArrayOfRefedObjectItems0 struct {`,
-		"	Discourse string `json:\"discourse,omitempty\"`",
-		"	HoursSpent float64 `json:\"hoursSpent,omitempty\"`",
+		"	Discourse string `json:\"discourse,omitempty\" xml:\"discourse\"`",
+		"	HoursSpent float64 `json:\"hoursSpent,omitempty\" xml:\"hoursSpent\"`",
 		"	AdditionalArrayOfRefedObjectItems0AdditionalProperties map[string]interface{} `json:\"-\"`",
 		// empty validation
 		"func (m *AdditionalArrayOfRefedObjectItems0) Validate(formats strfmt.Registry) error {\n	return nil\n}",
@@ -4037,7 +4037,7 @@ func initFixtureAdditionalProps() {
 	// load expectations for model: additional_slice_of_aliased_primitives.go
 	flattenRun.AddExpectations("additional_slice_of_aliased_primitives.go", []string{
 		`type AdditionalSliceOfAliasedPrimitives struct {`,
-		"	Prop2 strfmt.UUID `json:\"prop2,omitempty\"`",
+		"	Prop2 strfmt.UUID `json:\"prop2,omitempty\" xml:\"prop2\"`",
 		"	AdditionalSliceOfAliasedPrimitives map[string][]AliasedDate `json:\"-\"`",
 		`func (m *AdditionalSliceOfAliasedPrimitives) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp2(formats); err != nil {`,
@@ -4063,7 +4063,7 @@ func initFixtureAdditionalProps() {
 
 	expandRun.AddExpectations("additional_slice_of_aliased_primitives.go", []string{
 		`type AdditionalSliceOfAliasedPrimitives struct {`,
-		"	Prop2 strfmt.UUID `json:\"prop2,omitempty\"`",
+		"	Prop2 strfmt.UUID `json:\"prop2,omitempty\" xml:\"prop2\"`",
 		"	AdditionalSliceOfAliasedPrimitives map[string][]strfmt.Date `json:\"-\"`",
 		`func (m *AdditionalSliceOfAliasedPrimitives) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp2(formats); err != nil {`,
@@ -4087,7 +4087,7 @@ func initFixtureAdditionalProps() {
 	// load expectations for model: transitive_refed_thing.go
 	flattenRun.AddExpectations("transitive_refed_thing.go", []string{
 		`type TransitiveRefedThing struct {`,
-		"	ThisOneNotRequiredEither int64 `json:\"thisOneNotRequiredEither,omitempty\"`",
+		"	ThisOneNotRequiredEither int64 `json:\"thisOneNotRequiredEither,omitempty\" xml:\"thisOneNotRequiredEither\"`",
 		"	TransitiveRefedThing map[string]*TransitiveRefedThingAdditionalProperties `json:\"-\"`",
 		`func (m *TransitiveRefedThing) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateThisOneNotRequiredEither(formats); err != nil {`,
@@ -4108,7 +4108,7 @@ func initFixtureAdditionalProps() {
 
 	expandRun.AddExpectations("transitive_refed_thing.go", []string{
 		`type TransitiveRefedThing struct {`,
-		"	ThisOneNotRequiredEither int64 `json:\"thisOneNotRequiredEither,omitempty\"`",
+		"	ThisOneNotRequiredEither int64 `json:\"thisOneNotRequiredEither,omitempty\" xml:\"thisOneNotRequiredEither\"`",
 		"	TransitiveRefedThing map[string]*TransitiveRefedThingAnon `json:\"-\"`",
 		`func (m *TransitiveRefedThing) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateThisOneNotRequiredEither(formats); err != nil {`,
@@ -4121,7 +4121,7 @@ func initFixtureAdditionalProps() {
 		`	if swag.IsZero(m.ThisOneNotRequiredEither) {`,
 		`	if err := validate.MaximumInt("thisOneNotRequiredEither", "body", int64(m.ThisOneNotRequiredEither), 20, false); err != nil {`,
 		`type TransitiveRefedThingAnon struct {`,
-		"	A1 strfmt.DateTime `json:\"a1,omitempty\"`",
+		"	A1 strfmt.DateTime `json:\"a1,omitempty\" xml:\"a1\"`",
 		"	TransitiveRefedThingAnon map[string]*TransitiveRefedThingAnonAnon `json:\"-\"`",
 		`func (m *TransitiveRefedThingAnon) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateA1(formats); err != nil {`,
@@ -4134,8 +4134,8 @@ func initFixtureAdditionalProps() {
 		`	if swag.IsZero(m.A1) {`,
 		`	if err := validate.FormatOf("a1", "body", "date-time", m.A1.String(), formats); err != nil {`,
 		`type TransitiveRefedThingAnonAnon struct {`,
-		"	Discourse string `json:\"discourse,omitempty\"`",
-		"	HoursSpent float64 `json:\"hoursSpent,omitempty\"`",
+		"	Discourse string `json:\"discourse,omitempty\" xml:\"discourse\"`",
+		"	HoursSpent float64 `json:\"hoursSpent,omitempty\" xml:\"hoursSpent\"`",
 		"	TransitiveRefedThingAnonAnonAdditionalProperties map[string]interface{} `json:\"-\"`",
 		// empty validation
 		"func (m *TransitiveRefedThingAnonAnon) Validate(formats strfmt.Registry) error {\n	return nil\n}",
@@ -4149,7 +4149,7 @@ func initFixtureAdditionalProps() {
 	// load expectations for model: additional_empty_object.go
 	flattenRun.AddExpectations("additional_empty_object.go", []string{
 		`type AdditionalEmptyObject struct {`,
-		"	PropA interface{} `json:\"propA,omitempty\"`",
+		"	PropA interface{} `json:\"propA,omitempty\" xml:\"propA\"`",
 		"	AdditionalEmptyObject map[string]interface{} `json:\"-\"`",
 		// empty validation
 		"func (m *AdditionalEmptyObject) Validate(formats strfmt.Registry) error {\n	return nil\n}",
@@ -4165,8 +4165,8 @@ func initFixtureAdditionalProps() {
 	// load expectations for model: additional_date_with_nullable_thing.go
 	flattenRun.AddExpectations("additional_date_with_nullable_thing.go", []string{
 		`type AdditionalDateWithNullableThing struct {`,
-		"	Blob int64 `json:\"blob,omitempty\"`",
-		"	NullableDate *AliasedNullableDate `json:\"nullableDate,omitempty\"`",
+		"	Blob int64 `json:\"blob,omitempty\" xml:\"blob\"`",
+		"	NullableDate *AliasedNullableDate `json:\"nullableDate,omitempty\" xml:\"nullableDate\"`",
 		"	AdditionalDateWithNullableThing map[string]*AliasedNullableDate `json:\"-\"`",
 		`func (m *AdditionalDateWithNullableThing) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateBlob(formats); err != nil {`,
@@ -4195,8 +4195,8 @@ func initFixtureAdditionalProps() {
 
 	expandRun.AddExpectations("additional_date_with_nullable_thing.go", []string{
 		`type AdditionalDateWithNullableThing struct {`,
-		"	Blob int64 `json:\"blob,omitempty\"`",
-		"	NullableDate *strfmt.Date `json:\"nullableDate,omitempty\"`",
+		"	Blob int64 `json:\"blob,omitempty\" xml:\"blob\"`",
+		"	NullableDate *strfmt.Date `json:\"nullableDate,omitempty\" xml:\"nullableDate\"`",
 		"	AdditionalDateWithNullableThing map[string]*strfmt.Date `json:\"-\"`",
 		`func (m *AdditionalDateWithNullableThing) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateBlob(formats); err != nil {`,
@@ -4327,8 +4327,8 @@ func initFixtureTuple() {
 		`			if ve, ok := err.(*errors.Validation); ok {`,
 		`				return ve.ValidateName("P3"`,
 		`type ClassicsClassicsItemsTuple0P0 struct {`,
-		"	Period *string `json:\"period,omitempty\"`",
-		"	Title *string `json:\"title,omitempty\"`",
+		"	Period *string `json:\"period,omitempty\" xml:\"period\"`",
+		"	Title *string `json:\"title,omitempty\" xml:\"title\"`",
 		`func (m *ClassicsClassicsItemsTuple0P0) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateTitle(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -4347,7 +4347,7 @@ func initFixtureTuple() {
 		`	if swag.IsZero(m.Title) {`,
 		`	if err := m.validateTitleEnum("P0"+"."+"title", "body", *m.Title); err != nil {`,
 		`type ClassicsClassicsItemsTuple0P2 struct {`,
-		"	Origin *string `json:\"origin,omitempty\"`",
+		"	Origin *string `json:\"origin,omitempty\" xml:\"origin\"`",
 		"	ClassicsClassicsItemsTuple0P2 map[string]string `json:\"-\"`",
 		`var classicsClassicsItemsTuple0P2ValueEnum []interface{`,
 		`	var res []string`,
@@ -4419,19 +4419,19 @@ func initFixtureTuple() {
 		`func (m *ClassicsClassicsItemsTuple0P3Tuple0) validateP5(formats strfmt.Registry) error {`,
 		`	if err := validate.Required("P5", "body", m.P5); err != nil {`,
 		`type ClassicsClassicsItemsTuple0P3Tuple0P1 struct {`,
-		"	Narrative *string `json:\"narrative\"`",
+		"	Narrative *string `json:\"narrative\" xml:\"narrative\"`",
 		`func (m *ClassicsClassicsItemsTuple0P3Tuple0P1) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateNarrative(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
 		`func (m *ClassicsClassicsItemsTuple0P3Tuple0P1) validateNarrative(formats strfmt.Registry) error {`,
 		`	if err := validate.Required("P1"+"."+"narrative", "body", m.Narrative); err != nil {`,
 		`type ClassicsClassicsItemsTuple0P3Tuple0P2 struct {`,
-		"	MarketingBS *string `json:\"marketingBS,omitempty\"`",
+		"	MarketingBS *string `json:\"marketingBS,omitempty\" xml:\"marketingBS\"`",
 		`func (m *ClassicsClassicsItemsTuple0P3Tuple0P2) Validate(formats strfmt.Registry) error {`,
 		`		return errors.CompositeValidationError(res...`,
 		`type ClassicsClassicsItemsTuple0P3Tuple0P3 struct {`,
-		"	Author *string `json:\"author,omitempty\"`",
-		"	Character *string `json:\"character,omitempty\"`",
+		"	Author *string `json:\"author,omitempty\" xml:\"author\"`",
+		"	Character *string `json:\"character,omitempty\" xml:\"character\"`",
 		`func (m *ClassicsClassicsItemsTuple0P3Tuple0P3) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateAuthor(formats); err != nil {`,
 		`	if err := m.validateCharacter(formats); err != nil {`,
@@ -4484,19 +4484,19 @@ func initFixtureTuple() {
 		`func (m *ClassicsTuple0) validateP5(formats strfmt.Registry) error {`,
 		`	if err := validate.Required("P5", "body", m.P5); err != nil {`,
 		`type ClassicsTuple0P1 struct {`,
-		"	Narrative *string `json:\"narrative\"`",
+		"	Narrative *string `json:\"narrative\" xml:\"narrative\"`",
 		`func (m *ClassicsTuple0P1) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateNarrative(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
 		`func (m *ClassicsTuple0P1) validateNarrative(formats strfmt.Registry) error {`,
 		`	if err := validate.Required("P1"+"."+"narrative", "body", m.Narrative); err != nil {`,
 		`type ClassicsTuple0P2 struct {`,
-		"	MarketingBS *string `json:\"marketingBS,omitempty\"`",
+		"	MarketingBS *string `json:\"marketingBS,omitempty\" xml:\"marketingBS\"`",
 		`func (m *ClassicsTuple0P2) Validate(formats strfmt.Registry) error {`,
 		`		return errors.CompositeValidationError(res...`,
 		`type ClassicsTuple0P3 struct {`,
-		"	Author *string `json:\"author,omitempty\"`",
-		"	Character *string `json:\"character,omitempty\"`",
+		"	Author *string `json:\"author,omitempty\" xml:\"author\"`",
+		"	Character *string `json:\"character,omitempty\" xml:\"character\"`",
 		`func (m *ClassicsTuple0P3) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateAuthor(formats); err != nil {`,
 		`	if err := m.validateCharacter(formats); err != nil {`,
@@ -4517,7 +4517,7 @@ func initFixtureTuple() {
 	// load expectations for model: comics_items2.go
 	flattenRun.AddExpectations("comics_items2.go", []string{
 		`type ComicsItems2 struct {`,
-		"	MarketingBS string `json:\"marketingBS,omitempty\"`",
+		"	MarketingBS string `json:\"marketingBS,omitempty\" xml:\"marketingBS\"`",
 		// empty validation
 		"func (m *ComicsItems2) Validate(formats strfmt.Registry) error {\n	return nil\n}",
 	},
@@ -4530,7 +4530,7 @@ func initFixtureTuple() {
 	// load expectations for model: classics_items_additional_items_items2.go
 	flattenRun.AddExpectations("classics_items_additional_items_items2.go", []string{
 		`type ClassicsItemsAdditionalItemsItems2 struct {`,
-		"	Origin string `json:\"origin,omitempty\"`",
+		"	Origin string `json:\"origin,omitempty\" xml:\"origin\"`",
 		"	ClassicsItemsAdditionalItemsItems2 map[string]string `json:\"-\"`",
 		`var classicsItemsAdditionalItemsItems2ValueEnum []interface{`,
 		`	var res []string`,
@@ -4660,8 +4660,8 @@ func initFixtureTuple() {
 	// load expectations for model: classics_items_additional_items_items0.go
 	flattenRun.AddExpectations("classics_items_additional_items_items0.go", []string{
 		`type ClassicsItemsAdditionalItemsItems0 struct {`,
-		"	Period string `json:\"period,omitempty\"`",
-		"	Title string `json:\"title,omitempty\"`",
+		"	Period string `json:\"period,omitempty\" xml:\"period\"`",
+		"	Title string `json:\"title,omitempty\" xml:\"title\"`",
 		`func (m *ClassicsItemsAdditionalItemsItems0) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateTitle(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -4689,7 +4689,7 @@ func initFixtureTuple() {
 	// load expectations for model: comics_items1.go
 	flattenRun.AddExpectations("comics_items1.go", []string{
 		`type ComicsItems1 struct {`,
-		"	Narrative *string `json:\"narrative\"`",
+		"	Narrative *string `json:\"narrative\" xml:\"narrative\"`",
 		`func (m *ComicsItems1) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateNarrative(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -4705,8 +4705,8 @@ func initFixtureTuple() {
 	// load expectations for model: comics_items3.go
 	flattenRun.AddExpectations("comics_items3.go", []string{
 		`type ComicsItems3 struct {`,
-		"	Author string `json:\"author,omitempty\"`",
-		"	Character string `json:\"character,omitempty\"`",
+		"	Author string `json:\"author,omitempty\" xml:\"author\"`",
+		"	Character string `json:\"character,omitempty\" xml:\"character\"`",
 		`func (m *ComicsItems3) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateAuthor(formats); err != nil {`,
 		`	if err := m.validateCharacter(formats); err != nil {`,
@@ -4775,7 +4775,7 @@ func initFixture1198() {
 	// load expectations for model: pet.go
 	flattenRun.AddExpectations("pet.go", []string{
 		`type Pet struct {`,
-		"	Date interface{} `json:\"date\"`",
+		"	Date interface{} `json:\"date\" xml:\"date\"`",
 		`func (m *Pet) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateDate(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -4840,8 +4840,8 @@ func initFixture1042() {
 	// load expectations for model: b_all_of1.go
 	flattenRun.AddExpectations("b_all_of1.go", []string{
 		`type BAllOf1 struct {`,
-		"	F3 *string `json:\"f3\"`",
-		"	F4 []string `json:\"f4\"`",
+		"	F3 *string `json:\"f3\" xml:\"f3\"`",
+		"	F4 []string `json:\"f4\" xml:\"f4\"`",
 		`func (m *BAllOf1) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateF3(formats); err != nil {`,
 		`	if err := m.validateF4(formats); err != nil {`,
@@ -4860,8 +4860,8 @@ func initFixture1042() {
 	// load expectations for model: a.go
 	flattenRun.AddExpectations("a.go", []string{
 		`type A struct {`,
-		"	F1 string `json:\"f1,omitempty\"`",
-		"	F2 string `json:\"f2,omitempty\"`",
+		"	F1 string `json:\"f1,omitempty\" xml:\"f1\"`",
+		"	F2 string `json:\"f2,omitempty\" xml:\"f2\"`",
 		// empty validation
 		"func (m *A) Validate(formats strfmt.Registry) error {\n	return nil\n}",
 	},
@@ -4888,8 +4888,8 @@ func initFixture1042V2() {
 	// load expectations for model: error_model.go
 	flattenRun.AddExpectations("error_model.go", []string{
 		`type ErrorModel struct {`,
-		"	Code *int64 `json:\"code\"`",
-		"	Message *string `json:\"message\"`",
+		"	Code *int64 `json:\"code\" xml:\"code\"`",
+		"	Message *string `json:\"message\" xml:\"message\"`",
 		`func (m *ErrorModel) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateCode(formats); err != nil {`,
 		`	if err := m.validateMessage(formats); err != nil {`,
@@ -4946,7 +4946,7 @@ func initFixture1042V2() {
 	// load expectations for model: extended_error_model_all_of1.go
 	flattenRun.AddExpectations("extended_error_model_all_of1.go", []string{
 		`type ExtendedErrorModelAllOf1 struct {`,
-		"	RootCause *string `json:\"rootCause\"`",
+		"	RootCause *string `json:\"rootCause\" xml:\"rootCause\"`",
 		`func (m *ExtendedErrorModelAllOf1) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateRootCause(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -5009,7 +5009,7 @@ func initFixture979() {
 	// load expectations for model: new_cluster.go
 	flattenRun.AddExpectations("new_cluster.go", []string{
 		`type NewCluster struct {`,
-		"	DummyProp1 int64 `json:\"dummyProp1,omitempty\"`",
+		"	DummyProp1 int64 `json:\"dummyProp1,omitempty\" xml:\"dummyProp1\"`",
 		// empty validation
 		"func (m *NewCluster) Validate(formats strfmt.Registry) error {\n	return nil\n}",
 	},
@@ -5022,8 +5022,8 @@ func initFixture979() {
 	// load expectations for model: cluster_all_of1.go
 	flattenRun.AddExpectations("cluster_all_of1.go", []string{
 		`type ClusterAllOf1 struct {`,
-		"	Result string `json:\"result,omitempty\"`",
-		"	Status string `json:\"status,omitempty\"`",
+		"	Result string `json:\"result,omitempty\" xml:\"result\"`",
+		"	Status string `json:\"status,omitempty\" xml:\"status\"`",
 		// empty validation
 		"func (m *ClusterAllOf1) Validate(formats strfmt.Registry) error {\n	return nil\n}",
 	},
@@ -5156,7 +5156,7 @@ func initFixture607() {
 	// load expectations for model: range_filter_all_of1.go
 	flattenRun.AddExpectations("range_filter_all_of1.go", []string{
 		`type RangeFilterAllOf1 struct {`,
-		"	Config *RangeFilterAllOf1Config `json:\"config\"`",
+		"	Config *RangeFilterAllOf1Config `json:\"config\" xml:\"config\"`",
 		`func (m *RangeFilterAllOf1) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateConfig(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -5301,7 +5301,7 @@ func initFixture607() {
 		`	dec.UseNumber(`,
 		`	if err := dec.Decode(&data); err != nil {`,
 		`	var base struct {`,
-		"		Type string `json:\"type\"`",
+		"		Type string `json:\"type\" xml:\"type\"`",
 		`	buf = bytes.NewBuffer(raw`,
 		`	dec = json.NewDecoder(buf`,
 		`	dec.UseNumber(`,
@@ -5322,7 +5322,7 @@ func initFixture607() {
 		`	if err != nil {`,
 		`		return nil, err`,
 		`	b2, err = json.Marshal(struct {`,
-		"		Type string `json:\"type\"`",
+		"		Type string `json:\"type\" xml:\"type\"`",
 		`	}{`,
 		`		Type: m.Type(),`,
 		`	})`,
@@ -5354,7 +5354,7 @@ func initFixture607() {
 		`	dec.UseNumber(`,
 		`	if err := dec.Decode(&data); err != nil {`,
 		`	var base struct {`,
-		"		Type string `json:\"type\"`",
+		"		Type string `json:\"type\" xml:\"type\"`",
 		`	buf = bytes.NewBuffer(raw`,
 		`	dec = json.NewDecoder(buf`,
 		`	dec.UseNumber(`,
@@ -5375,7 +5375,7 @@ func initFixture607() {
 		`	if err != nil {`,
 		`		return nil, err`,
 		`	b2, err = json.Marshal(struct {`,
-		"		Type string `json:\"type\"`",
+		"		Type string `json:\"type\" xml:\"type\"`",
 		`	}{`,
 		`		Type: m.Type(),`,
 		`	})`,
@@ -5395,10 +5395,10 @@ func initFixture607() {
 	// load expectations for model: range_filter_all_of1_config.go
 	flattenRun.AddExpectations("range_filter_all_of1_config.go", []string{
 		`type RangeFilterAllOf1Config struct {`,
-		"	Gt float64 `json:\"gt,omitempty\"`",
-		"	Gte float64 `json:\"gte,omitempty\"`",
-		"	Lt float64 `json:\"lt,omitempty\"`",
-		"	Lte float64 `json:\"lte,omitempty\"`",
+		"	Gt float64 `json:\"gt,omitempty\" xml:\"gt\"`",
+		"	Gte float64 `json:\"gte,omitempty\" xml:\"gte\"`",
+		"	Lt float64 `json:\"lt,omitempty\" xml:\"lt\"`",
+		"	Lte float64 `json:\"lte,omitempty\" xml:\"lte\"`",
 		// empty validation
 		"func (m *RangeFilterAllOf1Config) Validate(formats strfmt.Registry) error {\n	return nil\n}",
 	},
@@ -5484,7 +5484,7 @@ func initFixture1336() {
 	// load expectations for model: code_block_node_all_of1.go
 	flattenRun.AddExpectations("code_block_node_all_of1.go", []string{
 		`type CodeBlockNodeAllOf1 struct {`,
-		"	Code string `json:\"Code,omitempty\"`",
+		"	Code string `json:\"Code,omitempty\" xml:\"Code\"`",
 		// empty validation
 		"func (m *CodeBlockNodeAllOf1) Validate(formats strfmt.Registry) error {\n	return nil\n}",
 	},
@@ -5541,7 +5541,7 @@ func initFixture1336() {
 	// load expectations for model: doc_block_node_all_of1.go
 	flattenRun.AddExpectations("doc_block_node_all_of1.go", []string{
 		`type DocBlockNodeAllOf1 struct {`,
-		"	Doc string `json:\"Doc,omitempty\"`",
+		"	Doc string `json:\"Doc,omitempty\" xml:\"Doc\"`",
 		// empty validation
 		"func (m *DocBlockNodeAllOf1) Validate(formats strfmt.Registry) error {\n	return nil\n}",
 	},
@@ -5713,7 +5713,7 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: all_of_validations_meta_all_of6.go
 	flattenRun.AddExpectations("all_of_validations_meta_all_of6.go", []string{
 		`type AllOfValidationsMetaAllOf6 struct {`,
-		"	Coords *AllOfValidationsMetaAllOf6Coords `json:\"coords,omitempty\"`",
+		"	Coords *AllOfValidationsMetaAllOf6Coords `json:\"coords,omitempty\" xml:\"coords\"`",
 		`func (m *AllOfValidationsMetaAllOf6) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateCoords(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -5733,7 +5733,7 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: nested_array_validations.go
 	flattenRun.AddExpectations("nested_array_validations.go", []string{
 		`type NestedArrayValidations struct {`,
-		"	Tags [][][]string `json:\"tags\"`",
+		"	Tags [][][]string `json:\"tags\" xml:\"tags\"`",
 		`func (m *NestedArrayValidations) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateTags(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -5766,7 +5766,7 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: all_of_validations_meta_all_of4.go
 	flattenRun.AddExpectations("all_of_validations_meta_all_of4.go", []string{
 		`type AllOfValidationsMetaAllOf4 struct {`,
-		"	Opts map[string]int32 `json:\"opts,omitempty\"`",
+		"	Opts map[string]int32 `json:\"opts,omitempty\" xml:\"opts\"`",
 		`func (m *AllOfValidationsMetaAllOf4) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateOpts(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -5787,9 +5787,9 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: simple_zero_allowed.go
 	flattenRun.AddExpectations("simple_zero_allowed.go", []string{
 		`type SimpleZeroAllowed struct {`,
-		"	ID string `json:\"id,omitempty\"`",
-		"	Name *string `json:\"name\"`",
-		"	Urls []string `json:\"urls\"`",
+		"	ID string `json:\"id,omitempty\" xml:\"id\"`",
+		"	Name *string `json:\"name\" xml:\"name\"`",
+		"	Urls []string `json:\"urls\" xml:\"urls\"`",
 		`func (m *SimpleZeroAllowed) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateID(formats); err != nil {`,
 		`	if err := m.validateName(formats); err != nil {`,
@@ -5819,7 +5819,7 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: named_all_of_all_of6_coords_all_of0.go
 	flattenRun.AddExpectations("named_all_of_all_of6_coords_all_of0.go", []string{
 		`type NamedAllOfAllOf6CoordsAllOf0 struct {`,
-		"	Name string `json:\"name,omitempty\"`",
+		"	Name string `json:\"name,omitempty\" xml:\"name\"`",
 		`func (m *NamedAllOfAllOf6CoordsAllOf0) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateName(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -5838,7 +5838,7 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: named_all_of_all_of6.go
 	flattenRun.AddExpectations("named_all_of_all_of6.go", []string{
 		`type NamedAllOfAllOf6 struct {`,
-		"	Coords *NamedAllOfAllOf6Coords `json:\"coords,omitempty\"`",
+		"	Coords *NamedAllOfAllOf6Coords `json:\"coords,omitempty\" xml:\"coords\"`",
 		`func (m *NamedAllOfAllOf6) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateCoords(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -5924,7 +5924,7 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: nested_map_validations.go
 	flattenRun.AddExpectations("nested_map_validations.go", []string{
 		`type NestedMapValidations struct {`,
-		"	Meta map[string]map[string]map[string]int64 `json:\"meta,omitempty\"`",
+		"	Meta map[string]map[string]map[string]int64 `json:\"meta,omitempty\" xml:\"meta\"`",
 		`func (m *NestedMapValidations) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateMeta(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -5977,8 +5977,8 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: named_map_complex_additional_properties.go
 	flattenRun.AddExpectations("named_map_complex_additional_properties.go", []string{
 		`type NamedMapComplexAdditionalProperties struct {`,
-		"	Age int32 `json:\"age,omitempty\"`",
-		"	Name string `json:\"name,omitempty\"`",
+		"	Age int32 `json:\"age,omitempty\" xml:\"age\"`",
+		"	Name string `json:\"name,omitempty\" xml:\"name\"`",
 		`func (m *NamedMapComplexAdditionalProperties) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateAge(formats); err != nil {`,
 		`	if err := m.validateName(formats); err != nil {`,
@@ -6035,8 +6035,8 @@ func initTodolistSchemavalidation() {
 		`					if err := val.Validate(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
 		`type NamedNestedMapComplexAnon struct {`,
-		"	Age int32 `json:\"age,omitempty\"`",
-		"	Name string `json:\"name,omitempty\"`",
+		"	Age int32 `json:\"age,omitempty\" xml:\"age\"`",
+		"	Name string `json:\"name,omitempty\" xml:\"name\"`",
 		`func (m *NamedNestedMapComplexAnon) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateAge(formats); err != nil {`,
 		`	if err := m.validateName(formats); err != nil {`,
@@ -6061,7 +6061,7 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: all_of_validations_meta_all_of1.go
 	flattenRun.AddExpectations("all_of_validations_meta_all_of1.go", []string{
 		`type AllOfValidationsMetaAllOf1 struct {`,
-		"	Age int32 `json:\"age,omitempty\"`",
+		"	Age int32 `json:\"age,omitempty\" xml:\"age\"`",
 		`func (m *AllOfValidationsMetaAllOf1) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateAge(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -6083,8 +6083,8 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: tag.go
 	flattenRun.AddExpectations("tag.go", []string{
 		`type Tag struct {`,
-		"	ID int64 `json:\"id,omitempty\"`",
-		"	Name string `json:\"name,omitempty\"`",
+		"	ID int64 `json:\"id,omitempty\" xml:\"id\"`",
+		"	Name string `json:\"name,omitempty\" xml:\"name\"`",
 		// empty validation
 		"func (m *Tag) Validate(formats strfmt.Registry) error {\n	return nil\n}",
 	},
@@ -6099,7 +6099,7 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: nested_object_validations_args.go
 	flattenRun.AddExpectations("nested_object_validations_args.go", []string{
 		`type NestedObjectValidationsArgs struct {`,
-		"	Meta *NestedObjectValidationsArgsMeta `json:\"meta,omitempty\"`",
+		"	Meta *NestedObjectValidationsArgsMeta `json:\"meta,omitempty\" xml:\"meta\"`",
 		`func (m *NestedObjectValidationsArgs) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateMeta(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -6119,7 +6119,7 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: named_all_of_all_of6_coords_all_of1.go
 	flattenRun.AddExpectations("named_all_of_all_of6_coords_all_of1.go", []string{
 		`type NamedAllOfAllOf6CoordsAllOf1 struct {`,
-		"	Age int32 `json:\"age,omitempty\"`",
+		"	Age int32 `json:\"age,omitempty\" xml:\"age\"`",
 		`func (m *NamedAllOfAllOf6CoordsAllOf1) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateAge(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -6154,7 +6154,7 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: array_multi_validations.go
 	flattenRun.AddExpectations("array_multi_validations.go", []string{
 		`type ArrayMultiValidations struct {`,
-		"	Args ArrayMultiValidationsArgs `json:\"args,omitempty\"`",
+		"	Args ArrayMultiValidationsArgs `json:\"args,omitempty\" xml:\"args\"`",
 		`func (m *ArrayMultiValidations) Validate(formats strfmt.Registry) error {`,
 		`		return errors.CompositeValidationError(res...`,
 	},
@@ -6166,7 +6166,7 @@ func initTodolistSchemavalidation() {
 
 	expandRun.AddExpectations("array_multi_validations.go", []string{
 		`type ArrayMultiValidations struct {`,
-		"	Args *ArrayMultiValidationsArgsTuple0 `json:\"args,omitempty\"`",
+		"	Args *ArrayMultiValidationsArgsTuple0 `json:\"args,omitempty\" xml:\"args\"`",
 		`func (m *ArrayMultiValidations) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateArgs(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -6203,7 +6203,7 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: string_validations.go
 	flattenRun.AddExpectations("string_validations.go", []string{
 		`type StringValidations struct {`,
-		"	Name string `json:\"name,omitempty\"`",
+		"	Name string `json:\"name,omitempty\" xml:\"name\"`",
 		`func (m *StringValidations) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateName(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -6224,12 +6224,12 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: required_props.go
 	flattenRun.AddExpectations("required_props.go", []string{
 		`type RequiredProps struct {`,
-		"	Age *int32 `json:\"age\"`",
-		"	CreatedAt *strfmt.DateTime `json:\"createdAt\"`",
-		"	ID *int64 `json:\"id\"`",
-		"	Name *string `json:\"name\"`",
-		"	Score *float32 `json:\"score\"`",
-		"	Tags []string `json:\"tags\"`",
+		"	Age *int32 `json:\"age\" xml:\"age\"`",
+		"	CreatedAt *strfmt.DateTime `json:\"createdAt\" xml:\"createdAt\"`",
+		"	ID *int64 `json:\"id\" xml:\"id\"`",
+		"	Name *string `json:\"name\" xml:\"name\"`",
+		"	Score *float32 `json:\"score\" xml:\"score\"`",
+		"	Tags []string `json:\"tags\" xml:\"tags\"`",
 		`func (m *RequiredProps) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateAge(formats); err != nil {`,
 		`	if err := m.validateCreatedAt(formats); err != nil {`,
@@ -6263,7 +6263,7 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: named_all_of_all_of5.go
 	flattenRun.AddExpectations("named_all_of_all_of5.go", []string{
 		`type NamedAllOfAllOf5 struct {`,
-		"	ExtOpts map[string]map[string]map[string]int32 `json:\"extOpts,omitempty\"`",
+		"	ExtOpts map[string]map[string]map[string]int32 `json:\"extOpts,omitempty\" xml:\"extOpts\"`",
 		`func (m *NamedAllOfAllOf5) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateExtOpts(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -6324,7 +6324,7 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: named_all_of_all_of3.go
 	flattenRun.AddExpectations("named_all_of_all_of3.go", []string{
 		`type NamedAllOfAllOf3 struct {`,
-		"	Assoc [][][]string `json:\"assoc\"`",
+		"	Assoc [][][]string `json:\"assoc\" xml:\"assoc\"`",
 		`func (m *NamedAllOfAllOf3) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateAssoc(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -6356,8 +6356,8 @@ func initTodolistSchemavalidation() {
 	flattenRun.AddExpectations("map_complex_validations.go", []string{
 		`type MapComplexValidations struct {`,
 		// maps are now simple types
-		//"	Meta MapComplexValidationsMeta `json:\"meta,omitempty\"`",
-		"Meta map[string]MapComplexValidationsMetaAdditionalProperties `json:\"meta,omitempty\"`",
+		//"	Meta MapComplexValidationsMeta `json:\"meta,omitempty\" xml:\"meta\"`",
+		"Meta map[string]MapComplexValidationsMetaAdditionalProperties `json:\"meta,omitempty\" xml:\"meta\"`",
 		`func (m *MapComplexValidations) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateMeta(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -6378,7 +6378,7 @@ func initTodolistSchemavalidation() {
 
 	expandRun.AddExpectations("map_complex_validations.go", []string{
 		`type MapComplexValidations struct {`,
-		"	Meta map[string]MapComplexValidationsMetaAnon `json:\"meta,omitempty\"`",
+		"	Meta map[string]MapComplexValidationsMetaAnon `json:\"meta,omitempty\" xml:\"meta\"`",
 		`func (m *MapComplexValidations) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateMeta(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -6389,8 +6389,8 @@ func initTodolistSchemavalidation() {
 		`		if val, ok := m.Meta[k]; ok {`,
 		`			if err := val.Validate(formats); err != nil {`,
 		`type MapComplexValidationsMetaAnon struct {`,
-		"	Age int32 `json:\"age,omitempty\"`",
-		"	Name string `json:\"name,omitempty\"`",
+		"	Age int32 `json:\"age,omitempty\" xml:\"age\"`",
+		"	Name string `json:\"name,omitempty\" xml:\"name\"`",
 		`func (m *MapComplexValidationsMetaAnon) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateAge(formats); err != nil {`,
 		`	if err := m.validateName(formats); err != nil {`,
@@ -6415,8 +6415,8 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: named_nested_map_complex_additional_properties_additional_properties_additional_properties.go
 	flattenRun.AddExpectations("named_nested_map_complex_additional_properties_additional_properties_additional_properties.go", []string{
 		`type NamedNestedMapComplexAdditionalPropertiesAdditionalPropertiesAdditionalProperties struct {`,
-		"	Age int32 `json:\"age,omitempty\"`",
-		"	Name string `json:\"name,omitempty\"`",
+		"	Age int32 `json:\"age,omitempty\" xml:\"age\"`",
+		"	Name string `json:\"name,omitempty\" xml:\"name\"`",
 		`func (m *NamedNestedMapComplexAdditionalPropertiesAdditionalPropertiesAdditionalProperties) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateAge(formats); err != nil {`,
 		`	if err := m.validateName(formats); err != nil {`,
@@ -6457,7 +6457,7 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: array_validations.go
 	flattenRun.AddExpectations("array_validations.go", []string{
 		`type ArrayValidations struct {`,
-		"	Tags []string `json:\"tags\"`",
+		"	Tags []string `json:\"tags\" xml:\"tags\"`",
 		`func (m *ArrayValidations) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateTags(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -6508,8 +6508,8 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: map_complex_validations_meta_additional_properties.go
 	flattenRun.AddExpectations("map_complex_validations_meta_additional_properties.go", []string{
 		`type MapComplexValidationsMetaAdditionalProperties struct {`,
-		"	Age int32 `json:\"age,omitempty\"`",
-		"	Name string `json:\"name,omitempty\"`",
+		"	Age int32 `json:\"age,omitempty\" xml:\"age\"`",
+		"	Name string `json:\"name,omitempty\" xml:\"name\"`",
 		`func (m *MapComplexValidationsMetaAdditionalProperties) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateAge(formats); err != nil {`,
 		`	if err := m.validateName(formats); err != nil {`,
@@ -6537,7 +6537,7 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: all_of_validations_meta_all_of6_coords_all_of1.go
 	flattenRun.AddExpectations("all_of_validations_meta_all_of6_coords_all_of1.go", []string{
 		`type AllOfValidationsMetaAllOf6CoordsAllOf1 struct {`,
-		"	Age int32 `json:\"age,omitempty\"`",
+		"	Age int32 `json:\"age,omitempty\" xml:\"age\"`",
 		`func (m *AllOfValidationsMetaAllOf6CoordsAllOf1) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateAge(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -6556,7 +6556,7 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: all_of_validations_meta_all_of3.go
 	flattenRun.AddExpectations("all_of_validations_meta_all_of3.go", []string{
 		`type AllOfValidationsMetaAllOf3 struct {`,
-		"	Assoc [][][]string `json:\"assoc\"`",
+		"	Assoc [][][]string `json:\"assoc\" xml:\"assoc\"`",
 		`func (m *AllOfValidationsMetaAllOf3) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateAssoc(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -6587,7 +6587,7 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: nested_object_validations.go
 	flattenRun.AddExpectations("nested_object_validations.go", []string{
 		`type NestedObjectValidations struct {`,
-		"	Args *NestedObjectValidationsArgs `json:\"args,omitempty\"`",
+		"	Args *NestedObjectValidationsArgs `json:\"args,omitempty\" xml:\"args\"`",
 		`func (m *NestedObjectValidations) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateArgs(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -6606,7 +6606,7 @@ func initTodolistSchemavalidation() {
 
 	expandRun.AddExpectations("nested_object_validations.go", []string{
 		`type NestedObjectValidations struct {`,
-		"	Args *NestedObjectValidationsArgs `json:\"args,omitempty\"`",
+		"	Args *NestedObjectValidationsArgs `json:\"args,omitempty\" xml:\"args\"`",
 		`func (m *NestedObjectValidations) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateArgs(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -6617,7 +6617,7 @@ func initTodolistSchemavalidation() {
 		`			if ve, ok := err.(*errors.Validation); ok {`,
 		`				return ve.ValidateName("args"`,
 		`type NestedObjectValidationsArgs struct {`,
-		"	Meta *NestedObjectValidationsArgsMeta `json:\"meta,omitempty\"`",
+		"	Meta *NestedObjectValidationsArgsMeta `json:\"meta,omitempty\" xml:\"meta\"`",
 		`func (m *NestedObjectValidationsArgs) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateMeta(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -6628,10 +6628,10 @@ func initTodolistSchemavalidation() {
 		`			if ve, ok := err.(*errors.Validation); ok {`,
 		`				return ve.ValidateName("args" + "." + "meta"`,
 		`type NestedObjectValidationsArgsMeta struct {`,
-		"	First string `json:\"first,omitempty\"`",
-		"	Fourth [][][]float32 `json:\"fourth\"`",
-		"	Second float64 `json:\"second,omitempty\"`",
-		"	Third []float32 `json:\"third\"`",
+		"	First string `json:\"first,omitempty\" xml:\"first\"`",
+		"	Fourth [][][]float32 `json:\"fourth\" xml:\"fourth\"`",
+		"	Second float64 `json:\"second,omitempty\" xml:\"second\"`",
+		"	Third []float32 `json:\"third\" xml:\"third\"`",
 		`func (m *NestedObjectValidationsArgsMeta) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateFirst(formats); err != nil {`,
 		`	if err := m.validateFourth(formats); err != nil {`,
@@ -6719,11 +6719,11 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: pet.go
 	flattenRun.AddExpectations("pet.go", []string{
 		`type Pet struct {`,
-		"	Category *Category `json:\"category,omitempty\"`",
-		"	ID int64 `json:\"id,omitempty\"`",
-		"	Name *string `json:\"name\"`",
+		"	Category *Category `json:\"category,omitempty\" xml:\"category\"`",
+		"	ID int64 `json:\"id,omitempty\" xml:\"id\"`",
+		"	Name *string `json:\"name\" xml:\"name\"`",
 		"	PhotoUrls []string `json:\"photoUrls\" xml:\"photoUrl\"`",
-		"	Status string `json:\"status,omitempty\"`",
+		"	Status string `json:\"status,omitempty\" xml:\"status\"`",
 		"	Tags []*Tag `json:\"tags\" xml:\"tag\"`",
 		`func (m *Pet) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateCategory(formats); err != nil {`,
@@ -6776,11 +6776,11 @@ func initTodolistSchemavalidation() {
 
 	expandRun.AddExpectations("pet.go", []string{
 		`type Pet struct {`,
-		"	Category *PetCategory `json:\"category,omitempty\"`",
-		"	ID int64 `json:\"id,omitempty\"`",
-		"	Name *string `json:\"name\"`",
+		"	Category *PetCategory `json:\"category,omitempty\" xml:\"category\"`",
+		"	ID int64 `json:\"id,omitempty\" xml:\"id\"`",
+		"	Name *string `json:\"name\" xml:\"name\"`",
 		"	PhotoUrls []string `json:\"photoUrls\" xml:\"photoUrl\"`",
-		"	Status string `json:\"status,omitempty\"`",
+		"	Status string `json:\"status,omitempty\" xml:\"status\"`",
 		"	Tags []*PetTagsItems0 `json:\"tags\" xml:\"tag\"`",
 		`func (m *Pet) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateCategory(formats); err != nil {`,
@@ -6825,13 +6825,13 @@ func initTodolistSchemavalidation() {
 		`				if ve, ok := err.(*errors.Validation); ok {`,
 		`					return ve.ValidateName("tags" + "." + strconv.Itoa(i)`,
 		`type PetCategory struct {`,
-		"	ID int64 `json:\"id,omitempty\"`",
-		"	Name string `json:\"name,omitempty\"`",
+		"	ID int64 `json:\"id,omitempty\" xml:\"id\"`",
+		"	Name string `json:\"name,omitempty\" xml:\"name\"`",
 		// empty validation
 		"func (m *PetCategory) Validate(formats strfmt.Registry) error {\n	return nil\n}",
 		`type PetTagsItems0 struct {`,
-		"	ID int64 `json:\"id,omitempty\"`",
-		"	Name string `json:\"name,omitempty\"`",
+		"	ID int64 `json:\"id,omitempty\" xml:\"id\"`",
+		"	Name string `json:\"name,omitempty\" xml:\"name\"`",
 		// empty validation
 		"func (m *PetTagsItems0) Validate(formats strfmt.Registry) error {\n	return nil\n}",
 	},
@@ -6880,7 +6880,7 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: all_of_validations_meta_all_of2.go
 	flattenRun.AddExpectations("all_of_validations_meta_all_of2.go", []string{
 		`type AllOfValidationsMetaAllOf2 struct {`,
-		"	Args []string `json:\"args\"`",
+		"	Args []string `json:\"args\" xml:\"args\"`",
 		`func (m *AllOfValidationsMetaAllOf2) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateArgs(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -6903,7 +6903,7 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: all_of_validations_meta_all_of0.go
 	flattenRun.AddExpectations("all_of_validations_meta_all_of0.go", []string{
 		`type AllOfValidationsMetaAllOf0 struct {`,
-		"	Name string `json:\"name,omitempty\"`",
+		"	Name string `json:\"name,omitempty\" xml:\"name\"`",
 		`func (m *AllOfValidationsMetaAllOf0) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateName(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -6922,7 +6922,7 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: named_all_of_all_of4.go
 	flattenRun.AddExpectations("named_all_of_all_of4.go", []string{
 		`type NamedAllOfAllOf4 struct {`,
-		"	Opts map[string]float64 `json:\"opts,omitempty\"`",
+		"	Opts map[string]float64 `json:\"opts,omitempty\" xml:\"opts\"`",
 		`func (m *NamedAllOfAllOf4) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateOpts(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -6943,7 +6943,7 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: named_all_of_all_of0.go
 	flattenRun.AddExpectations("named_all_of_all_of0.go", []string{
 		`type NamedAllOfAllOf0 struct {`,
-		"	Name string `json:\"name,omitempty\"`",
+		"	Name string `json:\"name,omitempty\" xml:\"name\"`",
 		`func (m *NamedAllOfAllOf0) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateName(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -6962,8 +6962,8 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: nested_map_complex_validations_meta_additional_properties_additional_properties_additional_properties.go
 	flattenRun.AddExpectations("nested_map_complex_validations_meta_additional_properties_additional_properties_additional_properties.go", []string{
 		`type NestedMapComplexValidationsMetaAdditionalPropertiesAdditionalPropertiesAdditionalProperties struct {`,
-		"	Age int32 `json:\"age,omitempty\"`",
-		"	Name string `json:\"name,omitempty\"`",
+		"	Age int32 `json:\"age,omitempty\" xml:\"age\"`",
+		"	Name string `json:\"name,omitempty\" xml:\"name\"`",
 		`func (m *NestedMapComplexValidationsMetaAdditionalPropertiesAdditionalPropertiesAdditionalProperties) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateAge(formats); err != nil {`,
 		`	if err := m.validateName(formats); err != nil {`,
@@ -7031,9 +7031,9 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: update_org.go
 	flattenRun.AddExpectations("update_org.go", []string{
 		`type UpdateOrg struct {`,
-		"	Email string `json:\"email,omitempty\"`",
-		"	InvoiceEmail bool `json:\"invoice_email,omitempty\"`",
-		"	TagExpiration *int64 `json:\"tag_expiration,omitempty\"`",
+		"	Email string `json:\"email,omitempty\" xml:\"email\"`",
+		"	InvoiceEmail bool `json:\"invoice_email,omitempty\" xml:\"invoice_email\"`",
+		"	TagExpiration *int64 `json:\"tag_expiration,omitempty\" xml:\"tag_expiration\"`",
 		`func (m *UpdateOrg) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateTagExpiration(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -7053,7 +7053,7 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: number_validations.go
 	flattenRun.AddExpectations("number_validations.go", []string{
 		`type NumberValidations struct {`,
-		"	Age int32 `json:\"age,omitempty\"`",
+		"	Age int32 `json:\"age,omitempty\" xml:\"age\"`",
 		`func (m *NumberValidations) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateAge(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -7075,8 +7075,8 @@ func initTodolistSchemavalidation() {
 	flattenRun.AddExpectations("nested_map_complex_validations.go", []string{
 		`type NestedMapComplexValidations struct {`,
 		// maps are now simple types
-		//"	Meta NestedMapComplexValidationsMeta `json:\"meta,omitempty\"`",
-		"	Meta map[string]map[string]map[string]NestedMapComplexValidationsMetaAdditionalPropertiesAdditionalPropertiesAdditionalProperties `json:\"meta,omitempty\"`",
+		//"	Meta NestedMapComplexValidationsMeta `json:\"meta,omitempty\" xml:\"meta\"`",
+		"	Meta map[string]map[string]map[string]NestedMapComplexValidationsMetaAdditionalPropertiesAdditionalPropertiesAdditionalProperties `json:\"meta,omitempty\" xml:\"meta\"`",
 		`func (m *NestedMapComplexValidations) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateMeta(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -7100,7 +7100,7 @@ func initTodolistSchemavalidation() {
 
 	expandRun.AddExpectations("nested_map_complex_validations.go", []string{
 		`type NestedMapComplexValidations struct {`,
-		"	Meta map[string]map[string]map[string]NestedMapComplexValidationsMetaAnon `json:\"meta,omitempty\"`",
+		"	Meta map[string]map[string]map[string]NestedMapComplexValidationsMetaAnon `json:\"meta,omitempty\" xml:\"meta\"`",
 		`func (m *NestedMapComplexValidations) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateMeta(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -7115,8 +7115,8 @@ func initTodolistSchemavalidation() {
 		`				if val, ok := m.Meta[k][kk][kkk]; ok {`,
 		`					if err := val.Validate(formats); err != nil {`,
 		`type NestedMapComplexValidationsMetaAnon struct {`,
-		"	Age int32 `json:\"age,omitempty\"`",
-		"	Name string `json:\"name,omitempty\"`",
+		"	Age int32 `json:\"age,omitempty\" xml:\"age\"`",
+		"	Name string `json:\"name,omitempty\" xml:\"name\"`",
 		`func (m *NestedMapComplexValidationsMetaAnon) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateAge(formats); err != nil {`,
 		`	if err := m.validateName(formats); err != nil {`,
@@ -7141,8 +7141,8 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: category.go
 	flattenRun.AddExpectations("category.go", []string{
 		`type Category struct {`,
-		"	ID int64 `json:\"id,omitempty\"`",
-		"	Name string `json:\"name,omitempty\"`",
+		"	ID int64 `json:\"id,omitempty\" xml:\"id\"`",
+		"	Name string `json:\"name,omitempty\" xml:\"name\"`",
 		// empty validation
 		"func (m *Category) Validate(formats strfmt.Registry) error {\n	return nil\n}",
 	},
@@ -7157,7 +7157,7 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: named_all_of_all_of2.go
 	flattenRun.AddExpectations("named_all_of_all_of2.go", []string{
 		`type NamedAllOfAllOf2 struct {`,
-		"	Args []string `json:\"args\"`",
+		"	Args []string `json:\"args\" xml:\"args\"`",
 		`func (m *NamedAllOfAllOf2) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateArgs(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -7240,16 +7240,16 @@ func initTodolistSchemavalidation() {
 
 	expandRun.AddExpectations("named_all_of.go", []string{
 		`type NamedAllOf struct {`,
-		"	Name string `json:\"name,omitempty\"`",
-		"	Age int32 `json:\"age,omitempty\"`",
-		"	Args []string `json:\"args\"`",
-		"	Assoc [][][]string `json:\"assoc\"`",
-		"	Opts map[string]float64 `json:\"opts,omitempty\"`",
-		"	ExtOpts map[string]map[string]map[string]int32 `json:\"extOpts,omitempty\"`",
+		"	Name string `json:\"name,omitempty\" xml:\"name\"`",
+		"	Age int32 `json:\"age,omitempty\" xml:\"age\"`",
+		"	Args []string `json:\"args\" xml:\"args\"`",
+		"	Assoc [][][]string `json:\"assoc\" xml:\"assoc\"`",
+		"	Opts map[string]float64 `json:\"opts,omitempty\" xml:\"opts\"`",
+		"	ExtOpts map[string]map[string]map[string]int32 `json:\"extOpts,omitempty\" xml:\"extOpts\"`",
 		`	Coords struct {`,
-		"		Name string `json:\"name,omitempty\"`",
-		"		Age int32 `json:\"age,omitempty\"`",
-		"	} `json:\"coords,omitempty\"`",
+		"		Name string `json:\"name,omitempty\" xml:\"name\"`",
+		"		Age int32 `json:\"age,omitempty\" xml:\"age\"`",
+		"	} `json:\"coords,omitempty\" xml:\"coords\"`",
 		`func (m *NamedAllOf) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateName(formats); err != nil {`,
 		`	if err := m.validateAge(formats); err != nil {`,
@@ -7353,8 +7353,8 @@ func initTodolistSchemavalidation() {
 		`			if err := val.Validate(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
 		`type NamedMapComplexAnon struct {`,
-		"	Age int32 `json:\"age,omitempty\"`",
-		"	Name string `json:\"name,omitempty\"`",
+		"	Age int32 `json:\"age,omitempty\" xml:\"age\"`",
+		"	Name string `json:\"name,omitempty\" xml:\"name\"`",
 		`func (m *NamedMapComplexAnon) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateAge(formats); err != nil {`,
 		`	if err := m.validateName(formats); err != nil {`,
@@ -7382,7 +7382,7 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: array_additional_validations.go
 	flattenRun.AddExpectations("array_additional_validations.go", []string{
 		`type ArrayAdditionalValidations struct {`,
-		"	Args ArrayAdditionalValidationsArgs `json:\"args,omitempty\"`",
+		"	Args ArrayAdditionalValidationsArgs `json:\"args,omitempty\" xml:\"args\"`",
 		`func (m *ArrayAdditionalValidations) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateArgs(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -7400,7 +7400,7 @@ func initTodolistSchemavalidation() {
 
 	expandRun.AddExpectations("array_additional_validations.go", []string{
 		`type ArrayAdditionalValidations struct {`,
-		"	Args *ArrayAdditionalValidationsArgsTuple0 `json:\"args,omitempty\"`",
+		"	Args *ArrayAdditionalValidationsArgsTuple0 `json:\"args,omitempty\" xml:\"args\"`",
 		`func (m *ArrayAdditionalValidations) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateArgs(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -7444,10 +7444,10 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: nested_object_validations_args_meta.go
 	flattenRun.AddExpectations("nested_object_validations_args_meta.go", []string{
 		`type NestedObjectValidationsArgsMeta struct {`,
-		"	First string `json:\"first,omitempty\"`",
-		"	Fourth [][][]float32 `json:\"fourth\"`",
-		"	Second float64 `json:\"second,omitempty\"`",
-		"	Third []float32 `json:\"third\"`",
+		"	First string `json:\"first,omitempty\" xml:\"first\"`",
+		"	Fourth [][][]float32 `json:\"fourth\" xml:\"fourth\"`",
+		"	Second float64 `json:\"second,omitempty\" xml:\"second\"`",
+		"	Third []float32 `json:\"third\" xml:\"third\"`",
 		`func (m *NestedObjectValidationsArgsMeta) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateFirst(formats); err != nil {`,
 		`	if err := m.validateFourth(formats); err != nil {`,
@@ -7500,7 +7500,7 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: map_validations.go
 	flattenRun.AddExpectations("map_validations.go", []string{
 		`type MapValidations struct {`,
-		"	Meta map[string]int64 `json:\"meta,omitempty\"`",
+		"	Meta map[string]int64 `json:\"meta,omitempty\" xml:\"meta\"`",
 		`func (m *MapValidations) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateMeta(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -7523,7 +7523,7 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: named_all_of_all_of1.go
 	flattenRun.AddExpectations("named_all_of_all_of1.go", []string{
 		`type NamedAllOfAllOf1 struct {`,
-		"	Age int32 `json:\"age,omitempty\"`",
+		"	Age int32 `json:\"age,omitempty\" xml:\"age\"`",
 		`func (m *NamedAllOfAllOf1) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateAge(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -7542,7 +7542,7 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: all_of_validations_meta_all_of5.go
 	flattenRun.AddExpectations("all_of_validations_meta_all_of5.go", []string{
 		`type AllOfValidationsMetaAllOf5 struct {`,
-		"	ExtOpts map[string]map[string]map[string]int32 `json:\"extOpts,omitempty\"`",
+		"	ExtOpts map[string]map[string]map[string]int32 `json:\"extOpts,omitempty\" xml:\"extOpts\"`",
 		`func (m *AllOfValidationsMetaAllOf5) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateExtOpts(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -7567,7 +7567,7 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: all_of_validations.go
 	flattenRun.AddExpectations("all_of_validations.go", []string{
 		`type AllOfValidations struct {`,
-		"	Meta *AllOfValidationsMeta `json:\"meta,omitempty\"`",
+		"	Meta *AllOfValidationsMeta `json:\"meta,omitempty\" xml:\"meta\"`",
 		`func (m *AllOfValidations) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateMeta(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -7587,17 +7587,17 @@ func initTodolistSchemavalidation() {
 	expandRun.AddExpectations("all_of_validations.go", []string{
 		`type AllOfValidations struct {`,
 		`	Meta struct {`,
-		"		Name string `json:\"name,omitempty\"`",
-		"		Age int32 `json:\"age,omitempty\"`",
-		"		Args []string `json:\"args\"`",
-		"		Assoc [][][]string `json:\"assoc\"`",
-		"		Opts map[string]int32 `json:\"opts,omitempty\"`",
-		"		ExtOpts map[string]map[string]map[string]int32 `json:\"extOpts,omitempty\"`",
+		"		Name string `json:\"name,omitempty\" xml:\"name\"`",
+		"		Age int32 `json:\"age,omitempty\" xml:\"age\"`",
+		"		Args []string `json:\"args\" xml:\"args\"`",
+		"		Assoc [][][]string `json:\"assoc\" xml:\"assoc\"`",
+		"		Opts map[string]int32 `json:\"opts,omitempty\" xml:\"opts\"`",
+		"		ExtOpts map[string]map[string]map[string]int32 `json:\"extOpts,omitempty\" xml:\"extOpts\"`",
 		`		Coords struct {`,
-		"			Name string `json:\"name,omitempty\"`",
-		"			Age int32 `json:\"age,omitempty\"`",
-		"		} `json:\"coords,omitempty\"`",
-		"	} `json:\"meta,omitempty\"`",
+		"			Name string `json:\"name,omitempty\" xml:\"name\"`",
+		"			Age int32 `json:\"age,omitempty\" xml:\"age\"`",
+		"		} `json:\"coords,omitempty\" xml:\"coords\"`",
+		"	} `json:\"meta,omitempty\" xml:\"meta\"`",
 		`func (m *AllOfValidations) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateMeta(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -7661,10 +7661,10 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: named_nested_object_meta.go
 	flattenRun.AddExpectations("named_nested_object_meta.go", []string{
 		`type NamedNestedObjectMeta struct {`,
-		"	First string `json:\"first,omitempty\"`",
-		"	Fourth [][][]float32 `json:\"fourth\"`",
-		"	Second float64 `json:\"second,omitempty\"`",
-		"	Third []float32 `json:\"third\"`",
+		"	First string `json:\"first,omitempty\" xml:\"first\"`",
+		"	Fourth [][][]float32 `json:\"fourth\" xml:\"fourth\"`",
+		"	Second float64 `json:\"second,omitempty\" xml:\"second\"`",
+		"	Third []float32 `json:\"third\" xml:\"third\"`",
 		`func (m *NamedNestedObjectMeta) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateFirst(formats); err != nil {`,
 		`	if err := m.validateFourth(formats); err != nil {`,
@@ -7717,7 +7717,7 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: named_nested_object.go
 	flattenRun.AddExpectations("named_nested_object.go", []string{
 		`type NamedNestedObject struct {`,
-		"	Meta *NamedNestedObjectMeta `json:\"meta,omitempty\"`",
+		"	Meta *NamedNestedObjectMeta `json:\"meta,omitempty\" xml:\"meta\"`",
 		`func (m *NamedNestedObject) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateMeta(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -7736,7 +7736,7 @@ func initTodolistSchemavalidation() {
 
 	expandRun.AddExpectations("named_nested_object.go", []string{
 		`type NamedNestedObject struct {`,
-		"	Meta *NamedNestedObjectMeta `json:\"meta,omitempty\"`",
+		"	Meta *NamedNestedObjectMeta `json:\"meta,omitempty\" xml:\"meta\"`",
 		`func (m *NamedNestedObject) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateMeta(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -7747,10 +7747,10 @@ func initTodolistSchemavalidation() {
 		`			if ve, ok := err.(*errors.Validation); ok {`,
 		`				return ve.ValidateName("meta"`,
 		`type NamedNestedObjectMeta struct {`,
-		"	First string `json:\"first,omitempty\"`",
-		"	Fourth [][][]float32 `json:\"fourth\"`",
-		"	Second float64 `json:\"second,omitempty\"`",
-		"	Third []float32 `json:\"third\"`",
+		"	First string `json:\"first,omitempty\" xml:\"first\"`",
+		"	Fourth [][][]float32 `json:\"fourth\" xml:\"fourth\"`",
+		"	Second float64 `json:\"second,omitempty\" xml:\"second\"`",
+		"	Third []float32 `json:\"third\" xml:\"third\"`",
 		`func (m *NamedNestedObjectMeta) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateFirst(formats); err != nil {`,
 		`	if err := m.validateFourth(formats); err != nil {`,
@@ -7803,7 +7803,7 @@ func initTodolistSchemavalidation() {
 	// load expectations for model: all_of_validations_meta_all_of6_coords_all_of0.go
 	flattenRun.AddExpectations("all_of_validations_meta_all_of6_coords_all_of0.go", []string{
 		`type AllOfValidationsMetaAllOf6CoordsAllOf0 struct {`,
-		"	Name string `json:\"name,omitempty\"`",
+		"	Name string `json:\"name,omitempty\" xml:\"name\"`",
 		`func (m *AllOfValidationsMetaAllOf6CoordsAllOf0) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateName(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -7870,7 +7870,7 @@ func initFixtureNestedMaps() {
 	// load expectations for model: test_nested_aliased_interface.go
 	flattenRun.AddExpectations("test_nested_aliased_interface.go", []string{
 		`type TestNestedAliasedInterface struct {`,
-		"	Meta map[string]map[string]map[string]AliasInterface `json:\"meta,omitempty\"`",
+		"	Meta map[string]map[string]map[string]AliasInterface `json:\"meta,omitempty\" xml:\"meta\"`",
 		// empty validation
 		"func (m *TestNestedAliasedInterface) Validate(formats strfmt.Registry) error {\n	return nil\n}",
 	},
@@ -7882,7 +7882,7 @@ func initFixtureNestedMaps() {
 
 	expandRun.AddExpectations("test_nested_aliased_interface.go", []string{
 		`type TestNestedAliasedInterface struct {`,
-		"	Meta map[string]map[string]map[string]interface{} `json:\"meta,omitempty\"`",
+		"	Meta map[string]map[string]map[string]interface{} `json:\"meta,omitempty\" xml:\"meta\"`",
 		// empty validation
 		"func (m *TestNestedAliasedInterface) Validate(formats strfmt.Registry) error {\n	return nil\n}",
 	},
@@ -7895,7 +7895,7 @@ func initFixtureNestedMaps() {
 	// load expectations for model: nested_map_validations.go
 	flattenRun.AddExpectations("nested_map_validations.go", []string{
 		`type NestedMapValidations struct {`,
-		"	Meta map[string]map[string]map[string]int64 `json:\"meta,omitempty\"`",
+		"	Meta map[string]map[string]map[string]int64 `json:\"meta,omitempty\" xml:\"meta\"`",
 		`func (m *NestedMapValidations) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateMeta(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -7953,8 +7953,8 @@ func initFixtureNestedMaps() {
 		`					if err := val.Validate(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
 		`type NamedNestedMapComplexAnon struct {`,
-		"	Age int32 `json:\"age,omitempty\"`",
-		"	Name string `json:\"name,omitempty\"`",
+		"	Age int32 `json:\"age,omitempty\" xml:\"age\"`",
+		"	Name string `json:\"name,omitempty\" xml:\"name\"`",
 		`func (m *NamedNestedMapComplexAnon) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateAge(formats); err != nil {`,
 		`	if err := m.validateName(formats); err != nil {`,
@@ -7985,7 +7985,7 @@ func initFixtureNestedMaps() {
 	// load expectations for model: test_nested_interface.go
 	flattenRun.AddExpectations("test_nested_interface.go", []string{
 		`type TestNestedInterface struct {`,
-		"	Meta map[string]map[string]map[string]interface{} `json:\"meta,omitempty\"`",
+		"	Meta map[string]map[string]map[string]interface{} `json:\"meta,omitempty\" xml:\"meta\"`",
 		// empty validation
 		"func (m *TestNestedInterface) Validate(formats strfmt.Registry) error {\n	return nil\n}",
 	},
@@ -8000,8 +8000,8 @@ func initFixtureNestedMaps() {
 	// load expectations for model: named_nested_map_complex_additional_properties_additional_properties_additional_properties.go
 	flattenRun.AddExpectations("named_nested_map_complex_additional_properties_additional_properties_additional_properties.go", []string{
 		`type NamedNestedMapComplexAdditionalPropertiesAdditionalPropertiesAdditionalProperties struct {`,
-		"	Age int32 `json:\"age,omitempty\"`",
-		"	Name string `json:\"name,omitempty\"`",
+		"	Age int32 `json:\"age,omitempty\" xml:\"age\"`",
+		"	Name string `json:\"name,omitempty\" xml:\"name\"`",
 		`func (m *NamedNestedMapComplexAdditionalPropertiesAdditionalPropertiesAdditionalProperties) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateAge(formats); err != nil {`,
 		`	if err := m.validateName(formats); err != nil {`,
@@ -8039,8 +8039,8 @@ func initFixtureNestedMaps() {
 		`					if err := val.Validate(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
 		`type NestedMapNoValidationsAnon struct {`,
-		"	Age int64 `json:\"age,omitempty\"`",
-		"	Name string `json:\"name,omitempty\"`",
+		"	Age int64 `json:\"age,omitempty\" xml:\"age\"`",
+		"	Name string `json:\"name,omitempty\" xml:\"name\"`",
 		// empty validation
 		"func (m *NestedMapNoValidationsAnon) Validate(formats strfmt.Registry) error {\n	return nil\n}",
 	},
@@ -8080,8 +8080,8 @@ func initFixtureNestedMaps() {
 	// load expectations for model: nested_map_complex_validations_meta_additional_properties_additional_properties_additional_properties.go
 	flattenRun.AddExpectations("nested_map_complex_validations_meta_additional_properties_additional_properties_additional_properties.go", []string{
 		`type NestedMapComplexValidationsMetaAdditionalPropertiesAdditionalPropertiesAdditionalProperties struct {`,
-		"	Age int32 `json:\"age,omitempty\"`",
-		"	Name string `json:\"name,omitempty\"`",
+		"	Age int32 `json:\"age,omitempty\" xml:\"age\"`",
+		"	Name string `json:\"name,omitempty\" xml:\"name\"`",
 		`func (m *NestedMapComplexValidationsMetaAdditionalPropertiesAdditionalPropertiesAdditionalProperties) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateAge(formats); err != nil {`,
 		`	if err := m.validateName(formats); err != nil {`,
@@ -8107,8 +8107,8 @@ func initFixtureNestedMaps() {
 	flattenRun.AddExpectations("nested_map_complex_validations.go", []string{
 		`type NestedMapComplexValidations struct {`,
 		// maps are now simple types
-		//"	Meta NestedMapComplexValidationsMeta `json:\"meta,omitempty\"`",
-		"	Meta map[string]map[string]map[string]NestedMapComplexValidationsMetaAdditionalPropertiesAdditionalPropertiesAdditionalProperties `json:\"meta,omitempty\"`",
+		//"	Meta NestedMapComplexValidationsMeta `json:\"meta,omitempty\" xml:\"meta\"`",
+		"	Meta map[string]map[string]map[string]NestedMapComplexValidationsMetaAdditionalPropertiesAdditionalPropertiesAdditionalProperties `json:\"meta,omitempty\" xml:\"meta\"`",
 		`func (m *NestedMapComplexValidations) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateMeta(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -8165,7 +8165,7 @@ func initFixture844Variations() {
 	// load expectations for model: variation2.go
 	flattenRun.AddExpectations("variation2.go", []string{
 		`type Variation2 struct {`,
-		"	Prop1 EmptyEnum `json:\"prop1,omitempty\"`",
+		"	Prop1 EmptyEnum `json:\"prop1,omitempty\" xml:\"prop1\"`",
 		// empty validation
 		"func (m *Variation2) Validate(formats strfmt.Registry) error {\n	return nil\n}",
 	},
@@ -8177,7 +8177,7 @@ func initFixture844Variations() {
 
 	expandRun.AddExpectations("variation2.go", []string{
 		`type Variation2 struct {`,
-		"	Prop1 interface{} `json:\"prop1,omitempty\"`",
+		"	Prop1 interface{} `json:\"prop1,omitempty\" xml:\"prop1\"`",
 		// empty validation
 		"func (m *Variation2) Validate(formats strfmt.Registry) error {\n	return nil\n}",
 	},
@@ -8202,7 +8202,7 @@ func initFixture844Variations() {
 	// load expectations for model: variation3.go
 	flattenRun.AddExpectations("variation3.go", []string{
 		`type Variation3 struct {`,
-		"	Prop1 []EmptyEnum `json:\"prop1\"`",
+		"	Prop1 []EmptyEnum `json:\"prop1\" xml:\"prop1\"`",
 		`func (m *Variation3) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp1(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -8219,7 +8219,7 @@ func initFixture844Variations() {
 
 	expandRun.AddExpectations("variation3.go", []string{
 		`type Variation3 struct {`,
-		"	Prop1 []interface{} `json:\"prop1\"`",
+		"	Prop1 []interface{} `json:\"prop1\" xml:\"prop1\"`",
 		`func (m *Variation3) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp1(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -8485,8 +8485,8 @@ func initFixtureMoreAddProps() {
 	// load expectations for model: trial.go
 	flattenRun.AddExpectations("trial.go", []string{
 		`type Trial struct {`,
-		"	A1 strfmt.DateTime `json:\"a1,omitempty\"`",
-		"	AdditionalProperties *TrialAdditionalProperties `json:\"additionalProperties,omitempty\"`",
+		"	A1 strfmt.DateTime `json:\"a1,omitempty\" xml:\"a1\"`",
+		"	AdditionalProperties *TrialAdditionalProperties `json:\"additionalProperties,omitempty\" xml:\"additionalProperties\"`",
 		`func (m *Trial) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateA1(formats); err != nil {`,
 		`	if err := m.validateAdditionalProperties(formats); err != nil {`,
@@ -8510,8 +8510,8 @@ func initFixtureMoreAddProps() {
 	// load expectations for model: trial_additional_properties.go
 	flattenRun.AddExpectations("trial_additional_properties.go", []string{
 		`type TrialAdditionalProperties struct {`,
-		"	Discourse string `json:\"discourse,omitempty\"`",
-		"	HoursSpent float64 `json:\"hoursSpent,omitempty\"`",
+		"	Discourse string `json:\"discourse,omitempty\" xml:\"discourse\"`",
+		"	HoursSpent float64 `json:\"hoursSpent,omitempty\" xml:\"hoursSpent\"`",
 		"	TrialAdditionalPropertiesAdditionalProperties map[string]interface{} `json:\"-\"`",
 		// empty validation
 		"func (m *TrialAdditionalProperties) Validate(formats strfmt.Registry) error {\n	return nil\n}",
@@ -8525,7 +8525,7 @@ func initFixtureMoreAddProps() {
 	// load expectations for model: additional_transitive_refed_object_thing_additional_properties.go
 	flattenRun.AddExpectations("additional_transitive_refed_object_thing_additional_properties.go", []string{
 		`type AdditionalTransitiveRefedObjectThingAdditionalProperties struct {`,
-		"	Prop1 *AdditionalTransitiveRefedObjectThingAdditionalPropertiesProp1 `json:\"prop1,omitempty\"`",
+		"	Prop1 *AdditionalTransitiveRefedObjectThingAdditionalPropertiesProp1 `json:\"prop1,omitempty\" xml:\"prop1\"`",
 		"	AdditionalTransitiveRefedObjectThingAdditionalProperties map[string]*AdditionalTransitiveRefedObjectThingAdditionalPropertiesAdditionalProperties `json:\"-\"`",
 		`func (m *AdditionalTransitiveRefedObjectThingAdditionalProperties) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp1(formats); err != nil {`,
@@ -8550,7 +8550,7 @@ func initFixtureMoreAddProps() {
 	// load expectations for model: additional_transitive_refed_object_thing_additional_properties_prop1.go
 	flattenRun.AddExpectations("additional_transitive_refed_object_thing_additional_properties_prop1.go", []string{
 		`type AdditionalTransitiveRefedObjectThingAdditionalPropertiesProp1 struct {`,
-		"	ThisOneNotRequiredEither int64 `json:\"thisOneNotRequiredEither,omitempty\"`",
+		"	ThisOneNotRequiredEither int64 `json:\"thisOneNotRequiredEither,omitempty\" xml:\"thisOneNotRequiredEither\"`",
 		"	AdditionalTransitiveRefedObjectThingAdditionalPropertiesProp1 map[string]*AdditionalTransitiveRefedObjectThingAdditionalPropertiesProp1AdditionalProperties `json:\"-\"`",
 		`func (m *AdditionalTransitiveRefedObjectThingAdditionalPropertiesProp1) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateThisOneNotRequiredEither(formats); err != nil {`,
@@ -8572,7 +8572,7 @@ func initFixtureMoreAddProps() {
 	// load expectations for model: additional_transitive_refed_thing.go
 	flattenRun.AddExpectations("additional_transitive_refed_thing.go", []string{
 		`type AdditionalTransitiveRefedThing struct {`,
-		"	ThisOneNotRequired int64 `json:\"thisOneNotRequired,omitempty\"`",
+		"	ThisOneNotRequired int64 `json:\"thisOneNotRequired,omitempty\" xml:\"thisOneNotRequired\"`",
 		"	AdditionalTransitiveRefedThing map[string][]*AdditionalTransitiveRefedThingAdditionalPropertiesItems `json:\"-\"`",
 		`func (m *AdditionalTransitiveRefedThing) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateThisOneNotRequired(formats); err != nil {`,
@@ -8603,8 +8603,8 @@ func initFixtureMoreAddProps() {
 	// load expectations for model: additional_transitive_refed_thing_additional_properties_items_additional_properties_additional_properties.go
 	flattenRun.AddExpectations("additional_transitive_refed_thing_additional_properties_items_additional_properties_additional_properties.go", []string{
 		`type AdditionalTransitiveRefedThingAdditionalPropertiesItemsAdditionalPropertiesAdditionalProperties struct {`,
-		"	Discourse string `json:\"discourse,omitempty\"`",
-		"	HoursSpent float64 `json:\"hoursSpent,omitempty\"`",
+		"	Discourse string `json:\"discourse,omitempty\" xml:\"discourse\"`",
+		"	HoursSpent float64 `json:\"hoursSpent,omitempty\" xml:\"hoursSpent\"`",
 		"	AdditionalTransitiveRefedThingAdditionalPropertiesItemsAdditionalPropertiesAdditionalPropertiesAdditionalProperties map[string]interface{} `json:\"-\"`",
 		// empty validation
 		"func (m *AdditionalTransitiveRefedThingAdditionalPropertiesItemsAdditionalPropertiesAdditionalProperties) Validate(formats strfmt.Registry) error {\n	return nil\n}",
@@ -8618,7 +8618,7 @@ func initFixtureMoreAddProps() {
 	// load expectations for model: additional_transitive_refed_object_thing.go
 	flattenRun.AddExpectations("additional_transitive_refed_object_thing.go", []string{
 		`type AdditionalTransitiveRefedObjectThing struct {`,
-		"	ThisOneNotRequired int64 `json:\"thisOneNotRequired,omitempty\"`",
+		"	ThisOneNotRequired int64 `json:\"thisOneNotRequired,omitempty\" xml:\"thisOneNotRequired\"`",
 		"	AdditionalTransitiveRefedObjectThing map[string]*AdditionalTransitiveRefedObjectThingAdditionalProperties `json:\"-\"`",
 		`func (m *AdditionalTransitiveRefedObjectThing) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateThisOneNotRequired(formats); err != nil {`,
@@ -8640,8 +8640,8 @@ func initFixtureMoreAddProps() {
 	// load expectations for model: additional_transitive_refed_object_thing_additional_properties_additional_properties.go
 	flattenRun.AddExpectations("additional_transitive_refed_object_thing_additional_properties_additional_properties.go", []string{
 		`type AdditionalTransitiveRefedObjectThingAdditionalPropertiesAdditionalProperties struct {`,
-		"	Discourse string `json:\"discourse,omitempty\"`",
-		"	HoursSpent float64 `json:\"hoursSpent,omitempty\"`",
+		"	Discourse string `json:\"discourse,omitempty\" xml:\"discourse\"`",
+		"	HoursSpent float64 `json:\"hoursSpent,omitempty\" xml:\"hoursSpent\"`",
 		"	AdditionalTransitiveRefedObjectThingAdditionalPropertiesAdditionalPropertiesAdditionalProperties map[string]interface{} `json:\"-\"`",
 		// empty validation
 		"func (m *AdditionalTransitiveRefedObjectThingAdditionalPropertiesAdditionalProperties) Validate(formats strfmt.Registry) error {\n	return nil\n}",
@@ -8655,8 +8655,8 @@ func initFixtureMoreAddProps() {
 	// load expectations for model: additional_transitive_refed_object_thing_additional_properties_prop1_additional_properties.go
 	flattenRun.AddExpectations("additional_transitive_refed_object_thing_additional_properties_prop1_additional_properties.go", []string{
 		`type AdditionalTransitiveRefedObjectThingAdditionalPropertiesProp1AdditionalProperties struct {`,
-		"	A1 strfmt.DateTime `json:\"a1,omitempty\"`",
-		"	B1 strfmt.Date `json:\"b1,omitempty\"`",
+		"	A1 strfmt.DateTime `json:\"a1,omitempty\" xml:\"a1\"`",
+		"	B1 strfmt.Date `json:\"b1,omitempty\" xml:\"b1\"`",
 		"	AdditionalTransitiveRefedObjectThingAdditionalPropertiesProp1AdditionalPropertiesAdditionalProperties map[string]interface{} `json:\"-\"`",
 		`func (m *AdditionalTransitiveRefedObjectThingAdditionalPropertiesProp1AdditionalProperties) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateA1(formats); err != nil {`,
@@ -8678,7 +8678,7 @@ func initFixtureMoreAddProps() {
 	// load expectations for model: additional_transitive_refed_thing_additional_properties_items.go
 	flattenRun.AddExpectations("additional_transitive_refed_thing_additional_properties_items.go", []string{
 		`type AdditionalTransitiveRefedThingAdditionalPropertiesItems struct {`,
-		"	ThisOneNotRequiredEither int64 `json:\"thisOneNotRequiredEither,omitempty\"`",
+		"	ThisOneNotRequiredEither int64 `json:\"thisOneNotRequiredEither,omitempty\" xml:\"thisOneNotRequiredEither\"`",
 		"	AdditionalTransitiveRefedThingAdditionalPropertiesItems map[string]*AdditionalTransitiveRefedThingAdditionalPropertiesItemsAdditionalProperties `json:\"-\"`",
 		`func (m *AdditionalTransitiveRefedThingAdditionalPropertiesItems) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateThisOneNotRequiredEither(formats); err != nil {`,
@@ -8700,8 +8700,8 @@ func initFixtureMoreAddProps() {
 	// load expectations for model: additional_transitive_refed_thing_additional_properties_items_additional_properties.go
 	flattenRun.AddExpectations("additional_transitive_refed_thing_additional_properties_items_additional_properties.go", []string{
 		`type AdditionalTransitiveRefedThingAdditionalPropertiesItemsAdditionalProperties struct {`,
-		"	A1 strfmt.DateTime `json:\"a1,omitempty\"`",
-		"	B1 strfmt.DateTime `json:\"b1,omitempty\"`",
+		"	A1 strfmt.DateTime `json:\"a1,omitempty\" xml:\"a1\"`",
+		"	B1 strfmt.DateTime `json:\"b1,omitempty\" xml:\"b1\"`",
 		"	AdditionalTransitiveRefedThingAdditionalPropertiesItemsAdditionalProperties map[string]*AdditionalTransitiveRefedThingAdditionalPropertiesItemsAdditionalPropertiesAdditionalProperties `json:\"-\"`",
 		`func (m *AdditionalTransitiveRefedThingAdditionalPropertiesItemsAdditionalProperties) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateA1(formats); err != nil {`,
@@ -8727,8 +8727,8 @@ func initFixtureMoreAddProps() {
 	// load expectations for model: trial.go
 	expandRun.AddExpectations("trial.go", []string{
 		`type Trial struct {`,
-		"	A1 strfmt.DateTime `json:\"a1,omitempty\"`",
-		"	AdditionalProperties *TrialAdditionalProperties `json:\"additionalProperties,omitempty\"`",
+		"	A1 strfmt.DateTime `json:\"a1,omitempty\" xml:\"a1\"`",
+		"	AdditionalProperties *TrialAdditionalProperties `json:\"additionalProperties,omitempty\" xml:\"additionalProperties\"`",
 		`func (m *Trial) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateA1(formats); err != nil {`,
 		`	if err := m.validateAdditionalProperties(formats); err != nil {`,
@@ -8743,8 +8743,8 @@ func initFixtureMoreAddProps() {
 		`			if ve, ok := err.(*errors.Validation); ok {`,
 		`				return ve.ValidateName("additionalProperties"`,
 		`type TrialAdditionalProperties struct {`,
-		"	Discourse string `json:\"discourse,omitempty\"`",
-		"	HoursSpent float64 `json:\"hoursSpent,omitempty\"`",
+		"	Discourse string `json:\"discourse,omitempty\" xml:\"discourse\"`",
+		"	HoursSpent float64 `json:\"hoursSpent,omitempty\" xml:\"hoursSpent\"`",
 		"	TrialAdditionalPropertiesAdditionalProperties map[string]interface{} `json:\"-\"`",
 		// empty validation
 		"func (m *TrialAdditionalProperties) Validate(formats strfmt.Registry) error {\n	return nil\n}",
@@ -8758,7 +8758,7 @@ func initFixtureMoreAddProps() {
 	// load expectations for model: additional_transitive_refed_thing.go
 	expandRun.AddExpectations("additional_transitive_refed_thing.go", []string{
 		`type AdditionalTransitiveRefedThing struct {`,
-		"	ThisOneNotRequired int64 `json:\"thisOneNotRequired,omitempty\"`",
+		"	ThisOneNotRequired int64 `json:\"thisOneNotRequired,omitempty\" xml:\"thisOneNotRequired\"`",
 		"	AdditionalTransitiveRefedThing map[string][]*AdditionalTransitiveRefedThingItems0 `json:\"-\"`",
 		`func (m *AdditionalTransitiveRefedThing) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateThisOneNotRequired(formats); err != nil {`,
@@ -8780,7 +8780,7 @@ func initFixtureMoreAddProps() {
 		`	if swag.IsZero(m.ThisOneNotRequired) {`,
 		`	if err := validate.MaximumInt("thisOneNotRequired", "body", int64(m.ThisOneNotRequired), 10, false); err != nil {`,
 		`type AdditionalTransitiveRefedThingItems0 struct {`,
-		"	ThisOneNotRequiredEither int64 `json:\"thisOneNotRequiredEither,omitempty\"`",
+		"	ThisOneNotRequiredEither int64 `json:\"thisOneNotRequiredEither,omitempty\" xml:\"thisOneNotRequiredEither\"`",
 		"	AdditionalTransitiveRefedThingItems0 map[string]*AdditionalTransitiveRefedThingItems0Anon `json:\"-\"`",
 		`func (m *AdditionalTransitiveRefedThingItems0) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateThisOneNotRequiredEither(formats); err != nil {`,
@@ -8793,8 +8793,8 @@ func initFixtureMoreAddProps() {
 		`	if swag.IsZero(m.ThisOneNotRequiredEither) {`,
 		`	if err := validate.MaximumInt("thisOneNotRequiredEither", "body", int64(m.ThisOneNotRequiredEither), 20, false); err != nil {`,
 		`type AdditionalTransitiveRefedThingItems0Anon struct {`,
-		"	A1 strfmt.DateTime `json:\"a1,omitempty\"`",
-		"	B1 strfmt.DateTime `json:\"b1,omitempty\"`",
+		"	A1 strfmt.DateTime `json:\"a1,omitempty\" xml:\"a1\"`",
+		"	B1 strfmt.DateTime `json:\"b1,omitempty\" xml:\"b1\"`",
 		"	AdditionalTransitiveRefedThingItems0Anon map[string]*AdditionalTransitiveRefedThingItems0AnonAnon `json:\"-\"`",
 		`func (m *AdditionalTransitiveRefedThingItems0Anon) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateA1(formats); err != nil {`,
@@ -8811,8 +8811,8 @@ func initFixtureMoreAddProps() {
 		`	if swag.IsZero(m.B1) {`,
 		`	if err := validate.FormatOf("b1", "body", "date-time", m.B1.String(), formats); err != nil {`,
 		`type AdditionalTransitiveRefedThingItems0AnonAnon struct {`,
-		"	Discourse string `json:\"discourse,omitempty\"`",
-		"	HoursSpent float64 `json:\"hoursSpent,omitempty\"`",
+		"	Discourse string `json:\"discourse,omitempty\" xml:\"discourse\"`",
+		"	HoursSpent float64 `json:\"hoursSpent,omitempty\" xml:\"hoursSpent\"`",
 		"	AdditionalTransitiveRefedThingItems0AnonAnonAdditionalProperties map[string]interface{} `json:\"-\"`",
 		// empty validation
 		"func (m *AdditionalTransitiveRefedThingItems0AnonAnon) Validate(formats strfmt.Registry) error {\n	return nil\n}",
@@ -8826,7 +8826,7 @@ func initFixtureMoreAddProps() {
 	// load expectations for model: additional_transitive_refed_object_thing.go
 	expandRun.AddExpectations("additional_transitive_refed_object_thing.go", []string{
 		`type AdditionalTransitiveRefedObjectThing struct {`,
-		"	ThisOneNotRequired int64 `json:\"thisOneNotRequired,omitempty\"`",
+		"	ThisOneNotRequired int64 `json:\"thisOneNotRequired,omitempty\" xml:\"thisOneNotRequired\"`",
 		"	AdditionalTransitiveRefedObjectThing map[string]*AdditionalTransitiveRefedObjectThingAnon `json:\"-\"`",
 		`func (m *AdditionalTransitiveRefedObjectThing) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateThisOneNotRequired(formats); err != nil {`,
@@ -8839,7 +8839,7 @@ func initFixtureMoreAddProps() {
 		`	if swag.IsZero(m.ThisOneNotRequired) {`,
 		`	if err := validate.MaximumInt("thisOneNotRequired", "body", int64(m.ThisOneNotRequired), 10, false); err != nil {`,
 		`type AdditionalTransitiveRefedObjectThingAnon struct {`,
-		"	Prop1 *AdditionalTransitiveRefedObjectThingAnonProp1 `json:\"prop1,omitempty\"`",
+		"	Prop1 *AdditionalTransitiveRefedObjectThingAnonProp1 `json:\"prop1,omitempty\" xml:\"prop1\"`",
 		"	AdditionalTransitiveRefedObjectThingAnon map[string]*AdditionalTransitiveRefedObjectThingAnonAnon `json:\"-\"`",
 		`func (m *AdditionalTransitiveRefedObjectThingAnon) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp1(formats); err != nil {`,
@@ -8855,11 +8855,11 @@ func initFixtureMoreAddProps() {
 		`			if ve, ok := err.(*errors.Validation); ok {`,
 		`				return ve.ValidateName("prop1"`,
 		`type AdditionalTransitiveRefedObjectThingAnonAnon struct {`,
-		"	Discourse string `json:\"discourse,omitempty\"`",
-		"	HoursSpent float64 `json:\"hoursSpent,omitempty\"`",
+		"	Discourse string `json:\"discourse,omitempty\" xml:\"discourse\"`",
+		"	HoursSpent float64 `json:\"hoursSpent,omitempty\" xml:\"hoursSpent\"`",
 		"	AdditionalTransitiveRefedObjectThingAnonAnonAdditionalProperties map[string]interface{} `json:\"-\"`",
 		`type AdditionalTransitiveRefedObjectThingAnonProp1 struct {`,
-		"	ThisOneNotRequiredEither int64 `json:\"thisOneNotRequiredEither,omitempty\"`",
+		"	ThisOneNotRequiredEither int64 `json:\"thisOneNotRequiredEither,omitempty\" xml:\"thisOneNotRequiredEither\"`",
 		"	AdditionalTransitiveRefedObjectThingAnonProp1 map[string]*AdditionalTransitiveRefedObjectThingAnonProp1Anon `json:\"-\"`",
 		`func (m *AdditionalTransitiveRefedObjectThingAnonProp1) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateThisOneNotRequiredEither(formats); err != nil {`,
@@ -8872,8 +8872,8 @@ func initFixtureMoreAddProps() {
 		`	if swag.IsZero(m.ThisOneNotRequiredEither) {`,
 		`	if err := validate.MaximumInt("prop1"+"."+"thisOneNotRequiredEither", "body", int64(m.ThisOneNotRequiredEither), 20, false); err != nil {`,
 		`type AdditionalTransitiveRefedObjectThingAnonProp1Anon struct {`,
-		"	A1 strfmt.DateTime `json:\"a1,omitempty\"`",
-		"	B1 strfmt.Date `json:\"b1,omitempty\"`",
+		"	A1 strfmt.DateTime `json:\"a1,omitempty\" xml:\"a1\"`",
+		"	B1 strfmt.Date `json:\"b1,omitempty\" xml:\"b1\"`",
 		"	AdditionalTransitiveRefedObjectThingAnonProp1AnonAdditionalProperties map[string]interface{} `json:\"-\"`",
 		`func (m *AdditionalTransitiveRefedObjectThingAnonProp1Anon) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateA1(formats); err != nil {`,
@@ -8910,7 +8910,7 @@ func initFixture1537() {
 	// load expectations for model: profile_array.go
 	thisRun.AddExpectations("profile_array.go", []string{
 		`type ProfileArray struct {`,
-		"	ProfileCfg []*ProfileCfg `json:\"profileCfg\"`",
+		"	ProfileCfg []*ProfileCfg `json:\"profileCfg\" xml:\"profileCfg\"`",
 		`func (m *ProfileArray) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProfileCfg(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -8936,7 +8936,7 @@ func initFixture1537() {
 	// load expectations for model: profile.go
 	thisRun.AddExpectations("profile.go", []string{
 		`type Profile struct {`,
-		"	ProfileCfg ProfileCfgs `json:\"profileCfg,omitempty\"`",
+		"	ProfileCfg ProfileCfgs `json:\"profileCfg,omitempty\" xml:\"profileCfg\"`",
 		`func (m *Profile) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProfileCfg(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -8977,8 +8977,8 @@ func initFixture1537() {
 	// load expectations for model: profile_cfg.go
 	thisRun.AddExpectations("profile_cfg.go", []string{
 		`type ProfileCfg struct {`,
-		"	Value1 int32 `json:\"value1,omitempty\"`",
-		"	Value2 int32 `json:\"value2,omitempty\"`",
+		"	Value1 int32 `json:\"value1,omitempty\" xml:\"value1\"`",
+		"	Value2 int32 `json:\"value2,omitempty\" xml:\"value2\"`",
 		// empty validation
 		"func (m *ProfileCfg) Validate(formats strfmt.Registry) error {\n	return nil\n}",
 	},
@@ -8991,7 +8991,7 @@ func initFixture1537() {
 	// load expectations for model: profile_required.go
 	thisRun.AddExpectations("profile_required.go", []string{
 		`type ProfileRequired struct {`,
-		"	ProfileCfg ProfileCfgs `json:\"profileCfg\"`",
+		"	ProfileCfg ProfileCfgs `json:\"profileCfg\" xml:\"profileCfg\"`",
 		`func (m *ProfileRequired) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProfileCfg(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -9085,8 +9085,8 @@ func initFixture1537v2() {
 	// load expectations for model: profile_cfg.go
 	thisRun.AddExpectations("profile_cfg.go", []string{
 		`type ProfileCfg struct {`,
-		"	Value1 int32 `json:\"value1,omitempty\"`",
-		"	Value2 int32 `json:\"value2,omitempty\"`",
+		"	Value1 int32 `json:\"value1,omitempty\" xml:\"value1\"`",
+		"	Value2 int32 `json:\"value2,omitempty\" xml:\"value2\"`",
 		// empty validation
 		"func (m *ProfileCfg) Validate(formats strfmt.Registry) error {\n	return nil\n}",
 	},
@@ -9434,7 +9434,7 @@ func initFixture1548() {
 	// load expectations for model: base64_model.go
 	thisRun.AddExpectations("base64_model.go", []string{
 		`type Base64Model struct {`,
-		"	Prop1 strfmt.Base64 `json:\"prop1,omitempty\"`",
+		"	Prop1 strfmt.Base64 `json:\"prop1,omitempty\" xml:\"prop1\"`",
 		`func (m *Base64Model) Validate(formats strfmt.Registry) error {`,
 	},
 		// not expected
@@ -10083,7 +10083,7 @@ func initFixtureSimpleTuple() {
 		`			if err := validate.FormatOf(strconv.Itoa(i+2)+"."+k, "body", "date", ` +
 			`m.TupleThingWithObjectElementItems[i][k].String(), formats); err != nil {`,
 		`type TupleThingWithObjectElementItems0 struct {`,
-		"	Prop1 string `json:\"prop1,omitempty\"`",
+		"	Prop1 string `json:\"prop1,omitempty\" xml:\"prop1\"`",
 		`func (m *TupleThingWithObjectElementItems0) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp1(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -10226,12 +10226,12 @@ func initFixtureDeepMaps() {
 	// load expectations for model: model_object_vanilla.go
 	thisRun.AddExpectations("model_object_vanilla.go", []string{
 		`type ModelObjectVanilla struct {`,
-		"	Prop0 *ModelSanity `json:\"prop0,omitempty\"`",
-		"	Prop1 *ModelSanity `json:\"prop1\"`",
-		"	Prop2 []*ModelSanity `json:\"prop2\"`",
-		"	Prop3 *ModelSanity `json:\"prop3,omitempty\"`",
-		"	Prop4 map[string]ModelSanity `json:\"prop4,omitempty\"`",
-		"	Prop5 int64 `json:\"prop5,omitempty\"`",
+		"	Prop0 *ModelSanity `json:\"prop0,omitempty\" xml:\"prop0\"`",
+		"	Prop1 *ModelSanity `json:\"prop1\" xml:\"prop1\"`",
+		"	Prop2 []*ModelSanity `json:\"prop2\" xml:\"prop2\"`",
+		"	Prop3 *ModelSanity `json:\"prop3,omitempty\" xml:\"prop3\"`",
+		"	Prop4 map[string]ModelSanity `json:\"prop4,omitempty\" xml:\"prop4\"`",
+		"	Prop5 int64 `json:\"prop5,omitempty\" xml:\"prop5\"`",
 		"	ModelObjectVanilla map[string]map[string]map[string]ModelSanity `json:\"-\"`",
 		`func (m *ModelObjectVanilla) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp0(formats); err != nil {`,
@@ -10289,8 +10289,8 @@ func initFixtureDeepMaps() {
 	// load expectations for model: model_sanity.go
 	thisRun.AddExpectations("model_sanity.go", []string{
 		`type ModelSanity struct {`,
-		"	PropA string `json:\"propA,omitempty\"`",
-		"	PropB *string `json:\"propB\"`",
+		"	PropA string `json:\"propA,omitempty\" xml:\"propA\"`",
+		"	PropB *string `json:\"propB\" xml:\"propB\"`",
 		`func (m *ModelSanity) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validatePropB(formats); err != nil {`,
 		`		return errors.CompositeValidationError(res...`,
@@ -10314,17 +10314,17 @@ func initFixture1617() {
 	thisRun.AddExpectations("artifact_info.go", []string{
 		`type ArtifactInfo struct {`,
 		`	ArtifactDescription`,
-		"	Path ArtifactPath `json:\"Path,omitempty\"`",
-		"	Status ArtifactStatus `json:\"Status,omitempty\"`",
-		"	Timestamp strfmt.DateTime `json:\"Timestamp,omitempty\"`",
+		"	Path ArtifactPath `json:\"Path,omitempty\" xml:\"Path\"`",
+		"	Status ArtifactStatus `json:\"Status,omitempty\" xml:\"Status\"`",
+		"	Timestamp strfmt.DateTime `json:\"Timestamp,omitempty\" xml:\"Timestamp\"`",
 		`func (m *ArtifactInfo) UnmarshalJSON(raw []byte) error {`,
 		`	var aO0 ArtifactDescription`,
 		`	if err := swag.ReadJSON(raw, &aO0); err != nil {`,
 		`	m.ArtifactDescription = aO0`,
 		`	var propsArtifactInfo struct {`,
-		"		Path ArtifactPath `json:\"Path,omitempty\"`",
-		"		Status ArtifactStatus `json:\"Status,omitempty\"`",
-		"		Timestamp strfmt.DateTime `json:\"Timestamp,omitempty\"`",
+		"		Path ArtifactPath `json:\"Path,omitempty\" xml:\"Path\"`",
+		"		Status ArtifactStatus `json:\"Status,omitempty\" xml:\"Status\"`",
+		"		Timestamp strfmt.DateTime `json:\"Timestamp,omitempty\" xml:\"Timestamp\"`",
 		`	if err := swag.ReadJSON(raw, &propsArtifactInfo); err != nil {`,
 		`	m.Path = propsArtifactInfo.Path`,
 		`	m.Status = propsArtifactInfo.Status`,
@@ -10336,9 +10336,9 @@ func initFixture1617() {
 		`		return nil, err`,
 		`	_parts = append(_parts, aO0`,
 		`	var propsArtifactInfo struct {`,
-		"		Path ArtifactPath `json:\"Path,omitempty\"`",
-		"		Status ArtifactStatus `json:\"Status,omitempty\"`",
-		"		Timestamp strfmt.DateTime `json:\"Timestamp,omitempty\"`",
+		"		Path ArtifactPath `json:\"Path,omitempty\" xml:\"Path\"`",
+		"		Status ArtifactStatus `json:\"Status,omitempty\" xml:\"Status\"`",
+		"		Timestamp strfmt.DateTime `json:\"Timestamp,omitempty\" xml:\"Timestamp\"`",
 		`	propsArtifactInfo.Path = m.Path`,
 		`	propsArtifactInfo.Status = m.Status`,
 		`	propsArtifactInfo.Timestamp = m.Timestamp`,
@@ -10393,7 +10393,7 @@ func initFixtureRealiasedTypes() {
 	// load expectations for model: g1.go
 	thisRun.AddExpectations("g1.go", []string{
 		`type G1 struct {`,
-		"	Prop1 int64 `json:\"prop1,omitempty\"`",
+		"	Prop1 int64 `json:\"prop1,omitempty\" xml:\"prop1\"`",
 		// empty validation
 		"func (m *G1) Validate(formats strfmt.Registry) error {\n	return nil\n}",
 	},
@@ -10444,7 +10444,7 @@ func initFixtureRealiasedTypes() {
 		`type Hsubtype1 struct {`,
 		`	h1p1Field string`,
 		`	h1p2Field strfmt.Date`,
-		"	Hsp1 uint32 `json:\"hsp1,omitempty\"`",
+		"	Hsp1 uint32 `json:\"hsp1,omitempty\" xml:\"hsp1\"`",
 		`func (m *Hsubtype1) H1p1() string {`,
 		`	return m.h1p1Field`,
 		`func (m *Hsubtype1) SetH1p1(val string) {`,
@@ -10557,7 +10557,7 @@ func initFixtureRealiasedTypes() {
 		`type Hsubtype2 struct {`,
 		`	h1p1Field string`,
 		`	h1p2Field strfmt.Date`,
-		"	Hsp2 strfmt.DateTime `json:\"hsp2,omitempty\"`",
+		"	Hsp2 strfmt.DateTime `json:\"hsp2,omitempty\" xml:\"hsp2\"`",
 		`func (m *Hsubtype2) H1p1() string {`,
 		`	return m.h1p1Field`,
 		`func (m *Hsubtype2) SetH1p1(val string) {`,
@@ -10618,8 +10618,8 @@ func initFixtureRealiasedTypes() {
 	// load expectations for model: g1v.go
 	thisRun.AddExpectations("g1v.go", []string{
 		`type G1v struct {`,
-		"	Prop1v int64 `json:\"prop1v,omitempty\"`",
-		"	Prop2v *int64 `json:\"prop2v\"`",
+		"	Prop1v int64 `json:\"prop1v,omitempty\" xml:\"prop1v\"`",
+		"	Prop2v *int64 `json:\"prop2v\" xml:\"prop2v\"`",
 		`func (m *G1v) Validate(formats strfmt.Registry) error {`,
 		`	if err := m.validateProp1v(formats); err != nil {`,
 		`	if err := m.validateProp2v(formats); err != nil {`,
