@@ -11,12 +11,20 @@ produces:
 consumes:
   - "application/xml"
 
-paths: {}
+paths:
+  '/test':
+    get:
+      responses:
+        '200':
+          description: test endpoint
+          schema:
+            $ref: '#/definitions/XmlWithAttribute'
 definitions:
   XmlWithAttribute:
     type: object
     required:
       - author
+      - isPublished
     properties:
       id:
         type: integer
@@ -26,7 +34,15 @@ definitions:
         type: string
         xml:
           name: 'xml-title'
-      author: 
+      isPublished:
+        type: boolean
+        xml:
+          attribute: true
+          name: published
+      singleChild:
+        type: object
+        $ref: "#/definitions/XmlChild"
+      author:
         type: string
       children:
         type: array
