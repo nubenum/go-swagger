@@ -338,7 +338,7 @@ func TestEnum_ComputeInstance(t *testing.T) {
 				ff, err := opts.LanguageOpts.FormatContent("object_thing.go", buf.Bytes())
 				if assert.NoError(t, err) {
 					res := string(ff)
-					assertInCode(t, "Region *string `json:\"region\" xml:\"region\"`", res)
+					assertInCode(t, "Region *string `json:\"region\"`", res)
 					assertInCode(t, "var computeInstanceTypeRegionPropEnum []interface{}", res)
 					assertInCode(t, "m.validateRegionEnum(\"region\", \"body\", *m.Region)", res)
 				}
@@ -364,7 +364,7 @@ func TestEnum_Cluster(t *testing.T) {
 				ff, err := opts.LanguageOpts.FormatContent("object_thing.go", buf.Bytes())
 				if assert.NoError(t, err) {
 					res := string(ff)
-					assertInCode(t, "Data *ClusterData `json:\"data\" xml:\"data\"`", res)
+					assertInCode(t, "Data *ClusterData `json:\"data\"`", res)
 					assertInCode(t, `ClusterDataStatusScheduled string = "scheduled"`, res)
 					assertInCode(t, `ClusterDataStatusBuilding string = "building"`, res)
 					assertInCode(t, `ClusterDataStatusUp string = "up"`, res)
@@ -395,9 +395,9 @@ func TestEnum_NewPrototype(t *testing.T) {
 				ff, err := opts.LanguageOpts.FormatContent("object_thing.go", buf.Bytes())
 				if assert.NoError(t, err) {
 					res := string(ff)
-					assertInCode(t, "ActivatingUser *NewPrototypeActivatingUser `json:\"activating_user,omitempty\" xml:\"activating_user\"`", res)
-					assertInCode(t, "Delegate *NewPrototypeDelegate `json:\"delegate\" xml:\"delegate\"`", res)
-					assertInCode(t, "Role *string `json:\"role\" xml:\"role\"`", res)
+					assertInCode(t, "ActivatingUser *NewPrototypeActivatingUser `json:\"activating_user,omitempty\"`", res)
+					assertInCode(t, "Delegate *NewPrototypeDelegate `json:\"delegate\"`", res)
+					assertInCode(t, "Role *string `json:\"role\"`", res)
 					assertInCode(t, "var newPrototypeTypeRolePropEnum []interface{}", res)
 					assertInCode(t, "var newPrototypeDelegateTypeKindPropEnum []interface{}", res)
 					assertInCode(t, "m.validateDelegate(formats)", res)

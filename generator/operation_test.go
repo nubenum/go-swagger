@@ -224,7 +224,7 @@ func TestRenderOperation_InstagramSearch(t *testing.T) {
 					assertInCode(t, "type GetMediaSearchOKBody struct {", res)
 					// codegen does not assumes objects are only in models
 					// this is inlined
-					assertInCode(t, "Data []*DataItems0 `json:\"data\" xml:\"data\"`", res)
+					assertInCode(t, "Data []*DataItems0 `json:\"data\"`", res)
 					assertInCode(t, "type DataItems0 struct {", res)
 					// this is a definition: expect this definition to be reused from the models pkg
 					assertInCode(t, "models.Media", res)
@@ -722,7 +722,7 @@ func TestGenClient_Issue733(t *testing.T) {
 			assert.NoError(t, err)
 			err = templates.MustGet("clientResponse").Execute(buf, op)
 			if assert.NoError(t, err) {
-				assertInCode(t, "Labels []*int64 `json:\"labels\" xml:\"labels\"`", buf.String())
+				assertInCode(t, "Labels []*int64 `json:\"labels\"`", buf.String())
 			}
 		}
 	}

@@ -393,8 +393,8 @@ func TestGenerateModel_NotaWithMeta(t *testing.T) {
 					res := string(ff)
 					assertInCode(t, "type NotaWithMeta map[string]NotaWithMetaAnon", res)
 					assertInCode(t, "type NotaWithMetaAnon struct {", res)
-					assertInCode(t, "Comment *string `json:\"comment\" xml:\"comment\"`", res)
-					assertInCode(t, "Count int32 `json:\"count,omitempty\" xml:\"count\"`", res)
+					assertInCode(t, "Comment *string `json:\"comment\"`", res)
+					assertInCode(t, "Count int32 `json:\"count,omitempty\"`", res)
 				}
 			}
 		}
@@ -419,9 +419,9 @@ func TestGenerateModel_RunParameters(t *testing.T) {
 			if assert.NoError(t, err) {
 				res := buf.String()
 				assertInCode(t, "type "+k+" struct {", res)
-				assertInCode(t, "BranchName string `json:\"branch_name,omitempty\" xml:\"branch_name\"`", res)
-				assertInCode(t, "CommitSha string `json:\"commit_sha,omitempty\" xml:\"commit_sha\"`", res)
-				assertInCode(t, "Refs interface{} `json:\"refs,omitempty\" xml:\"refs\"`", res)
+				assertInCode(t, "BranchName string `json:\"branch_name,omitempty\"`", res)
+				assertInCode(t, "CommitSha string `json:\"commit_sha,omitempty\"`", res)
+				assertInCode(t, "Refs interface{} `json:\"refs,omitempty\"`", res)
 			}
 		}
 	}
@@ -446,7 +446,7 @@ func TestGenerateModel_NotaWithName(t *testing.T) {
 				res := buf.String()
 				assertInCode(t, "type "+k+" struct {", res)
 				assertInCode(t, k+" map[string]int32 `json:\"-\"`", res)
-				assertInCode(t, "Name *string `json:\"name\" xml:\"name\"`", res)
+				assertInCode(t, "Name *string `json:\"name\"`", res)
 				assertInCode(t, k+") UnmarshalJSON", res)
 				assertInCode(t, k+") MarshalJSON", res)
 				assertInCode(t, "json.Marshal(stage1)", res)
@@ -524,8 +524,8 @@ func TestGenerateModel_NotaWithMetaRegistry(t *testing.T) {
 					res := string(ff)
 					assertInCode(t, "type "+k+" map[string]map[string]map[string]NotaWithMetaRegistryAnon", res)
 					assertInCode(t, "type NotaWithMetaRegistryAnon struct {", res)
-					assertInCode(t, "Comment *string `json:\"comment\" xml:\"comment\"`", res)
-					assertInCode(t, "Count int32 `json:\"count,omitempty\" xml:\"count\"`", res)
+					assertInCode(t, "Comment *string `json:\"comment\"`", res)
+					assertInCode(t, "Count int32 `json:\"count,omitempty\"`", res)
 				}
 			}
 		}
@@ -550,7 +550,7 @@ func TestGenerateModel_WithMap(t *testing.T) {
 			if assert.NoError(t, err) {
 				res := buf.String()
 				assertInCode(t, "type WithMap struct {", res)
-				assertInCode(t, "Data map[string]string `json:\"data,omitempty\" xml:\"data\"`", res)
+				assertInCode(t, "Data map[string]string `json:\"data,omitempty\"`", res)
 			}
 		}
 	}
@@ -579,7 +579,7 @@ func TestGenerateModel_WithMapInterface(t *testing.T) {
 			if assert.NoError(t, err) {
 				res := buf.String()
 				assertInCode(t, "type WithMapInterface struct {", res)
-				assertInCode(t, "ExtraInfo map[string]interface{} `json:\"extraInfo\" xml:\"extraInfo\"`", res)
+				assertInCode(t, "ExtraInfo map[string]interface{} `json:\"extraInfo\"`", res)
 			}
 		}
 	}
@@ -604,7 +604,7 @@ func TestGenerateModel_WithMapRef(t *testing.T) {
 			if assert.NoError(t, err) {
 				res := buf.String()
 				assertInCode(t, "type "+k+" struct {", res)
-				assertInCode(t, "Data map[string]Notable `json:\"data,omitempty\" xml:\"data\"`", res)
+				assertInCode(t, "Data map[string]Notable `json:\"data,omitempty\"`", res)
 			}
 		}
 	}
@@ -629,7 +629,7 @@ func TestGenerateModel_WithMapComplex(t *testing.T) {
 			if assert.NoError(t, err) {
 				res := buf.String()
 				assertInCode(t, "type "+k+" struct {", res)
-				assertInCode(t, "Data map[string]"+k+"DataAnon `json:\"data,omitempty\" xml:\"data\"`", res)
+				assertInCode(t, "Data map[string]"+k+"DataAnon `json:\"data,omitempty\"`", res)
 			}
 		}
 	}
@@ -653,7 +653,7 @@ func TestGenerateModel_WithMapRegistry(t *testing.T) {
 			if assert.NoError(t, err) {
 				res := buf.String()
 				assertInCode(t, "type WithMap struct {", res)
-				assertInCode(t, "Data map[string]map[string]map[string]string `json:\"data,omitempty\" xml:\"data\"`", res)
+				assertInCode(t, "Data map[string]map[string]map[string]string `json:\"data,omitempty\"`", res)
 			}
 		}
 	}
@@ -678,7 +678,7 @@ func TestGenerateModel_WithMapRegistryRef(t *testing.T) {
 			if assert.NoError(t, err) {
 				res := buf.String()
 				assertInCode(t, "type "+k+" struct {", res)
-				assertInCode(t, "Data map[string]map[string]map[string]Notable `json:\"data,omitempty\" xml:\"data\"`", res)
+				assertInCode(t, "Data map[string]map[string]map[string]Notable `json:\"data,omitempty\"`", res)
 			}
 		}
 	}
@@ -703,7 +703,7 @@ func TestGenerateModel_WithMapComplexRegistry(t *testing.T) {
 			if assert.NoError(t, err) {
 				res := buf.String()
 				assertInCode(t, "type "+k+" struct {", res)
-				assertInCode(t, "Data map[string]map[string]map[string]"+k+"DataAnon `json:\"data,omitempty\" xml:\"data\"`", res)
+				assertInCode(t, "Data map[string]map[string]map[string]"+k+"DataAnon `json:\"data,omitempty\"`", res)
 			}
 		}
 	}
@@ -740,10 +740,10 @@ func TestGenerateModel_WithAdditional(t *testing.T) {
 				if assert.NoError(t, err) {
 					res := buf.String()
 					assertInCode(t, "type "+k+" struct {", res)
-					assertInCode(t, "Data *"+k+"Data `json:\"data,omitempty\" xml:\"data\"`", res)
+					assertInCode(t, "Data *"+k+"Data `json:\"data,omitempty\"`", res)
 					assertInCode(t, "type "+k+"Data struct {", res)
 					assertInCode(t, k+"Data map[string]string `json:\"-\"`", res)
-					assertInCode(t, "Name *string `json:\"name\" xml:\"name\"`", res)
+					assertInCode(t, "Name *string `json:\"name\"`", res)
 					assertInCode(t, k+"Data) UnmarshalJSON", res)
 					assertInCode(t, k+"Data) MarshalJSON", res)
 					assertInCode(t, "json.Marshal(stage1)", res)
@@ -803,7 +803,7 @@ func TestGenerateModel_WithRef(t *testing.T) {
 			assert.NoError(t, err)
 			res := buf.String()
 			assertInCode(t, "type WithRef struct {", res)
-			assertInCode(t, "Notes *Notable `json:\"notes,omitempty\" xml:\"notes\"`", res)
+			assertInCode(t, "Notes *Notable `json:\"notes,omitempty\"`", res)
 		}
 	}
 }
@@ -828,7 +828,7 @@ func TestGenerateModel_WithNullableRef(t *testing.T) {
 			assert.NoError(t, err)
 			res := buf.String()
 			assertInCode(t, "type WithNullableRef struct {", res)
-			assertInCode(t, "Notes *Notable `json:\"notes,omitempty\" xml:\"notes\"`", res)
+			assertInCode(t, "Notes *Notable `json:\"notes,omitempty\"`", res)
 		}
 	}
 }
@@ -938,7 +938,7 @@ func TestGenerateModel_Stats(t *testing.T) {
 					res := string(ff)
 					assertInCode(t, "type Stats []*StatsItems0", res)
 					assertInCode(t, "type StatsItems0 struct {", res)
-					assertInCode(t, "Points []int64 `json:\"points\" xml:\"points\"`", res)
+					assertInCode(t, "Points []int64 `json:\"points\"`", res)
 				}
 			}
 		}
@@ -962,7 +962,7 @@ func TestGenerateModel_Statix(t *testing.T) {
 					res := string(ff)
 					assertInCode(t, "type Statix [][][]*StatixItems0", res)
 					assertInCode(t, "type StatixItems0 struct {", res)
-					assertInCode(t, "Points []int64 `json:\"points\" xml:\"points\"`", res)
+					assertInCode(t, "Points []int64 `json:\"points\"`", res)
 				} /*else {
 					fmt.Println(buf.String())
 				}*/
@@ -991,7 +991,7 @@ func TestGenerateModel_WithItems(t *testing.T) {
 			if assert.NoError(t, err) {
 				res := buf.String()
 				assertInCode(t, "type WithItems struct {", res)
-				assertInCode(t, "Tags []string `json:\"tags\" xml:\"tags\"`", res)
+				assertInCode(t, "Tags []string `json:\"tags\"`", res)
 			}
 		}
 	}
@@ -1020,7 +1020,7 @@ func TestGenerateModel_WithComplexItems(t *testing.T) {
 					res := string(b)
 					assertInCode(t, "type WithComplexItems struct {", res)
 					assertInCode(t, "type WithComplexItemsTagsItems0 struct {", res)
-					assertInCode(t, "Tags []*WithComplexItemsTagsItems0 `json:\"tags\" xml:\"tags\"`", res)
+					assertInCode(t, "Tags []*WithComplexItemsTagsItems0 `json:\"tags\"`", res)
 				}
 			}
 		}
@@ -1049,7 +1049,7 @@ func TestGenerateModel_WithItemsAndAdditional(t *testing.T) {
 					assertInCode(t, "type "+k+" struct {", res)
 					assertInCode(t, "type "+k+"TagsTuple0 struct {", res)
 					// this would fail if it accepts additionalItems because it would come out as []interface{}
-					assertInCode(t, "Tags *"+k+"TagsTuple0 `json:\"tags,omitempty\" xml:\"tags\"`", res)
+					assertInCode(t, "Tags *"+k+"TagsTuple0 `json:\"tags,omitempty\"`", res)
 					assertInCode(t, "P0 *string `json:\"-\"`", res)
 					assertInCode(t, k+"TagsTuple0Items []interface{} `json:\"-\"`", res)
 				}
@@ -1081,7 +1081,7 @@ func TestGenerateModel_WithItemsAndAdditional2(t *testing.T) {
 					assertInCode(t, "type "+k+"TagsTuple0 struct {", res)
 					// this would fail if it accepts additionalItems because it would come out as []interface{}
 					assertInCode(t, "P0 *string `json:\"-\"`", res)
-					assertInCode(t, "Tags *"+k+"TagsTuple0 `json:\"tags,omitempty\" xml:\"tags\"`", res)
+					assertInCode(t, "Tags *"+k+"TagsTuple0 `json:\"tags,omitempty\"`", res)
 					assertInCode(t, k+"TagsTuple0Items []int32 `json:\"-\"`", res)
 
 				}
@@ -1111,7 +1111,7 @@ func TestGenerateModel_WithComplexAdditional(t *testing.T) {
 					res := string(b)
 					assertInCode(t, "type WithComplexAdditional struct {", res)
 					assertInCode(t, "type WithComplexAdditionalTagsTuple0 struct {", res)
-					assertInCode(t, "Tags *WithComplexAdditionalTagsTuple0 `json:\"tags,omitempty\" xml:\"tags\"`", res)
+					assertInCode(t, "Tags *WithComplexAdditionalTagsTuple0 `json:\"tags,omitempty\"`", res)
 					assertInCode(t, "P0 *string `json:\"-\"`", res)
 					assertInCode(t, "WithComplexAdditionalTagsTuple0Items []*WithComplexAdditionalTagsItems `json:\"-\"`", res)
 				}
@@ -1469,7 +1469,7 @@ func TestGenerateModel_WithAllOfAndDiscriminator(t *testing.T) {
 					res := string(ct)
 					assertInCode(t, "type Cat struct {", res)
 					assertInCode(t, "Pet", res)
-					assertInCode(t, "HuntingSkill *string `json:\"huntingSkill\" xml:\"huntingSkill\"`", res)
+					assertInCode(t, "HuntingSkill *string `json:\"huntingSkill\"`", res)
 				}
 			}
 		}
@@ -1527,14 +1527,14 @@ func TestGenerateModel_WithAllOf(t *testing.T) {
 					assertInCode(t, "type WithAllOfAO4Tuple4 struct {", res)
 					assertInCode(t, "type WithAllOfAO5Tuple5 struct {", res)
 					assertInCode(t, "Notable", res)
-					assertInCode(t, "Title string `json:\"title,omitempty\" xml:\"title\"`", res)
-					assertInCode(t, "Body string `json:\"body,omitempty\" xml:\"body\"`", res)
-					assertInCode(t, "Name string `json:\"name,omitempty\" xml:\"name\"`", res)
+					assertInCode(t, "Title string `json:\"title,omitempty\"`", res)
+					assertInCode(t, "Body string `json:\"body,omitempty\"`", res)
+					assertInCode(t, "Name string `json:\"name,omitempty\"`", res)
 					assertInCode(t, "P0 *float32 `json:\"-\"`", res)
 					assertInCode(t, "P0 *float64 `json:\"-\"`", res)
 					assertInCode(t, "P1 *strfmt.DateTime `json:\"-\"`", res)
 					assertInCode(t, "P1 *strfmt.Date `json:\"-\"`", res)
-					assertInCode(t, "Opinion string `json:\"opinion,omitempty\" xml:\"opinion\"`", res)
+					assertInCode(t, "Opinion string `json:\"opinion,omitempty\"`", res)
 					assertInCode(t, "WithAllOfAO5Tuple5Items []strfmt.Password `json:\"-\"`", res)
 					assertInCode(t, "AO1 map[string]int32 `json:\"-\"`", res)
 					assertInCode(t, "WithAllOfAO2P2 map[string]int64 `json:\"-\"`", res)
@@ -1571,7 +1571,7 @@ func TestNumericKeys(t *testing.T) {
 				ct, err := opts.LanguageOpts.FormatContent("all_of_schema.go", buf.Bytes())
 				if assert.NoError(t, err) {
 					res := string(ct)
-					assertInCode(t, "Nr16x16 string `json:\"16x16,omitempty\" xml:\"16x16\"`", res)
+					assertInCode(t, "Nr16x16 string `json:\"16x16,omitempty\"`", res)
 				}
 			}
 		}
@@ -1614,7 +1614,7 @@ func TestGenModel_Issue222(t *testing.T) {
 				if assert.NoError(t, err) {
 					res := string(ct)
 					assertInCode(t, "Price) Validate(formats strfmt.Registry) error", res)
-					assertInCode(t, "Currency Currency `json:\"currency,omitempty\" xml:\"currency\"`", res)
+					assertInCode(t, "Currency Currency `json:\"currency,omitempty\"`", res)
 					assertInCode(t, "m.Currency.Validate(formats); err != nil", res)
 				}
 			}
@@ -1636,7 +1636,7 @@ func TestGenModel_Issue243(t *testing.T) {
 				ct, err := opts.LanguageOpts.FormatContent("has_dyn_meta.go", buf.Bytes())
 				if assert.NoError(t, err) {
 					res := string(ct)
-					if !assertInCode(t, "Metadata DynamicMetaData `json:\"metadata,omitempty\" xml:\"metadata\"`", res) {
+					if !assertInCode(t, "Metadata DynamicMetaData `json:\"metadata,omitempty\"`", res) {
 						fmt.Println(res)
 					}
 				}
@@ -1687,9 +1687,9 @@ func TestGenModel_Issue251(t *testing.T) {
 					res := string(ct)
 
 					b1 := assertInCode(t, "type "+swag.ToGoName(k)+" struct", res)
-					b2 := assertInCode(t, "Begin *strfmt.DateTime `json:\"begin\" xml:\"begin\"`", res)
-					b3 := assertInCode(t, "End strfmt.DateTime `json:\"end,omitempty\" xml:\"end\"`", res)
-					b4 := assertInCode(t, "Name string `json:\"name,omitempty\" xml:\"name\"`", res)
+					b2 := assertInCode(t, "Begin *strfmt.DateTime `json:\"begin\"`", res)
+					b3 := assertInCode(t, "End strfmt.DateTime `json:\"end,omitempty\"`", res)
+					b4 := assertInCode(t, "Name string `json:\"name,omitempty\"`", res)
 					b5 := assertInCode(t, "(m *"+swag.ToGoName(k)+") validateBegin", res)
 					//b6 := assertInCode(t, "(m *"+swag.ToGoName(k)+") validateEnd", res)
 					b7 := assertInCode(t, "(m *"+swag.ToGoName(k)+") Validate", res)
@@ -1718,8 +1718,8 @@ func TestGenModel_Issue257(t *testing.T) {
 					res := string(ct)
 
 					b1 := assertInCode(t, "type "+swag.ToGoName(k)+" struct", res)
-					b2 := assertInCode(t, "AtType string `json:\"@type,omitempty\" xml:\"@type\"`", res)
-					b3 := assertInCode(t, "Type string `json:\"type,omitempty\" xml:\"type\"`", res)
+					b2 := assertInCode(t, "AtType string `json:\"@type,omitempty\"`", res)
+					b3 := assertInCode(t, "Type string `json:\"type,omitempty\"`", res)
 					if !(b1 && b2 && b3) {
 						fmt.Println(res)
 					}
@@ -1790,7 +1790,7 @@ func TestGenModel_Issue300(t *testing.T) {
 				ct, err := opts.LanguageOpts.FormatContent("action_item.go", buf.Bytes())
 				if assert.NoError(t, err) {
 					res := string(ct)
-					assertInCode(t, "Name ActionName `json:\"name\" xml:\"name\"`", res)
+					assertInCode(t, "Name ActionName `json:\"name\"`", res)
 				} else {
 					fmt.Println(buf.String())
 				}
@@ -1813,10 +1813,10 @@ func TestGenModel_Issue398(t *testing.T) {
 				ct, err := opts.LanguageOpts.FormatContent("action_item.go", buf.Bytes())
 				if assert.NoError(t, err) {
 					res := string(ct)
-					assertInCode(t, "Computed bool `json:\"computed,omitempty\" xml:\"computed\"`", res)
-					assertInCode(t, "Intval *int64 `json:\"intval\" xml:\"intval\"`", res)
-					assertInCode(t, "PropType *string `json:\"propType\" xml:\"propType\"`", res)
-					assertInCode(t, "Strval *string `json:\"strval\" xml:\"strval\"`", res)
+					assertInCode(t, "Computed bool `json:\"computed,omitempty\"`", res)
+					assertInCode(t, "Intval *int64 `json:\"intval\"`", res)
+					assertInCode(t, "PropType *string `json:\"propType\"`", res)
+					assertInCode(t, "Strval *string `json:\"strval\"`", res)
 				} else {
 					fmt.Println(buf.String())
 				}
@@ -1931,7 +1931,7 @@ func TestGenModel_Issue763(t *testing.T) {
 				ct, err := opts.LanguageOpts.FormatContent("test_list.go", buf.Bytes())
 				if assert.NoError(t, err) {
 					res := string(ct)
-					assertInCode(t, "TheArray []*int32 `json:\"the_array\" xml:\"the_array\"`", res)
+					assertInCode(t, "TheArray []*int32 `json:\"the_array\"`", res)
 					assertInCode(t, `validate.MinimumInt("the_array"+"."+strconv.Itoa(i), "body", int64(*m.TheArray[i]), 0, false)`, res)
 					assertInCode(t, `validate.MaximumInt("the_array"+"."+strconv.Itoa(i), "body", int64(*m.TheArray[i]), 10, false)`, res)
 				} else {
@@ -1956,7 +1956,7 @@ func TestGenModel_Issue811_NullType(t *testing.T) {
 				ct, err := opts.LanguageOpts.FormatContent("team_repos.go", buf.Bytes())
 				if assert.NoError(t, err) {
 					res := string(ct)
-					assertInCode(t, "Language interface{} `json:\"language,omitempty\" xml:\"language\"`", res)
+					assertInCode(t, "Language interface{} `json:\"language,omitempty\"`", res)
 				} else {
 					fmt.Println(buf.String())
 				}
@@ -1979,8 +1979,8 @@ func TestGenModel_Issue811_Emojis(t *testing.T) {
 				ct, err := opts.LanguageOpts.FormatContent("team_repos.go", buf.Bytes())
 				if assert.NoError(t, err) {
 					res := string(ct)
-					assertInCode(t, "Plus1 string `json:\"+1,omitempty\" xml:\"+1\"`", res)
-					assertInCode(t, "Minus1 string `json:\"-1,omitempty\" xml:\"-1\"`", res)
+					assertInCode(t, "Plus1 string `json:\"+1,omitempty\"`", res)
+					assertInCode(t, "Minus1 string `json:\"-1,omitempty\"`", res)
 				} else {
 					fmt.Println(buf.String())
 				}
@@ -2098,8 +2098,8 @@ func TestGenModel_Issue981(t *testing.T) {
 				if assert.NoError(t, err) {
 					res := string(ct)
 					//fmt.Println(res)
-					assertInCode(t, "FirstName string `json:\"first_name,omitempty\" xml:\"first_name\"`", res)
-					assertInCode(t, "LastName string `json:\"last_name,omitempty\" xml:\"last_name\"`", res)
+					assertInCode(t, "FirstName string `json:\"first_name,omitempty\"`", res)
+					assertInCode(t, "LastName string `json:\"last_name,omitempty\"`", res)
 					assertInCode(t, "if swag.IsZero(m.Type)", res)
 					assertInCode(t, `validate.MinimumInt("user_type", "body", int64(m.Type), 1, false)`, res)
 					assertInCode(t, `validate.MaximumInt("user_type", "body", int64(m.Type), 5, false)`, res)
@@ -2130,7 +2130,7 @@ func TestGenModel_Issue1341(t *testing.T) {
 					//fmt.Println(res)
 					assertInCode(t, `return errors.New(422, "invalid ValueType value: %q", base.ValueType`, res)
 					assertInCode(t, "result.testField = base.Test", res)
-					assertInCode(t, "Test *string `json:\"Test\" xml:\"Test\"`", res)
+					assertInCode(t, "Test *string `json:\"Test\"`", res)
 					assertInCode(t, "Test: m.Test(),", res)
 				} else {
 					fmt.Println(buf.String())
@@ -2395,10 +2395,10 @@ func TestGenModel_Issue910(t *testing.T) {
 						ct, err := opts.LanguageOpts.FormatContent("foo.go", buf.Bytes())
 						if assert.NoError(t, err) {
 							res := string(ct)
-							assertInCode(t, "// bar\n	// Required: true\n	Bar *int64 `json:\"bar\" xml:\"bar\"`", res)
-							assertInCode(t, "// foo\n	// Required: true\n	Foo interface{} `json:\"foo\" xml:\"foo\"`", res)
-							assertInCode(t, "// baz\n	Baz int64 `json:\"baz,omitempty\" xml:\"baz\"`", res)
-							assertInCode(t, "// quux\n	Quux []string `json:\"quux\" xml:\"quux\"`", res)
+							assertInCode(t, "// bar\n	// Required: true\n	Bar *int64 `json:\"bar\"`", res)
+							assertInCode(t, "// foo\n	// Required: true\n	Foo interface{} `json:\"foo\"`", res)
+							assertInCode(t, "// baz\n	Baz int64 `json:\"baz,omitempty\"`", res)
+							assertInCode(t, "// quux\n	Quux []string `json:\"quux\"`", res)
 							assertInCode(t, `if err := validate.Required("bar", "body", m.Bar); err != nil {`, res)
 							assertInCode(t, `if err := validate.Required("foo", "body", m.Foo); err != nil {`, res)
 							assertNotInCode(t, `if err := validate.Required("baz", "body", m.Baz); err != nil {`, res)
@@ -2484,17 +2484,17 @@ func TestGenModel_Issue1623(t *testing.T) {
 	}
 
 	res := string(ff)
-	assertInCode(t, "ArrayHasOmitEmptyFalse []string `json:\"arrayHasOmitEmptyFalse\" xml:\"arrayHasOmitEmptyFalse\"`", res)
-	assertInCode(t, "ArrayHasOmitEmptyTrue []string `json:\"arrayHasOmitEmptyTrue,omitempty\" xml:\"arrayHasOmitEmptyTrue\"`", res)
-	assertInCode(t, "ArrayNoOmitEmpty []string `json:\"arrayNoOmitEmpty\" xml:\"arrayNoOmitEmpty\"`", res)
-	assertInCode(t, "GeneralHasOmitEmptyFalse string `json:\"generalHasOmitEmptyFalse\" xml:\"generalHasOmitEmptyFalse\"`", res)
-	assertInCode(t, "GeneralHasOmitEmptyTrue string `json:\"generalHasOmitEmptyTrue,omitempty\" xml:\"generalHasOmitEmptyTrue\"`", res)
-	assertInCode(t, "GeneralNoOmitEmpty string `json:\"generalNoOmitEmpty,omitempty\" xml:\"generalNoOmitEmpty\"`", res)
-	assertInCode(t, "RefHasOmitEmptyFalse Bar `json:\"refHasOmitEmptyFalse,omitempty\" xml:\"refHasOmitEmptyFalse\"`", res)
-	assertInCode(t, "RefHasOmitEmptyTrue Bar `json:\"refHasOmitEmptyTrue,omitempty\" xml:\"refHasOmitEmptyTrue\"`", res)
-	assertInCode(t, "RefNoOmitEmpty Bar `json:\"refNoOmitEmpty,omitempty\" xml:\"refNoOmitEmpty\"`", res)
-	assertInCode(t, "IntHasJSONString int64 `json:\"intHasJsonString,omitempty,string\" xml:\"intHasJsonString\"`", res)
-	assertInCode(t, "BoolHasJSONString bool `json:\"boolHasJsonString,omitempty,string\" xml:\"boolHasJsonString\"`", res)
+	assertInCode(t, "ArrayHasOmitEmptyFalse []string `json:\"arrayHasOmitEmptyFalse\"`", res)
+	assertInCode(t, "ArrayHasOmitEmptyTrue []string `json:\"arrayHasOmitEmptyTrue,omitempty\"`", res)
+	assertInCode(t, "ArrayNoOmitEmpty []string `json:\"arrayNoOmitEmpty\"`", res)
+	assertInCode(t, "GeneralHasOmitEmptyFalse string `json:\"generalHasOmitEmptyFalse\"`", res)
+	assertInCode(t, "GeneralHasOmitEmptyTrue string `json:\"generalHasOmitEmptyTrue,omitempty\"`", res)
+	assertInCode(t, "GeneralNoOmitEmpty string `json:\"generalNoOmitEmpty,omitempty\"`", res)
+	assertInCode(t, "RefHasOmitEmptyFalse Bar `json:\"refHasOmitEmptyFalse,omitempty\"`", res)
+	assertInCode(t, "RefHasOmitEmptyTrue Bar `json:\"refHasOmitEmptyTrue,omitempty\"`", res)
+	assertInCode(t, "RefNoOmitEmpty Bar `json:\"refNoOmitEmpty,omitempty\"`", res)
+	assertInCode(t, "IntHasJSONString int64 `json:\"intHasJsonString,omitempty,string\"`", res)
+	assertInCode(t, "BoolHasJSONString bool `json:\"boolHasJsonString,omitempty,string\"`", res)
 
 }
 
@@ -2596,7 +2596,7 @@ func TestGenModel_StrictAdditionalProperties(t *testing.T) {
 	}
 }
 
-func TestGenModel_XMLTags(t *testing.T) {
+func TestGenModel_XMLStructTags_WithXML(t *testing.T) {
 	specDoc, err := loads.Spec("../fixtures/codegen/xml-model.yml")
 	if assert.NoError(t, err) {
 		definitions := specDoc.Spec().Definitions
@@ -2617,6 +2617,35 @@ func TestGenModel_XMLTags(t *testing.T) {
 					assertInCode(t, "ID int64 `json:\"id,omitempty\" xml:\"id,attr,omitempty\"`", res)
 					assertInCode(t, "IsPublished *bool `json:\"isPublished\" xml:\"published,attr\"`", res)
 					assertInCode(t, "SingleChild *XMLChild `json:\"singleChild,omitempty\" xml:\"singleChild,omitempty\"`", res)
+					assertInCode(t, "Title string `json:\"title,omitempty\" xml:\"xml-title,omitempty\"`", res)
+				} else {
+					fmt.Println(buf.String())
+				}
+			}
+		}
+	}
+}
+
+func TestGenModel_XMLStructTags_Explicit(t *testing.T) {
+	specDoc, err := loads.Spec("../fixtures/codegen/xml-model.yml")
+	if assert.NoError(t, err) {
+		definitions := specDoc.Spec().Definitions
+		k := "XmlWithAttribute"
+		opts := opts()
+
+		genModel, err := makeGenDefinition(k, "models", definitions[k], specDoc, opts)
+		if assert.NoError(t, err) {
+			buf := bytes.NewBuffer(nil)
+			err := templates.MustGet("model").Execute(buf, genModel)
+			if assert.NoError(t, err) {
+				ct, err := opts.LanguageOpts.FormatContent("xml_with_attribute.go", buf.Bytes())
+				if assert.NoError(t, err) {
+					res := string(ct)
+					assertInCode(t, "Author *string `json:\"author\"`", res)
+					assertInCode(t, "Children []*XMLChild `json:\"children\"`", res)
+					assertInCode(t, "ID int64 `json:\"id,omitempty\" xml:\"id,attr,omitempty\"`", res)
+					assertInCode(t, "IsPublished *bool `json:\"isPublished\" xml:\"published,attr\"`", res)
+					assertInCode(t, "SingleChild *XMLChild `json:\"singleChild,omitempty\"`", res)
 					assertInCode(t, "Title string `json:\"title,omitempty\" xml:\"xml-title,omitempty\"`", res)
 				} else {
 					fmt.Println(buf.String())
